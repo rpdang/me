@@ -1,9 +1,0 @@
-# Ignore all files in the node_modules directory
-node_modules
-
-# Ignore all files in the build directory
-build
-
-# Ignore specific files or directories
-dist/
-coverage/
