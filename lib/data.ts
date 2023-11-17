@@ -37,30 +37,55 @@ export const links = [
   },
 ] as const;
 
+//TODO
+export const educationData = [
+  {
+    school: 'KTH Royal Institute of Technology',
+    location: 'Stockholm, Sweden',
+    degree: 'M.Sc. Computer Science',
+    field: 'Computer Science',
+    date: '2017 - 2022',
+  },
+  {
+    school: 'KTH Royal Institute of Technology',
+    location: 'Stockholm, Sweden',
+    degree: 'M.Sc. Industrial Engineering & Management',
+    field: 'Computer Science',
+    date: '2020 - 2022',
+  },
+  {
+    school: 'KTH Royal Institute of Technology',
+    location: 'Stockholm, Sweden',
+    degree: 'B.Sc. in Computer Science',
+    field: 'Computer Science',
+    date: '2017 - 2020',
+  },
+] as const;
+
 export const experiencesData = [
   {
-    title: 'Graduated bootcamp',
-    location: 'Miami, FL',
-    description:
-      'I graduated after 6 months of studying. I immediately found a job as a front-end developer.',
+    title: 'Software Engineer Technical Lead',
+    company: 'Booking.com',
+    location: 'Remote/Amsterdam, Netherlands',
+    description: 'Blaha Blaha',
     icon: React.createElement(LuGraduationCap),
-    date: '2019',
+    date: 'Aug 2023 - present',
   },
   {
-    title: 'Front-End Developer',
-    location: 'Orlando, FL',
-    description:
-      'I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.',
+    title: 'Software Engineer Consultant',
+    company: 'Netlight Consulting',
+    location: 'Stockholm, Sweden',
+    description: 'Blaha Blaha',
     icon: React.createElement(CgWorkAlt),
-    date: '2019 - 2021',
+    date: 'Aug 2023 - present',
   },
   {
-    title: 'Full-Stack Developer',
-    location: 'Houston, TX',
-    description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+    title: 'Software Engineer',
+    company: 'Nasdaq',
+    location: 'Stockholm, Sweden',
+    description: 'Stockholm, Sweden',
     icon: React.createElement(FaReact),
-    date: '2021 - present',
+    date: 'Aug 2021 - Jul 2023',
   },
 ] as const;
 
