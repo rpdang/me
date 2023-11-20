@@ -6,7 +6,10 @@ import IntroText from './intro-text';
 
 export default function Home() {
   return (
-    <section className="mb-28 max-w-[50rem] text-center sm:mb-0">
+    <section
+      id="home"
+      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+    >
       <Avatar />
       <IntroText />
       <ConnectSection />

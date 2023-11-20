@@ -1,5 +1,5 @@
-import corpcommentImg from '@/public/corpcomment.png';
-import rmtdevImg from '@/public/rmtdev.png';
+import culinaro from '@/public/culinario.png';
+import leya from '@/public/leya.png';
 import React from 'react';
 import { CgWorkAlt } from 'react-icons/cg';
 import { FaReact } from 'react-icons/fa';
@@ -90,23 +90,17 @@ export const experiencesData = [
 
 export const projectsData = [
   {
+    title: 'Software Engineer Leya',
+    description: 'Blaha blaha',
+    tags: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Redux'],
+    imageUrl: leya,
+  },
+  {
     title: 'Software Engineer - Culinario',
     description:
       'I worked as a full-stack developer on this startup project for 2 years.',
     tags: ['React', 'Next.js', 'MongoDB', 'Tailwind', 'Prisma'],
-    imageUrl: corpcommentImg,
-  },
-  {
-    title: 'Software Engineer Leya',
-    description: 'Blaha blaha',
-    tags: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Redux'],
-    imageUrl: rmtdevImg,
-  },
-  {
-    title: 'Software Engineer Leya',
-    description: 'Blaha blaha',
-    tags: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Redux'],
-    imageUrl: rmtdevImg,
+    imageUrl: culinaro,
   },
 ] as const;
 
