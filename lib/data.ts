@@ -63,28 +63,31 @@ export const educationData = [
 
 export const experiencesData = [
   {
-    title: 'Software Engineer Technical Lead',
+    title: 'Software Engineer Technical Lead [C]',
     company: 'Booking.com',
     location: 'Remote/Amsterdam, Netherlands',
-    description: 'Blaha Blaha',
+    description:
+      'Blaha Blaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha Blaha',
     icon: React.createElement(LuGraduationCap),
-    date: 'Aug 2023 - present',
+    date: 'Aug 2022 - Present',
   },
   {
     title: 'Software Engineer Consultant',
     company: 'Netlight Consulting',
     location: 'Stockholm, Sweden',
-    description: 'Blaha Blaha',
+    description:
+      'Blaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha Blaha',
     icon: React.createElement(CgWorkAlt),
-    date: 'Aug 2023 - present',
+    date: 'Aug 2022 - Present',
   },
   {
     title: 'Software Engineer',
     company: 'Nasdaq',
     location: 'Stockholm, Sweden',
-    description: 'Stockholm, Sweden',
+    description:
+      'Blaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha Blaha',
     icon: React.createElement(FaReact),
-    date: 'Aug 2021 - Jul 2023',
+    date: 'Jun 2021 - Jul 2022',
   },
 ] as const;
 
