@@ -28,8 +28,8 @@ export default function Contact() {
         <a href="mailto:robin.dang@live.se" className="underline">
           here
         </a>{' '}
-        or through this form.
-      </p>
+        {/*or through this form.*/}
+      </p>{/* 
       <form
         className="mt-10 flex flex-col dark:text-black"
         action={async (formData: FormData) => {
@@ -57,7 +57,7 @@ export default function Contact() {
           placeholder="Message"
         />
         <SubmitBtn />
-      </form>
+      </form> */}
     </motion.section>
   );
 }
