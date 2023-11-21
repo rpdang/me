@@ -10,9 +10,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Robin Dang | Me',
-  description:
-    "Explore Robin Dang's comprehensive portfolio, showcasing the diverse skills and expertise of a seasoned software engineer and full-stack developer. Discover a collection of interesting projects, demonstrating a passion for crafting effective solutions and pushing the boundaries of technology",
+  title: 'Robin Dang | Portfolio',
+  description: "Robin Dang's portfolio website",
 };
 
 export default function RootLayout({

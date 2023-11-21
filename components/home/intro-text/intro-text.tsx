@@ -10,8 +10,9 @@ export default function IntroText() {
       <span className="font-bold">Hello!</span> I'm{' '}
       <span className="font-bold">Robin</span> and I'm a{' '}
       <span className="font-bold"> software engineer</span> based in Stockholm
-      with <span className="font-bold"> +2 years</span> of experience. I'm all
-      for new <span className="italic">challenges</span> and{' '}
+      with over <span className="font-bold"> 3 years</span> of professional
+      experience. Eager to take on new{' '}
+      <span className="italic">challenges</span> and explore exciting{' '}
       <span className="italic">opportunities</span>.{' '}
       <span className="underline">Let's connect!</span>
     </motion.h1>

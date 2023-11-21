@@ -1,13 +1,11 @@
 import culinaro from '@/public/culinario.png';
 import leya from '@/public/leya.png';
+import mePortfolio from '@/public/me-portfolio.png';
 import React from 'react';
-import { CgWorkAlt } from 'react-icons/cg';
-import { FaReact } from 'react-icons/fa';
-import { LuGraduationCap } from 'react-icons/lu';
-
-/**
- * SAMPLE DATA SET
- */
+import { FaBook, FaGraduationCap } from 'react-icons/fa';
+import { HiDesktopComputer } from 'react-icons/hi';
+import { IoPerson } from 'react-icons/io5';
+import { LiaSchoolSolid } from 'react-icons/lia';
 
 export const links = [
   {
@@ -36,95 +34,150 @@ export const links = [
   },
 ] as const;
 
-//TODO
-export const educationData = [
-  {
-    school: 'KTH Royal Institute of Technology',
-    location: 'Stockholm, Sweden',
-    degree: 'M.Sc. Computer Science',
-    field: 'Computer Science',
-    date: '2017 - 2022',
-  },
-  {
-    school: 'KTH Royal Institute of Technology',
-    location: 'Stockholm, Sweden',
-    degree: 'M.Sc. Industrial Engineering & Management',
-    field: 'Computer Science',
-    date: '2020 - 2022',
-  },
-  {
-    school: 'KTH Royal Institute of Technology',
-    location: 'Stockholm, Sweden',
-    degree: 'B.Sc. in Computer Science',
-    field: 'Computer Science',
-    date: '2017 - 2020',
-  },
-] as const;
-
 export const experiencesData = [
   {
-    title: 'Software Engineer Technical Lead [C]',
-    company: 'Booking.com',
-    location: 'Remote/Amsterdam, Netherlands',
-    description:
-      'Blaha Blaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha Blaha',
-    icon: React.createElement(LuGraduationCap),
-    date: 'Aug 2022 - Present',
-  },
-  {
-    title: 'Software Engineer Consultant',
-    company: 'Netlight Consulting',
+    title: 'Computer Science Student',
     location: 'Stockholm, Sweden',
     description:
-      'Blaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha Blaha',
-    icon: React.createElement(CgWorkAlt),
-    date: 'Aug 2022 - Present',
+      'Enrolled as a student in Computer Science at KTH Royal Institute of Technology.',
+    icon: React.createElement(LiaSchoolSolid),
+    date: 'Aug 2017',
+  },
+  {
+    title: 'Software Engineer Intern',
+    location: 'Stockholm, Sweden',
+    description: 'First software engineering summer internship.',
+    icon: React.createElement(IoPerson),
+    date: 'Jun 2020 - Aug 2020',
   },
   {
     title: 'Software Engineer',
-    company: 'Nasdaq',
     location: 'Stockholm, Sweden',
     description:
-      'Blaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha BlahaBlaha Blaha',
-    icon: React.createElement(FaReact),
+      "Prolonged after the internship, working part-time during master's studies.",
+    icon: React.createElement(IoPerson),
+    date: 'Aug 2020 - Jun 2021',
+  },
+  {
+    title: 'Software Engineer Intern',
+    location: 'Stockholm, Sweden',
+    description: 'Second summer internship, developing my core skills.',
+    icon: React.createElement(IoPerson),
+    date: 'Jun 2021 - Aug 2021',
+  },
+  {
+    title: 'Software Engineer',
+    location: 'Stockholm, Sweden',
+    description: "Prolonged during my final year of master's studies.",
+    icon: React.createElement(IoPerson),
     date: 'Jun 2021 - Jul 2022',
+  },
+  {
+    title: "Master's thesis student",
+    location: 'Stockholm, Sweden',
+    description:
+      'Wrote my thesis with the title: The Adoption of Distributed Ledger Technology within Central Securities Depositories: An Exploratory Study from a Business Perspective.',
+    icon: React.createElement(FaBook),
+    date: 'Jan 2022 - May 2022',
+  },
+  {
+    title: 'Graduated M.Sc. Computer Science',
+    location: 'Stockholm, Sweden',
+    description:
+      "Graduated after 5 years of studies with a master's in Industrial Engineering Management & Computer Science.",
+    icon: React.createElement(FaGraduationCap),
+    date: 'May 2022',
+  },
+  {
+    title: 'Software Engineer Consultant',
+    location: 'Stockholm, Sweden',
+    description:
+      'Im working as a software engineer consultant, mostly engaging in full stack projects.',
+    icon: React.createElement(HiDesktopComputer),
+    date: 'Aug 2022 - Present',
+  },
+  {
+    title: 'Software Engineer Technical Lead [C]',
+    location: 'Remote/Amsterdam, Netherlands',
+    description:
+      'Currently leading a greenfield project, overseeing the technical delivery. Developing a system utilized by over 10,000 users across 150+ countries.',
+    icon: React.createElement(HiDesktopComputer),
+    date: 'Aug 2022 - Present',
   },
 ] as const;
 
 export const projectsData = [
   {
-    title: 'Software Engineer Leya',
-    description: 'Blaha blaha',
-    tags: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Redux'],
+    title: 'Leya',
+    description:
+      'Enhacing legal workflows with Artificial Intelligence leveraging Retrieval Augmented Generation (RAG).',
+    tags: [
+      'OpenAI',
+      'Next.js',
+      'TypeScript',
+      'Python',
+      'Langchain',
+      'Weaviate',
+      'Azure',
+      'Tailwind',
+    ],
     imageUrl: leya,
   },
   {
-    title: 'Software Engineer - Culinario',
+    title: 'Culinario',
     description:
-      'I worked as a full-stack developer on this startup project for 2 years.',
-    tags: ['React', 'Next.js', 'MongoDB', 'Tailwind', 'Prisma'],
+      'Android app dedicated to discorvering hidden gems among local restaurants.',
+    tags: ['Android', 'Java', 'Kotlin'],
     imageUrl: culinaro,
+  },
+  {
+    title: 'Portfolio Website',
+    description:
+      'Personal website project developed during the exploration and learning phase of Next.js 14 and Tailwind.',
+    tags: ['Next.js', 'TypeScript', 'React', 'Tailwind', 'Framer Motion'],
+    imageUrl: mePortfolio,
   },
 ] as const;
 
 export const skillsData = [
-  'HTML',
-  'CSS',
+  'Java',
   'JavaScript',
+  'SQL',
   'TypeScript',
-  'React',
-  'Next.js',
-  'Node.js',
-  'Git',
-  'Tailwind',
-  'Prisma',
-  'MongoDB',
-  'Redux',
-  'GraphQL',
-  'Apollo',
-  'Express',
-  'PostgreSQL',
   'Python',
-  'Django',
-  'Framer Motion',
+  'Shell',
+  'HTML/CSS',
+  'C#',
+  'GoLang',
+  'C',
+  'Kotlin',
+  'Haskell',
+  'LaTeX',
+  'C++',
+  'Assembly',
+  'PostgreSQL',
+  'MySQL',
+  'Oracle',
+  'MongoDB',
+  'SQLite',
+  'ElasticSearch',
+  'Weaviate',
+  'Pinecone',
+  'React',
+  'Vue.js',
+  'Next.js',
+  'Spring Boot',
+  'FastAPI',
+  'Tailwind',
+  'Node.js',
+  'Express.js',
+  'Git',
+  'GitLab',
+  'Docker',
+  'Kubernetes',
+  'Vercel',
+  'Jira',
+  'Webpack',
+  'Heroku',
+  'Firebase',
 ] as const;
