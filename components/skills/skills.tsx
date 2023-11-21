@@ -21,6 +21,7 @@ const fadeInAnimationVariants = {
 
 export default function Skills() {
   const { ref } = useSectionInView('Skills');
+
   return (
     <section
       ref={ref}
@@ -32,7 +33,7 @@ export default function Skills() {
         {skillsData.map((skill, index) => (
           <motion.li
             key={index}
-            className="bg-white border border-black/[0.1] rounded-xl py-3 px-5"
+            className="bg-white borderBlack rounded-xl py-3 px-5"
             variants={fadeInAnimationVariants}
             initial="initial"
             whileInView="animate"
