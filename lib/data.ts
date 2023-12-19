@@ -108,9 +108,9 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: 'Leya',
+    title: 'AI RAG Application',
     description:
-      'Enhacing legal workflows with Artificial Intelligence leveraging Retrieval Augmented Generation (RAG).',
+      'Enhancing and streamlining manual workflows with Artificial Intelligence leveraging the concept of Retrieval Augmented Generation.',
     tags: [
       'OpenAI',
       'Next.js',
@@ -124,7 +124,7 @@ export const projectsData = [
     imageUrl: leya,
   },
   {
-    title: 'Culinario',
+    title: 'Discover Local Restaurants',
     description:
       'Android app dedicated to discorvering hidden gems among local restaurants.',
     tags: ['Android', 'Java', 'Kotlin'],
