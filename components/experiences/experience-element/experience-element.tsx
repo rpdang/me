@@ -1,20 +1,17 @@
 'use client';
 
 import { useTheme } from '@/context/theme-context';
-import { experiencesData } from '@/lib/data';
+import { Experience } from '@/lib/data';
 import { useInView } from 'react-intersection-observer';
 import { VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
-type ExperienceProps = (typeof experiencesData)[number];
+type ExperienceProps = {
+  experience: Experience;
+};
 
 export default function ExperienceElement({
-  company,
-  date,
-  icon,
-  title,
-  location,
-  description,
+  experience: { company, date, icon, title, location, description },
 }: ExperienceProps) {
   const { theme } = useTheme();
   const { ref, inView } = useInView({
@@ -26,7 +23,7 @@ export default function ExperienceElement({
       <VerticalTimelineElement
         visible={inView}
         date={date}
-        icon={icon}
+        icon={<>{icon}</>}
         iconStyle={{
           background: theme === 'light' ? 'white' : 'rgba(255, 255, 255, 0.15)',
           fontSize: '1.5rem',

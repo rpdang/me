@@ -30,7 +30,16 @@ export const links = [
   },
 ] as const;
 
-export const experiencesData = [
+export type Experience = {
+  title: string;
+  company: string;
+  location: string;
+  description?: string;
+  icon: React.ReactNode;
+  date: string;
+};
+
+export const experiencesData: Experience[] = [
   {
     title: 'Student',
     company: 'KTH Royal Institute of Technology',
@@ -104,7 +113,7 @@ export const experiencesData = [
     icon: React.createElement(HiDesktopComputer),
     date: 'Aug 2022 - Present',
   },
-] as const;
+];
 
 export const projectsData = [
   {

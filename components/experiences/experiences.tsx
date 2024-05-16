@@ -15,7 +15,7 @@ export default function Experiences() {
       <SectionHeading>My Experience</SectionHeading>
       <VerticalTimeline lineColor="">
         {experiencesData.toReversed().map((experience, index) => (
-          <Experience key={index} {...experience} />
+          <Experience key={index} experience={experience} />
         ))}
       </VerticalTimeline>
     </section>
