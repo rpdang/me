@@ -9,6 +9,7 @@ import 'react-vertical-timeline-component/style.min.css';
 type ExperienceProps = (typeof experiencesData)[number];
 
 export default function ExperienceElement({
+  company,
   date,
   icon,
   title,
@@ -45,11 +46,14 @@ export default function ExperienceElement({
               : '0.4rem solid rgba(255, 255, 255, 0.5)',
         }}
       >
-        <h3 className="font-semibold capitalize">{title}</h3>
+        <h3 className="font-semibold">{title}</h3>
+        <p className="!mt-1 font-normal">{company}</p>
         <p className="!mt-0 font-normal">{location}</p>
-        <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
-          {description}
-        </p>
+        {description && (
+          <p className="!mt-0 !font-normal text-gray-700 dark:text-white/75">
+            {description}
+          </p>
+        )}
       </VerticalTimelineElement>
     </div>
   );

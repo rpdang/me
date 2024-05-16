@@ -28,30 +28,27 @@ export const links = [
     name: 'Experience',
     hash: '#experience',
   },
-  {
-    name: 'Contact',
-    hash: '#contact',
-  },
 ] as const;
 
 export const experiencesData = [
   {
-    title: 'Computer Science Student',
+    title: 'Student',
+    company: 'KTH Royal Institute of Technology',
     location: 'Stockholm, Sweden',
-    description:
-      'Enrolled as a student in Computer Science at KTH Royal Institute of Technology.',
+    description: 'Enrolled as a student in Computer Science',
     icon: React.createElement(LiaSchoolSolid),
     date: 'Aug 2017',
   },
   {
-    title: 'Software Engineer Intern',
+    title: 'Software Engineer - Summer Intern',
+    company: 'Nasdaq',
     location: 'Stockholm, Sweden',
-    description: 'First software engineering summer internship.',
     icon: React.createElement(IoPerson),
     date: 'Jun 2020 - Aug 2020',
   },
   {
-    title: 'Software Engineer',
+    title: 'Software Engineer - Student Worker',
+    company: 'Nasdaq',
     location: 'Stockholm, Sweden',
     description:
       "Prolonged after the internship, working part-time during master's studies.",
@@ -59,14 +56,16 @@ export const experiencesData = [
     date: 'Aug 2020 - Jun 2021',
   },
   {
-    title: 'Software Engineer Intern',
+    title: 'Software Engineer  - Summer Intern',
+    company: 'Nasdaq',
     location: 'Stockholm, Sweden',
-    description: 'Second summer internship, developing my core skills.',
+    description: 'Second summer internship.',
     icon: React.createElement(IoPerson),
     date: 'Jun 2021 - Aug 2021',
   },
   {
-    title: 'Software Engineer',
+    title: 'Software Engineer - Student Worker',
+    company: 'Nasdaq',
     location: 'Stockholm, Sweden',
     description: "Prolonged during my final year of master's studies.",
     icon: React.createElement(IoPerson),
@@ -74,6 +73,7 @@ export const experiencesData = [
   },
   {
     title: "Master's thesis student",
+    company: 'Nasdaq & KTH Royal Institute of Technology',
     location: 'Stockholm, Sweden',
     description:
       'Wrote my thesis with the title: The Adoption of Distributed Ledger Technology within Central Securities Depositories: An Exploratory Study from a Business Perspective.',
@@ -81,26 +81,26 @@ export const experiencesData = [
     date: 'Jan 2022 - May 2022',
   },
   {
-    title: 'Graduated M.Sc. Computer Science',
+    title: 'M.Sc. Computer Science',
+    company: 'KTH Royal Institute of Technology',
     location: 'Stockholm, Sweden',
-    description:
-      "Graduated after 5 years of studies with a master's in Industrial Engineering Management & Computer Science.",
     icon: React.createElement(FaGraduationCap),
     date: 'May 2022',
   },
   {
-    title: 'Software Engineer Consultant',
+    title: 'Software Engineer - Consultant',
+    company: 'Netlight',
     location: 'Stockholm, Sweden',
-    description:
-      'Im working as a software engineer consultant, mostly engaging in full stack projects.',
+    description: 'Engaging in full stack projects.',
     icon: React.createElement(HiDesktopComputer),
     date: 'Aug 2022 - Present',
   },
   {
-    title: 'Software Engineer Technical Lead [C]',
+    title: 'Software Engineer - Technical Lead',
+    company: 'Booking.com',
     location: 'Remote/Amsterdam, Netherlands',
     description:
-      'Currently leading a greenfield project, overseeing the technical delivery. Developing a system utilized by over 10,000 users across 150+ countries.',
+      'Currently leading a greenfield project, overseeing the technical delivery. Developing a system utilized by over 10,000 users across 100+ countries.',
     icon: React.createElement(HiDesktopComputer),
     date: 'Aug 2022 - Present',
   },
