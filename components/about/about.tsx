@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useSectionInView } from '@/lib/hooks';
-import { motion } from 'framer-motion';
-import SectionHeading from '../section-heading';
+import { useSectionInView } from "@/lib/hooks";
+import { motion } from "framer-motion";
+import SectionHeading from "../section-heading";
 
 export default function About() {
-  const { ref } = useSectionInView('About', 0.75);
+  const { ref } = useSectionInView("About", 0.75);
 
   return (
     <motion.section
@@ -18,20 +18,19 @@ export default function About() {
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">
-        I'm a software engineer with an expansive skill set in{' '}
+        I'm a software engineer with a skill set in{" "}
         <span className="font-medium">full stack development</span>. I'm
         passionate about innovation, designing and building highly scalable
         solutions from the ground up. With a solid foundation in both frontend
         and backend development, my expertise spans from everything between
-        database management to user interface creation, ensuring seamless,
-        efficient, and robust software systems.
+        database management to user interface creation.
       </p>
       <p>
         <span className="italic">Beyond coding,</span> you'll often find me
         playing the electric guitar, sweating it out at the gym or experimenting
         with new recipes in the kitchen. In a previous life, I was playing
         handball on a professional level, representing the Swedish junior
-        national team, and I also worked as a professional{' '}
+        national team, and I also worked as a professional{" "}
         <span className="font-medium">DJ</span>.
       </p>
       <p className="italic mt-5 text-sm"> Robin Dang</p>
