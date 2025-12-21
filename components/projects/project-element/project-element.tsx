@@ -4,6 +4,9 @@ import { projectsData } from '@/lib/data';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
+import { MagicCard } from '@/components/ui/magic-card';
+import { BorderBeam } from '@/components/ui/border-beam';
+import { BlurFade } from '@/components/ui/blur-fade';
 
 type ProjectProps = (typeof projectsData)[number];
 
@@ -18,7 +21,7 @@ export default function ProjectElement({
     target: ref,
     offset: ['0 1', '1.33 1'],
   });
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
   const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   return (
@@ -28,44 +31,75 @@ export default function ProjectElement({
         scale: scaleProgress,
         opacity: opacityProgress,
       }}
-      className="group mb-3 sm:mb-8 last:mb-0"
+      className="group mb-6 sm:mb-10 last:mb-0"
     >
-      <section className=" bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20">
-        <div className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
-          <h3 className="text-2xl font-semibold">{title}</h3>
-          <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
-            {description}
-          </p>
-          <ul className="flex flex-wrap mt-4 gap-2 sm:mt-auto">
-            {tags.map((tag, index) => (
-              <li
-                className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
-                key={index}
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <MagicCard
+        className="relative overflow-hidden rounded-xl p-0"
+        gradientSize={300}
+        gradientColor="rgba(0, 255, 240, 0.15)"
+        gradientOpacity={0.8}
+        gradientFrom="#00fff0"
+        gradientTo="#ff00aa"
+      >
+        <div className="relative sm:h-[22rem] overflow-hidden rounded-xl bg-card">
+          {/* Content wrapper */}
+          <div className="flex flex-col sm:flex-row h-full">
+            {/* Text content */}
+            <div className="p-6 sm:p-8 sm:w-1/2 flex flex-col justify-center sm:group-even:order-2 sm:group-even:pl-8">
+              <h3 className="text-2xl font-mono font-bold text-foreground mb-3">
+                {title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                {description}
+              </p>
+              
+              {/* Tags */}
+              <ul className="flex flex-wrap gap-2 mt-auto">
+                {tags.map((tag, index) => (
+                  <li
+                    key={index}
+                    className="px-3 py-1 text-xs font-mono uppercase tracking-wider rounded-full
+                               bg-primary/10 text-primary border border-primary/20
+                               hover:bg-primary/20 transition-colors"
+                  >
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-        <Image
-          className="absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
-          transition 
-          group-hover:scale-[1.04]
-          group-hover:-translate-x-3
-          group-hover:translate-y-3
-          group-hover:-rotate-2
-  
-          group-even:group-hover:translate-x-3
-          group-even:group-hover:translate-y-3
-          group-even:group-hover:rotate-2
-  
-          group-even:right-[initial] group-even:-left-40"
-          src={imageUrl}
-          alt="Project I worked on"
-          quality={95}
-        />
-      </section>
+            {/* Image */}
+            <div className="relative sm:w-1/2 h-64 sm:h-full sm:group-even:order-1">
+              <div className="absolute inset-0 sm:inset-4 overflow-hidden rounded-lg sm:rounded-xl shadow-2xl">
+                <Image
+                  className="w-full h-full object-cover object-top
+                             transition-all duration-500 ease-out
+                             group-hover:scale-105"
+                  src={imageUrl}
+                  alt={`${title} project screenshot`}
+                  quality={95}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-60" />
+              </div>
+            </div>
+          </div>
+
+          {/* Border beam on hover */}
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <BorderBeam
+              size={150}
+              duration={6}
+              colorFrom="#00fff0"
+              colorTo="#ff00aa"
+              borderWidth={2}
+            />
+          </div>
+        </div>
+      </MagicCard>
     </motion.div>
   );
 }

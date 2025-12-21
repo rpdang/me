@@ -3,16 +3,28 @@ import Header from '@/components/header';
 import ThemeSwitch from '@/components/theme-switch';
 import ActiveSectionContextProvider from '@/context/active-section-context';
 import ThemeContextProvider from '@/context/theme-context';
-import { Inter } from 'next/font/google';
+import { JetBrains_Mono, Outfit } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
-import {Analytics} from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react';
+import { ScrollProgress } from '@/components/ui/scroll-progress';
+import { Particles } from '@/components/ui/particles';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export const metadata = {
-  title: 'Robin Dang | Portfolio',
-  description: "Robin Dang's portfolio website",
+  title: 'Robin Dang | Software Engineer',
+  description: "Robin Dang's portfolio - Software Engineer & Technical Lead",
 };
 
 export default function RootLayout({
@@ -23,20 +35,47 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth">
       <body
-        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
+        className={`${jetbrainsMono.variable} ${outfit.variable} font-sans bg-background text-foreground relative pt-28 sm:pt-36 min-h-screen overflow-x-hidden`}
       >
-        <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
-        <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
+        {/* Ambient background gradient - subtle version for light mode */}
+        <div className="fixed inset-0 -z-20 bg-gradient-to-b from-background via-background to-background" />
+        
+        {/* Neon accent glows - positioned for visual interest */}
+        <div className="fixed top-[-20%] right-[-10%] -z-10 h-[40rem] w-[40rem] rounded-full bg-neon-cyan/5 blur-[120px] dark:bg-neon-cyan/10" />
+        <div className="fixed bottom-[-20%] left-[-10%] -z-10 h-[40rem] w-[40rem] rounded-full bg-neon-magenta/5 blur-[120px] dark:bg-neon-magenta/10" />
+        
+        {/* Interactive particle background */}
+        <Particles
+          className="fixed inset-0 -z-10 opacity-40 dark:opacity-60"
+          quantity={80}
+          staticity={50}
+          ease={50}
+          color="var(--neon-cyan, #00fff0)"
+          size={0.4}
+        />
+        
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
+            {/* Scroll progress indicator */}
+            <ScrollProgress className="fixed top-0 left-0 right-0 z-[1000] h-[2px] bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta" />
+            
             <Header />
             {children}
             <Footer />
             <ThemeSwitch />
-            <Toaster position="top-right" />
+            <Toaster 
+              position="top-right"
+              toastOptions={{
+                style: {
+                  background: 'hsl(var(--card))',
+                  color: 'hsl(var(--card-foreground))',
+                  border: '1px solid hsl(var(--border))',
+                },
+              }}
+            />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
-        <Analytics/>
+        <Analytics />
       </body>
     </html>
   );

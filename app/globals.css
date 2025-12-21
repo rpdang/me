@@ -2,14 +2,255 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+/* Dark Luxe Color Palette */
+:root {
+  /* Core colors */
+  --luxe-black: 240 10% 4%;
+  --luxe-white: 0 0% 98%;
+  
+  /* Neon accents */
+  --neon-cyan: 177 100% 50%;
+  --neon-magenta: 320 100% 50%;
+  --neon-purple: 270 100% 60%;
+  
+  /* Glass */
+  --glass-border: 0 0% 100% / 0.05;
+  --glass-bg: 0 0% 100% / 0.02;
+  
+  /* Glow effects */
+  --glow-cyan: 0 0 20px rgba(0, 255, 240, 0.4);
+  --glow-magenta: 0 0 20px rgba(255, 0, 170, 0.4);
+  
+  /* Legacy line color */
   --line-color: #e5e7eb;
+  
+  /* shadcn defaults - Light mode */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 4%;
+  --primary: 177 100% 40%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 5% 96%;
+  --secondary-foreground: 240 6% 10%;
+  --muted: 240 5% 96%;
+  --muted-foreground: 240 4% 46%;
+  --accent: 320 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 6% 90%;
+  --input: 240 6% 90%;
+  --ring: 177 100% 50%;
+  --radius: 0.75rem;
+  
+  /* Chart colors */
+  --chart-1: 177 100% 50%;
+  --chart-2: 320 100% 50%;
+  --chart-3: 270 100% 60%;
+  --chart-4: 200 100% 50%;
+  --chart-5: 40 100% 50%;
 }
 
-html.dark {
+.dark {
   --line-color: rgba(255, 255, 255, 0.05);
+  
+  /* Dark mode - Deep luxe blacks */
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 6%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 6%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 177 100% 50%;
+  --primary-foreground: 240 10% 4%;
+  --secondary: 240 6% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 6% 12%;
+  --muted-foreground: 240 5% 65%;
+  --accent: 320 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 6% 15%;
+  --input: 240 6% 15%;
+  --ring: 177 100% 50%;
+  
+  /* Glass effects for dark mode */
+  --glass-border: 0 0% 100% / 0.08;
+  --glass-bg: 0 0% 100% / 0.03;
 }
 
-.borderBlack {
-  @apply border border-black/10;
+/* Animation timing functions */
+.theme {
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite;
+  --animate-shine: shine var(--duration) infinite linear;
+  --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
+  --animate-gradient: gradient 8s linear infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
+
+@layer components {
+  /* Glass morphism utility */
+  .glass {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  }
+  
+  .glass-light {
+    @apply backdrop-blur-xl bg-black/5 border border-black/10;
+  }
+  
+  /* Neon glow utilities */
+  .glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+  
+  .glow-magenta {
+    box-shadow: var(--glow-magenta);
+  }
+  
+  .glow-text-cyan {
+    text-shadow: 0 0 20px rgba(0, 255, 240, 0.5), 0 0 40px rgba(0, 255, 240, 0.3);
+  }
+  
+  .glow-text-magenta {
+    text-shadow: 0 0 20px rgba(255, 0, 170, 0.5), 0 0 40px rgba(255, 0, 170, 0.3);
+  }
+  
+  /* Legacy borderBlack */
+  .borderBlack {
+    @apply border border-black/10 dark:border-white/10;
+  }
+}
+
+@layer utilities {
+  /* Gradient text utilities */
+  .text-gradient-cyan-magenta {
+    @apply bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent;
+  }
+  
+  /* Animation delay utilities */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+/* Keyframe animations */
+@keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+  }
+}
+
+@keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+  }
+  15%, 35% {
+    transform: translateZ(0) rotate(90deg);
+  }
+  65%, 85% {
+    transform: translateZ(0) rotate(270deg);
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+  }
+}
+
+@keyframes ripple {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  to {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes background-position-spin {
+  0% {
+    background-position: top center;
+  }
+  100% {
+    background-position: bottom center;
+  }
+}
+
+@keyframes gradient {
+  to {
+    background-position: var(--bg-size, 300%) 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(0, 255, 240, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 40px rgba(0, 255, 240, 0.6);
+  }
 }
