@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { HyperText } from '@/components/ui/hyper-text';
-import { TextAnimate } from '@/components/ui/text-animate';
-import { AnimatedGradientText } from '@/components/ui/animated-gradient-text';
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { HyperText } from "@/components/ui/hyper-text";
+import { TextAnimate } from "@/components/ui/text-animate";
+import { motion } from "framer-motion";
 
 export default function IntroText() {
   return (
@@ -15,9 +15,6 @@ export default function IntroText() {
         transition={{ duration: 0.5 }}
         className="mb-4"
       >
-        <span className="text-lg sm:text-xl text-muted-foreground font-mono">
-          Oh, hi there! I'm
-        </span>
         <HyperText
           className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-2 block font-mono"
           duration={1200}
@@ -59,7 +56,8 @@ export default function IntroText() {
           duration={0.8}
           delay={0.5}
         >
-          A curious software engineer who loves building cool things and learning new stuff. If you've stumbled here, what a pleasant surprise!
+          A curious software engineer who loves building and learning new stuff.
+          Happy to see you here!
         </TextAnimate>
       </motion.div>
     </div>

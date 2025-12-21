@@ -7,7 +7,6 @@ import React from "react";
 import { FaBook, FaGraduationCap } from "react-icons/fa";
 import { HiDesktopComputer } from "react-icons/hi";
 import { IoPerson } from "react-icons/io5";
-import { LiaSchoolSolid } from "react-icons/lia";
 
 export const links = [
   {
@@ -30,6 +29,10 @@ export const links = [
     name: "Experience",
     hash: "#experience",
   },
+  {
+    name: "Education",
+    hash: "#education",
+  },
 ] as const;
 
 export type Experience = {
@@ -39,81 +42,103 @@ export type Experience = {
   description?: string;
   icon: React.ReactNode;
   date: string;
+  link?: string;
+  logo?: string;
+  gridClass?: string;
+};
+
+export type Education = {
+  degree: string;
+  institution: string;
+  location: string;
+  description?: string;
+  icon: React.ReactNode;
+  date: string;
+  link?: string;
 };
 
 export const experiencesData: Experience[] = [
   {
-    title: "Software Engineer - Technical Lead",
+    title: "Software Engineer",
+    company: "Uber",
+    location: "Amsterdam, Netherlands",
+    icon: React.createElement(HiDesktopComputer),
+    date: "Oct 2024 - Present",
+    logo: "/logos/uber.svg",
+    gridClass: "md:col-span-2 md:row-span-2",
+  },
+  {
+    title: "Senior Software Engineer",
     company: "Booking.com",
     location: "Remote/Amsterdam, Netherlands",
-    description:
-      "Currently leading a greenfield project, overseeing the technical delivery. Developing a system utilized by over 10,000 users across 100+ countries.",
     icon: React.createElement(HiDesktopComputer),
-    date: "Aug 2022 - Present",
+    date: "Aug 2022 - Sep 2024",
+    logo: "/logos/booking.svg",
+    gridClass: "md:col-span-1 md:row-span-1",
+  },
+  {
+    title: "Founding Software Engineer",
+    company: "Leya AI (YC W24)",
+    location: "Stockholm, Sweden",
+    icon: React.createElement(HiDesktopComputer),
+    date: "Jul 2023 - Nov 2023",
+    logo: "/logos/leya.svg",
+    gridClass: "md:col-span-1 md:row-span-1",
   },
   {
     title: "Software Engineer - Consultant",
     company: "Netlight",
     location: "Stockholm, Sweden",
-    description: "Engaging in full stack projects.",
     icon: React.createElement(HiDesktopComputer),
-    date: "Aug 2022 - Present",
+    date: "Aug 2022 - Sep 2024",
+    logo: "/logos/netlight.svg",
+    gridClass: "md:col-span-1 md:row-span-1",
   },
   {
-    title: "M.Sc. Computer Science",
-    company: "KTH Royal Institute of Technology",
+    title: "Software Engineer - Student Worker",
+    company: "Nasdaq",
+    location: "Stockholm, Sweden",
+    icon: React.createElement(IoPerson),
+    date: "Jun 2020 - Aug 2022",
+    logo: "/logos/nasdaq.svg",
+    gridClass: "md:col-span-2 md:row-span-1",
+  },
+];
+
+export const educationData: Education[] = [
+  {
+    degree: "M.Sc. Computer Science",
+    institution: "KTH Royal Institute of Technology",
     location: "Stockholm, Sweden",
     icon: React.createElement(FaGraduationCap),
     date: "May 2022",
   },
   {
-    title: "Master's thesis student",
-    company: "Nasdaq & KTH Royal Institute of Technology",
+    degree: "Master's Thesis",
+    institution: "Nasdaq & KTH Royal Institute of Technology",
     location: "Stockholm, Sweden",
     description:
-      "Wrote my thesis with the title: The Adoption of Distributed Ledger Technology within Central Securities Depositories: An Exploratory Study from a Business Perspective.",
+      "The Adoption of Distributed Ledger Technology within Central Securities Depositories: An Exploratory Study from a Business Perspective.",
     icon: React.createElement(FaBook),
     date: "Jan 2022 - May 2022",
+    link: "https://www.diva-portal.org/smash/record.jsf?dswid=4748&pid=diva2%3A1695524",
   },
   {
-    title: "Software Engineer - Student Worker",
-    company: "Nasdaq",
+    degree: "B.Sc. Computer Science",
+    institution: "KTH Royal Institute of Technology",
     location: "Stockholm, Sweden",
-    description: "Prolonged during my final year of master's studies.",
-    icon: React.createElement(IoPerson),
-    date: "Jun 2021 - Jul 2022",
+    icon: React.createElement(FaGraduationCap),
+    date: "Jun 2020",
   },
   {
-    title: "Software Engineer  - Summer Intern",
-    company: "Nasdaq",
-    location: "Stockholm, Sweden",
-    description: "Second summer internship.",
-    icon: React.createElement(IoPerson),
-    date: "Jun 2021 - Aug 2021",
-  },
-  {
-    title: "Software Engineer - Student Worker",
-    company: "Nasdaq",
+    degree: "Bachelor's Thesis",
+    institution: "KTH Royal Institute of Technology",
     location: "Stockholm, Sweden",
     description:
-      "Prolonged after the internship, working part-time during master's studies.",
-    icon: React.createElement(IoPerson),
-    date: "Aug 2020 - Jun 2021",
-  },
-  {
-    title: "Software Engineer - Summer Intern",
-    company: "Nasdaq",
-    location: "Stockholm, Sweden",
-    icon: React.createElement(IoPerson),
-    date: "Jun 2020 - Aug 2020",
-  },
-  {
-    title: "Student",
-    company: "KTH Royal Institute of Technology",
-    location: "Stockholm, Sweden",
-    description: "Enrolled as a student in Computer Science",
-    icon: React.createElement(LiaSchoolSolid),
-    date: "Aug 2017",
+      "Evaluation of Machine Learning classifiers for Breast Cancer Classification.",
+    icon: React.createElement(FaBook),
+    date: "Jan 2020 - Jun 2020",
+    link: "https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1464600",
   },
 ];
 
@@ -169,6 +194,8 @@ export const skillsData = [
   "TypeScript",
   "Python",
   "Go",
+  "Langchain",
+  "OpenAI",
   "Next JS",
   "Node JS",
   "React JS",

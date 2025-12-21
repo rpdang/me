@@ -150,6 +150,86 @@
   .borderBlack {
     @apply border border-black/10 dark:border-white/10;
   }
+
+  /* Tech corner brackets - Featured card (more prominent) */
+  .tech-corners-featured {
+    position: relative;
+  }
+  
+  .tech-corners-featured::before,
+  .tech-corners-featured::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: hsl(var(--primary) / 0.4);
+    pointer-events: none;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+    z-index: 20;
+  }
+  
+  .tech-corners-featured::before {
+    top: 16px;
+    left: 16px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-top-left-radius: 3px;
+  }
+  
+  .tech-corners-featured::after {
+    bottom: 16px;
+    right: 16px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-bottom-right-radius: 3px;
+  }
+  
+  .group:hover .tech-corners-featured::before,
+  .group:hover .tech-corners-featured::after {
+    border-color: hsl(var(--primary) / 0.7);
+    opacity: 1;
+  }
+
+  /* Tech corner brackets - Standard cards (subtle) */
+  .tech-corners-standard {
+    position: relative;
+  }
+  
+  .tech-corners-standard::before,
+  .tech-corners-standard::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: hsl(var(--primary) / 0.2);
+    pointer-events: none;
+    transition: border-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5;
+    z-index: 20;
+  }
+  
+  .tech-corners-standard::before {
+    top: 10px;
+    left: 10px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-top-left-radius: 2px;
+  }
+  
+  .tech-corners-standard::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-bottom-right-radius: 2px;
+  }
+  
+  .group:hover .tech-corners-standard::before,
+  .group:hover .tech-corners-standard::after {
+    border-color: hsl(var(--primary) / 0.5);
+    opacity: 1;
+  }
 }
 
 @layer utilities {

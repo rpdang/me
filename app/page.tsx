@@ -1,4 +1,5 @@
 import About from '@/components/about';
+import Education from '@/components/education';
 import Experience from '@/components/experiences';
 import Home from '@/components/home';
 import Projects from '@/components/projects';
@@ -14,6 +15,7 @@ export default function Page() {
       <Projects />
       <Skills />
       <Experience />
+      <Education />
       {/* <Contact /> */}
     </main>
   );

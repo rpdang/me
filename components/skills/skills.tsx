@@ -26,6 +26,10 @@ const iconSlugs = [
   { name: "maplibre", slug: "maplibre/maplibre-original" },
   { name: "docker", slug: "docker/docker-original" },
   { name: "kubernetes", slug: "kubernetes/kubernetes-original" },
+  { name: "langchain", slug: "langchain/langchain-original" },
+  { name: "openai", slug: "openai/openai-original" },
+  { name: "weaviate", slug: "weaviate/weaviate-original" },
+  { name: "azure", slug: "azure/azure-original" },
 ];
 
 // Generate devicon CDN URLs
@@ -41,17 +45,10 @@ export default function Skills() {
     <section
       ref={ref}
       id="skills"
-      className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
+      className="mb-28 max-w-[50rem] scroll-mt-28 text-center sm:mb-40 mx-auto px-4"
     >
       <BlurFade delay={0.1} inView>
-        <SectionHeading>My Skills</SectionHeading>
-      </BlurFade>
-
-      <BlurFade delay={0.2} inView>
-        <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-          Drag and interact with the skill cloud below. These are the
-          technologies I work with daily.
-        </p>
+        <SectionHeading>Technologies I've Worked With</SectionHeading>
       </BlurFade>
 
       <BlurFade delay={0.3} inView>

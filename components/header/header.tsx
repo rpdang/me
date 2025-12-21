@@ -6,12 +6,13 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Dock, DockIcon } from '@/components/ui/dock';
-import { 
-  HiHome, 
-  HiUser, 
-  HiCode, 
-  HiLightningBolt, 
-  HiBriefcase 
+import {
+  HiHome,
+  HiUser,
+  HiCode,
+  HiLightningBolt,
+  HiBriefcase,
+  HiAcademicCap
 } from 'react-icons/hi';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -20,6 +21,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Projects: HiCode,
   Skills: HiLightningBolt,
   Experience: HiBriefcase,
+  Education: HiAcademicCap,
 };
 
 export default function Header() {
