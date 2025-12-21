@@ -1,58 +1,41 @@
-'use client';
+"use client";
 
-import { skillsData } from '@/lib/data';
-import { useSectionInView } from '@/lib/hooks';
-import SectionHeading from '../section-heading/section-heading';
-import { IconCloud } from '@/components/ui/icon-cloud';
-import { BlurFade } from '@/components/ui/blur-fade';
-import { motion } from 'framer-motion';
+import { BlurFade } from "@/components/ui/blur-fade";
+import { IconCloud } from "@/components/ui/icon-cloud";
+import { skillsData } from "@/lib/data";
+import { useSectionInView } from "@/lib/hooks";
+import { motion } from "framer-motion";
+import SectionHeading from "../section-heading/section-heading";
 
 // Using devicon CDN for reliable icon loading
 const iconSlugs = [
-  { name: 'java', slug: 'java/java-original' },
-  { name: 'javascript', slug: 'javascript/javascript-original' },
-  { name: 'typescript', slug: 'typescript/typescript-original' },
-  { name: 'python', slug: 'python/python-original' },
-  { name: 'go', slug: 'go/go-original-wordmark' },
-  { name: 'kotlin', slug: 'kotlin/kotlin-original' },
-  { name: 'cplusplus', slug: 'cplusplus/cplusplus-original' },
-  { name: 'csharp', slug: 'csharp/csharp-original' },
-  { name: 'postgresql', slug: 'postgresql/postgresql-original' },
-  { name: 'mysql', slug: 'mysql/mysql-original' },
-  { name: 'oracle', slug: 'oracle/oracle-original' },
-  { name: 'mongodb', slug: 'mongodb/mongodb-original' },
-  { name: 'elasticsearch', slug: 'elasticsearch/elasticsearch-original' },
-  { name: 'html5', slug: 'html5/html5-original' },
-  { name: 'css3', slug: 'css3/css3-original' },
-  { name: 'react', slug: 'react/react-original' },
-  { name: 'vuejs', slug: 'vuejs/vuejs-original' },
-  { name: 'nextjs', slug: 'nextjs/nextjs-original' },
-  { name: 'spring', slug: 'spring/spring-original' },
-  { name: 'nodejs', slug: 'nodejs/nodejs-original' },
-  { name: 'express', slug: 'express/express-original' },
-  { name: 'fastapi', slug: 'fastapi/fastapi-original' },
-  { name: 'tailwindcss', slug: 'tailwindcss/tailwindcss-original' },
-  { name: 'gitlab', slug: 'gitlab/gitlab-original' },
-  { name: 'docker', slug: 'docker/docker-original' },
-  { name: 'kubernetes', slug: 'kubernetes/kubernetes-original' },
-  { name: 'firebase', slug: 'firebase/firebase-original' },
-  { name: 'git', slug: 'git/git-original' },
-  { name: 'github', slug: 'github/github-original' },
-  { name: 'amazonwebservices', slug: 'amazonwebservices/amazonwebservices-original-wordmark' },
-  { name: 'googlecloud', slug: 'googlecloud/googlecloud-original' },
-  { name: 'redis', slug: 'redis/redis-original' },
-  { name: 'graphql', slug: 'graphql/graphql-plain' },
-  { name: 'nginx', slug: 'nginx/nginx-original' },
-  { name: 'linux', slug: 'linux/linux-original' },
+  { name: "java", slug: "java/java-original" },
+  { name: "typescript", slug: "typescript/typescript-original" },
+  { name: "python", slug: "python/python-original" },
+  { name: "go", slug: "go/go-original-wordmark" },
+  { name: "supabase", slug: "supabase/supabase-original" },
+  { name: "postgresql", slug: "postgresql/postgresql-original" },
+  { name: "mysql", slug: "mysql/mysql-original" },
+  { name: "mongodb", slug: "mongodb/mongodb-original" },
+  { name: "elasticsearch", slug: "elasticsearch/elasticsearch-original" },
+  { name: "react", slug: "react/react-original" },
+  { name: "nextjs", slug: "nextjs/nextjs-original" },
+  { name: "nodejs", slug: "nodejs/nodejs-original" },
+  { name: "tailwindcss", slug: "tailwindcss/tailwindcss-original" },
+  { name: "git", slug: "git/git-original" },
+  { name: "maplibre", slug: "maplibre/maplibre-original" },
+  { name: "docker", slug: "docker/docker-original" },
+  { name: "kubernetes", slug: "kubernetes/kubernetes-original" },
 ];
 
 // Generate devicon CDN URLs
 const images = iconSlugs.map(
-  (icon) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon.slug}.svg`
+  (icon) =>
+    `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon.slug}.svg`
 );
 
 export default function Skills() {
-  const { ref } = useSectionInView('Skills');
+  const { ref } = useSectionInView("Skills");
 
   return (
     <section
@@ -66,7 +49,8 @@ export default function Skills() {
 
       <BlurFade delay={0.2} inView>
         <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-          Drag and interact with the skill cloud below. These are the technologies I work with daily.
+          Drag and interact with the skill cloud below. These are the
+          technologies I work with daily.
         </p>
       </BlurFade>
 

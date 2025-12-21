@@ -30,7 +30,7 @@ export default function Header() {
     <header className="z-[999] relative">
       {/* Mobile header - pill style */}
       <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-full border-b border-white/5 bg-background/80 backdrop-blur-xl sm:hidden"
+        className="fixed top-0 left-1/2 h-[4.5rem] w-full border-b border-border bg-background/80 backdrop-blur-xl sm:hidden"
         initial={{ y: -100, x: '-50%', opacity: 0 }}
         animate={{ y: 0, x: '-50%', opacity: 1 }}
       />
@@ -78,7 +78,7 @@ export default function Header() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
         <Dock
-          className="!mt-0 !mx-0 glass border-white/10 dark:border-white/5 bg-background/60 dark:bg-background/40 shadow-glass dark:shadow-glass-dark px-4 items-center"
+          className="!mt-0 !mx-0 bg-card/80 border border-border backdrop-blur-xl px-4 items-center rounded-full"
           iconSize={40}
           iconMagnification={60}
           iconDistance={120}

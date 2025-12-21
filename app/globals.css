@@ -124,13 +124,9 @@
 }
 
 @layer components {
-  /* Glass morphism utility */
+  /* Glass morphism utility - theme aware */
   .glass {
-    @apply backdrop-blur-xl bg-white/5 border border-white/10;
-  }
-  
-  .glass-light {
-    @apply backdrop-blur-xl bg-black/5 border border-black/10;
+    @apply backdrop-blur-xl bg-card/50 border border-border;
   }
   
   /* Neon glow utilities */

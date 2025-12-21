@@ -13,7 +13,7 @@ export default function ThemeSwitch() {
       className={cn(
         'fixed bottom-5 right-5 z-[999]',
         'h-12 w-12 rounded-full',
-        'glass border-white/10 dark:border-white/5',
+        'bg-card border border-border backdrop-blur-xl',
         'flex items-center justify-center',
         'text-muted-foreground hover:text-primary',
         'hover:border-primary/30',

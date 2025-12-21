@@ -45,8 +45,8 @@ export default function ConnectSection() {
           className={cn(
             'group relative flex items-center justify-center',
             'w-12 h-12 rounded-full',
-            'glass border-white/10 dark:border-white/5',
-            'text-muted-foreground hover:text-primary',
+            'bg-card border border-border',
+            'text-foreground hover:text-primary',
             'transition-all duration-300',
             'hover:shadow-glow-cyan hover:border-primary/30'
           )}
@@ -55,7 +55,7 @@ export default function ConnectSection() {
           aria-label="GitHub"
         >
           <FaGithubSquare className="w-6 h-6" />
-          
+
           {/* Glow effect on hover */}
           <span className="absolute inset-0 rounded-full bg-primary/0 group-hover:bg-primary/5 transition-colors" />
         </motion.a>

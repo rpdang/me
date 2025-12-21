@@ -10,7 +10,7 @@ export default function Experiences() {
   const { ref } = useSectionInView('Experience', 0.2);
 
   return (
-    <section ref={ref} id="experience" className="scroll-mt-28 mb-28 sm:mb-40 max-w-[60rem] mx-auto px-4">
+    <section ref={ref} id="experience" className="scroll-mt-28 mb-28 sm:mb-40 max-w-[53rem] mx-auto px-4">
       <BlurFade delay={0.1} inView>
         <SectionHeading>My Experience</SectionHeading>
       </BlurFade>
@@ -21,14 +21,11 @@ export default function Experiences() {
         </p>
       </BlurFade>
 
-      <div className="relative space-y-8 md:space-y-12">
+      <div className="space-y-6">
         {experiencesData.map((experience, index) => (
-          <ExperienceElement
-            key={index}
-            experience={experience}
-            index={index}
-            isLast={index === experiencesData.length - 1}
-          />
+          <BlurFade key={index} delay={0.1 + index * 0.1} inView>
+            <ExperienceElement experience={experience} />
+          </BlurFade>
         ))}
       </div>
     </section>
