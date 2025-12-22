@@ -1,6 +1,7 @@
 "use client"
+/* eslint-disable react-hooks/static-components */
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { AnimatePresence, motion, MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -32,6 +33,19 @@ const DEFAULT_CHARACTER_SET = Object.freeze(
 
 const getRandomInt = (max: number): number => Math.floor(Math.random() * max)
 
+// Pre-create motion components for common elements
+const motionComponentCache = new Map<React.ElementType, ReturnType<typeof motion.create>>()
+
+function getMotionComponent(Component: React.ElementType) {
+  if (!motionComponentCache.has(Component)) {
+    motionComponentCache.set(
+      Component,
+      motion.create(Component, { forwardMotionProps: true })
+    )
+  }
+  return motionComponentCache.get(Component)!
+}
+
 export function HyperText({
   children,
   className,
@@ -43,9 +57,7 @@ export function HyperText({
   characterSet = DEFAULT_CHARACTER_SET,
   ...props
 }: HyperTextProps) {
-  const MotionComponent = motion.create(Component, {
-    forwardMotionProps: true,
-  })
+  const MotionComponent = useMemo(() => getMotionComponent(Component), [Component])
 
   const [displayText, setDisplayText] = useState<string[]>(() =>
     children.split("")

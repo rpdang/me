@@ -70,7 +70,7 @@ export function MagicCard({
 
   return (
     <div
-      className={cn("group relative rounded-[inherit]", className)}
+      className={cn("group relative flex flex-col rounded-[inherit]", className)}
       onPointerMove={handlePointerMove}
       onPointerLeave={reset}
       onPointerEnter={reset}
@@ -80,8 +80,8 @@ export function MagicCard({
         style={{
           background: useMotionTemplate`
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
-          ${gradientFrom}, 
-          ${gradientTo}, 
+          ${gradientFrom},
+          ${gradientTo},
           var(--border) 100%
           )
           `,
@@ -97,7 +97,7 @@ export function MagicCard({
           opacity: gradientOpacity,
         }}
       />
-      <div className="relative">{children}</div>
+      <div className="relative flex-1">{children}</div>
     </div>
   )
 }

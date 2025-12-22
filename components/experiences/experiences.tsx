@@ -33,7 +33,7 @@ export default function Experiences() {
             key={index}
             delay={0.2 + index * 0.12}
             inView
-            className={experience.gridClass}
+            className={`${experience.gridClass} h-full`}
           >
             <ExperienceElement experience={experience} featured={index === 0} />
           </BlurFade>

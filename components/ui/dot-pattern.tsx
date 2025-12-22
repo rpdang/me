@@ -1,9 +1,15 @@
 "use client"
 
-import React, { useEffect, useId, useRef, useState } from "react"
+import React, { useEffect, useId, useMemo, useRef, useState } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
+
+// Seeded random number generator for consistent values
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000
+  return x - Math.floor(x)
+}
 
 /**
  *  DotPattern Component Props
@@ -90,23 +96,20 @@ export function DotPattern({
     return () => window.removeEventListener("resize", updateDimensions)
   }, [])
 
-  const dots = Array.from(
-    {
-      length:
-        Math.ceil(dimensions.width / width) *
-        Math.ceil(dimensions.height / height),
-    },
-    (_, i) => {
-      const col = i % Math.ceil(dimensions.width / width)
-      const row = Math.floor(i / Math.ceil(dimensions.width / width))
+  const dots = useMemo(() => {
+    const cols = Math.ceil(dimensions.width / width)
+    const rows = Math.ceil(dimensions.height / height)
+    return Array.from({ length: cols * rows }, (_, i) => {
+      const col = i % cols
+      const row = Math.floor(i / cols)
       return {
         x: col * width + cx,
         y: row * height + cy,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
+        delay: seededRandom(i * 2) * 5,
+        duration: seededRandom(i * 2 + 1) * 3 + 2,
       }
-    }
-  )
+    })
+  }, [dimensions.width, dimensions.height, width, height, cx, cy])
 
   return (
     <svg

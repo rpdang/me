@@ -2,6 +2,7 @@
 
 import React, {
   ComponentPropsWithoutRef,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -100,11 +101,85 @@ export const Particles: React.FC<ParticlesProps> = ({
   const rafID = useRef<number | null>(null)
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null)
 
+  const onMouseMove = useCallback(() => {
+    if (canvasRef.current) {
+      const rect = canvasRef.current.getBoundingClientRect()
+      const { w, h } = canvasSize.current
+      const x = mousePosition.x - rect.left - w / 2
+      const y = mousePosition.y - rect.top - h / 2
+      const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2
+      if (inside) {
+        mouse.current.x = x
+        mouse.current.y = y
+      }
+    }
+  }, [mousePosition.x, mousePosition.y])
+
+  useEffect(() => {
+    onMouseMove()
+  }, [onMouseMove])
+
+  const initCanvas = useCallback(() => {
+    resizeCanvas()
+    drawParticles()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const animateRef = useRef<() => void>()
+
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d")
     }
     initCanvas()
+
+    // Start animation
+    const animate = () => {
+      clearContext()
+      circles.current.forEach((circle: Circle, i: number) => {
+        const edge = [
+          circle.x + circle.translateX - circle.size,
+          canvasSize.current.w - circle.x - circle.translateX - circle.size,
+          circle.y + circle.translateY - circle.size,
+          canvasSize.current.h - circle.y - circle.translateY - circle.size,
+        ]
+        const closestEdge = edge.reduce((a, b) => Math.min(a, b))
+        const remapClosestEdge = parseFloat(
+          remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
+        )
+        if (remapClosestEdge > 1) {
+          circle.alpha += 0.02
+          if (circle.alpha > circle.targetAlpha) {
+            circle.alpha = circle.targetAlpha
+          }
+        } else {
+          circle.alpha = circle.targetAlpha * remapClosestEdge
+        }
+        circle.x += circle.dx + vx
+        circle.y += circle.dy + vy
+        circle.translateX +=
+          (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
+          ease
+        circle.translateY +=
+          (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
+          ease
+
+        drawCircle(circle, true)
+
+        if (
+          circle.x < -circle.size ||
+          circle.x > canvasSize.current.w + circle.size ||
+          circle.y < -circle.size ||
+          circle.y > canvasSize.current.h + circle.size
+        ) {
+          circles.current.splice(i, 1)
+          const newCircle = circleParams()
+          drawCircle(newCircle)
+        }
+      })
+      rafID.current = window.requestAnimationFrame(animate)
+    }
+    animateRef.current = animate
     animate()
 
     const handleResize = () => {
@@ -127,34 +202,12 @@ export const Particles: React.FC<ParticlesProps> = ({
       }
       window.removeEventListener("resize", handleResize)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [color])
 
   useEffect(() => {
-    onMouseMove()
-  }, [mousePosition.x, mousePosition.y])
-
-  useEffect(() => {
     initCanvas()
-  }, [refresh])
-
-  const initCanvas = () => {
-    resizeCanvas()
-    drawParticles()
-  }
-
-  const onMouseMove = () => {
-    if (canvasRef.current) {
-      const rect = canvasRef.current.getBoundingClientRect()
-      const { w, h } = canvasSize.current
-      const x = mousePosition.x - rect.left - w / 2
-      const y = mousePosition.y - rect.top - h / 2
-      const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2
-      if (inside) {
-        mouse.current.x = x
-        mouse.current.y = y
-      }
-    }
-  }
+  }, [refresh, initCanvas])
 
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
@@ -249,56 +302,6 @@ export const Particles: React.FC<ParticlesProps> = ({
     const remapped =
       ((value - start1) * (end2 - start2)) / (end1 - start1) + start2
     return remapped > 0 ? remapped : 0
-  }
-
-  const animate = () => {
-    clearContext()
-    circles.current.forEach((circle: Circle, i: number) => {
-      // Handle the alpha value
-      const edge = [
-        circle.x + circle.translateX - circle.size, // distance from left edge
-        canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
-        circle.y + circle.translateY - circle.size, // distance from top edge
-        canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
-      ]
-      const closestEdge = edge.reduce((a, b) => Math.min(a, b))
-      const remapClosestEdge = parseFloat(
-        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
-      )
-      if (remapClosestEdge > 1) {
-        circle.alpha += 0.02
-        if (circle.alpha > circle.targetAlpha) {
-          circle.alpha = circle.targetAlpha
-        }
-      } else {
-        circle.alpha = circle.targetAlpha * remapClosestEdge
-      }
-      circle.x += circle.dx + vx
-      circle.y += circle.dy + vy
-      circle.translateX +=
-        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
-        ease
-      circle.translateY +=
-        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
-        ease
-
-      drawCircle(circle, true)
-
-      // circle gets out of the canvas
-      if (
-        circle.x < -circle.size ||
-        circle.x > canvasSize.current.w + circle.size ||
-        circle.y < -circle.size ||
-        circle.y > canvasSize.current.h + circle.size
-      ) {
-        // remove the circle from the array
-        circles.current.splice(i, 1)
-        // create a new circle
-        const newCircle = circleParams()
-        drawCircle(newCircle)
-      }
-    })
-    rafID.current = window.requestAnimationFrame(animate)
   }
 
   return (

@@ -1,9 +1,20 @@
 "use client"
+/* eslint-disable react-hooks/static-components */
 
-import { ElementType, memo } from "react"
+import { ElementType, memo, useMemo } from "react"
 import { AnimatePresence, motion, MotionProps, Variants } from "motion/react"
 
 import { cn } from "@/lib/utils"
+
+// Pre-create motion components for common elements
+const motionComponentCache = new Map<ElementType, ReturnType<typeof motion.create>>()
+
+function getMotionComponent(Component: ElementType) {
+  if (!motionComponentCache.has(Component)) {
+    motionComponentCache.set(Component, motion.create(Component))
+  }
+  return motionComponentCache.get(Component)!
+}
 
 type AnimationType = "text" | "word" | "character" | "line"
 type AnimationVariant =
@@ -317,7 +328,7 @@ const TextAnimateBase = ({
   accessible = true,
   ...props
 }: TextAnimateProps) => {
-  const MotionComponent = motion.create(Component)
+  const MotionComponent = useMemo(() => getMotionComponent(Component), [Component])
 
   let segments: string[] = []
   switch (by) {
