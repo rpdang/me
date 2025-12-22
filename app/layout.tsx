@@ -3,29 +3,10 @@ import Header from '@/components/header';
 import ThemeSwitch from '@/components/theme-switch';
 import ActiveSectionContextProvider from '@/context/active-section-context';
 import ThemeContextProvider from '@/context/theme-context';
-import { JetBrains_Mono, Playfair_Display, Source_Sans_3 } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import { Analytics } from '@vercel/analytics/react';
 import { ScrollProgress } from '@/components/ui/scroll-progress';
 import './globals.css';
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-});
-
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const sourceSans = Source_Sans_3({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
 
 export const metadata = {
   title: 'Robin Dang | Software Engineer',
@@ -40,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth!">
       <body
-        className={`${jetbrainsMono.variable} ${playfairDisplay.variable} ${sourceSans.variable} font-sans bg-background text-foreground relative pt-28 sm:pt-36 min-h-screen overflow-x-hidden`}
+        className="font-sans bg-background text-foreground relative pt-28 sm:pt-36 min-h-screen overflow-x-hidden"
       >
         {/* Clean editorial background */}
         <div className="fixed inset-0 -z-20 bg-background" />

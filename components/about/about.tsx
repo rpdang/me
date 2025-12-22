@@ -4,10 +4,13 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { MagicCard } from "@/components/ui/magic-card";
 import { useSectionInView } from "@/lib/hooks";
+import { useTheme } from "@/context/theme-context";
 import SectionHeading from "../section-heading";
+import Image from "next/image";
 
 export default function About() {
   const { ref } = useSectionInView("About", 0.75);
+  const { theme } = useTheme();
 
   return (
     <section id="about" ref={ref} className="mb-28 max-w-200 scroll-mt-28 px-4">
@@ -42,19 +45,28 @@ export default function About() {
             </BlurFade>
 
             <BlurFade delay={0.5} inView>
-              <div className="pt-4 border-t border-border/50 mt-6">
-                <p className="font-display text-sm text-primary font-medium">
-                  Robin Dang
-                </p>
-                <p className="font-sans text-xs text-muted-foreground">
-                  B.Sc. & M.Sc. Computer Science
-                </p>
-                <p className="font-sans text-xs text-muted-foreground">
-                  KTH Royal Institute of Technology
-                </p>
-                <p className="font-sans text-xs text-muted-foreground">
-                  Stockholm, Sweden
-                </p>
+              <div className="pt-4 border-t border-border/50 mt-6 flex flex-col items-center gap-3">
+                <Image
+                  src={theme === "dark" ? "/logos/kth_white.svg" : "/logos/kth.svg"}
+                  alt="KTH Royal Institute of Technology"
+                  width={40}
+                  height={40}
+                  className="rounded"
+                />
+                <div>
+                  <p className="font-display text-sm text-primary font-medium">
+                    Robin Dang
+                  </p>
+                  <p className="font-sans text-xs text-muted-foreground">
+                    B.Sc. & M.Sc. Computer Science
+                  </p>
+                  <p className="font-sans text-xs text-muted-foreground">
+                    KTH Royal Institute of Technology
+                  </p>
+                  <p className="font-sans text-xs text-muted-foreground">
+                    Stockholm, Sweden
+                  </p>
+                </div>
               </div>
             </BlurFade>
           </div>

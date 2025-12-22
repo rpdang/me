@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Typography */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Source Sans 3', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* Typography - System fonts with fallbacks */
+  --font-display: 'Poppins', Arial, sans-serif;
+  --font-sans: 'Lora', Georgia, serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
 
   /* Editorial Color Tokens */
   --color-editorial-cream: #f5f0e6;

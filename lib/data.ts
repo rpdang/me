@@ -38,7 +38,6 @@ export type Experience = {
   title: string;
   company: string;
   location: string;
-  description?: string;
   icon: React.ReactNode;
   date: string;
   link?: string;
@@ -148,6 +147,7 @@ export const projectsData = [
       "Sweden's largest commercial real estate marketplace with 23,000+ listings. Features property search, SmartMatch recommendations, and market insights.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Supabase", "MapLibre"],
     imageUrl: lokasa,
+    demoUrl: "https://lokasa.se",
   },
   {
     title: "AI GEO Tracking Platform",
@@ -155,6 +155,7 @@ export const projectsData = [
       "Tracks brand visibility across ChatGPT, Claude, Gemini, and Perplexity with real-time analytics and alerts.",
     tags: ["Next.js", "TypeScript", "Tailwind", "AI", "Analytics"],
     imageUrl: poodl,
+    demoUrl: "https://poodl.io",
   },
   {
     title: "Legora (Leya AI YC W24)",
@@ -171,6 +172,7 @@ export const projectsData = [
       "Tailwind",
     ],
     imageUrl: leya,
+    demoUrl: "https://www.legora.com",
   },
   {
     title: "Discover Local Restaurants",
@@ -181,6 +183,74 @@ export const projectsData = [
   },
 ] as const;
 
+export type SkillCategory = {
+  name: string;
+  description: string;
+  skills: { name: string; slug: string }[];
+};
+
+export const skillCategoriesData: SkillCategory[] = [
+  {
+    name: "Languages",
+    description: "Programming languages",
+    skills: [
+      { name: "Java", slug: "java/java-original" },
+      { name: "TypeScript", slug: "typescript/typescript-original" },
+      { name: "Python", slug: "python/python-original" },
+      { name: "Go", slug: "go/go-original-wordmark" },
+    ],
+  },
+  {
+    name: "Frameworks",
+    description: "Frontend & backend",
+    skills: [
+      { name: "Next.js", slug: "nextjs/nextjs-original" },
+      { name: "React", slug: "react/react-original" },
+      { name: "Node.js", slug: "nodejs/nodejs-original" },
+      { name: "Tailwind", slug: "tailwindcss/tailwindcss-original" },
+    ],
+  },
+  {
+    name: "Databases",
+    description: "Data storage",
+    skills: [
+      { name: "PostgreSQL", slug: "postgresql/postgresql-original" },
+      { name: "MySQL", slug: "mysql/mysql-original" },
+      { name: "MongoDB", slug: "mongodb/mongodb-original" },
+      { name: "Elasticsearch", slug: "elasticsearch/elasticsearch-original" },
+    ],
+  },
+  {
+    name: "DevOps",
+    description: "Infrastructure & deployment",
+    skills: [
+      { name: "Docker", slug: "docker/docker-original" },
+      { name: "Kubernetes", slug: "kubernetes/kubernetes-original" },
+      { name: "Firebase", slug: "firebase/firebase-original" },
+      { name: "Supabase", slug: "supabase/supabase-original" },
+    ],
+  },
+  {
+    name: "AI & ML",
+    description: "Machine learning tools",
+    skills: [
+      { name: "OpenAI", slug: "openai/openai-original" },
+      { name: "Langchain", slug: "langchain/langchain-original" },
+      { name: "Weaviate", slug: "weaviate/weaviate-original" },
+    ],
+  },
+  {
+    name: "Tools",
+    description: "Development tools",
+    skills: [
+      { name: "Git", slug: "git/git-original" },
+      { name: "Azure", slug: "azure/azure-original" },
+      { name: "MapLibre", slug: "maplibre/maplibre-original" },
+    ],
+  },
+];
+
+// Flat list for backward compatibility with IconCloud
 export const skillsData = [
   "Java",
   "TypeScript",

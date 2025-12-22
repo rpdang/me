@@ -2,7 +2,9 @@
 
 import { Education } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/context/theme-context';
 import { HiExternalLink } from 'react-icons/hi';
+import Image from 'next/image';
 
 type EducationProps = {
   education: Education;
@@ -11,6 +13,10 @@ type EducationProps = {
 export default function EducationElement({
   education: { institution, date, degree, location, description, link },
 }: EducationProps) {
+  const { theme } = useTheme();
+  // Check if it's a KTH education to show logo
+  const isKTH = institution.toLowerCase().includes('kth');
+
   return (
     <div className="group relative w-full">
       <div
@@ -21,10 +27,24 @@ export default function EducationElement({
           'editorial-shadow hover:editorial-shadow-hover'
         )}
       >
-        {/* Date badge - Editorial style */}
-        <span className="inline-block px-3 py-1 text-xs font-sans uppercase tracking-[0.15em] rounded bg-secondary text-secondary-foreground border border-border mb-4">
-          {date}
-        </span>
+        {/* Header with logo and date */}
+        <div className="flex items-start justify-between mb-4">
+          {isKTH && (
+            <div className="w-10 h-10 rounded overflow-hidden shrink-0">
+              <Image
+                src={theme === "dark" ? "/logos/kth_white.svg" : "/logos/kth.svg"}
+                alt="KTH Royal Institute of Technology"
+                width={40}
+                height={40}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          )}
+          {/* Date badge - Editorial style */}
+          <span className="inline-block px-3 py-1 text-xs font-sans uppercase tracking-[0.15em] rounded bg-secondary text-secondary-foreground border border-border ml-auto">
+            {date}
+          </span>
+        </div>
 
         {/* Degree */}
         <h3 className="text-lg md:text-xl font-display font-semibold text-foreground tracking-tight">
