@@ -104,18 +104,6 @@
   --animate-shine: shine var(--duration, 14s) infinite linear;
   --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
 
-  @keyframes shine {
-    0% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    to {
-      background-position: 0% 0%;
-    }
-  }
-
   @keyframes background-position-spin {
     0% {
       background-position: top center;
@@ -240,6 +228,19 @@
   --color-3: 210deg 100% 63%;
   --color-4: 195deg 100% 63%;
   --color-5: 90deg 100% 63%;
+}
+
+/* Shine Border Keyframes - must be outside @theme for inline animation styles */
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  to {
+    background-position: 0% 0%;
+  }
 }
 
 /* Shimmer Button Keyframes - must be outside @theme for runtime CSS variables */
