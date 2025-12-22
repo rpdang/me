@@ -17,7 +17,7 @@ export default function ThemeSwitch() {
         'flex items-center justify-center',
         'text-muted-foreground hover:text-primary',
         'hover:border-primary/30',
-        'hover:shadow-glow-cyan transition-all duration-300',
+        'editorial-shadow hover:editorial-shadow-hover transition-all duration-300',
         'focus:outline-hidden focus:ring-2 focus:ring-primary/50'
       )}
       onClick={toggle}

@@ -1,7 +1,6 @@
 'use client';
 
 import { Education } from '@/lib/data';
-import { ShineBorder } from '@/components/ui/shine-border';
 import { cn } from '@/lib/utils';
 import { HiExternalLink } from 'react-icons/hi';
 
@@ -16,18 +15,19 @@ export default function EducationElement({
     <div className="group relative w-full">
       <div
         className={cn(
-          'w-full glass rounded-xl p-6 md:p-8 transition-all duration-300',
-          'border border-border hover:border-primary/20',
-          'bg-card/50 dark:bg-card/30'
+          'w-full rounded-lg p-6 md:p-8 transition-all duration-300',
+          'border border-border hover:border-primary/30',
+          'bg-card/50 dark:bg-card/30',
+          'editorial-shadow hover:editorial-shadow-hover'
         )}
       >
-        {/* Date badge */}
-        <span className="inline-block px-3 py-1 text-xs font-mono rounded-full bg-primary/10 text-primary border border-primary/20 mb-4">
+        {/* Date badge - Editorial style */}
+        <span className="inline-block px-3 py-1 text-xs font-sans uppercase tracking-[0.15em] rounded bg-secondary text-secondary-foreground border border-border mb-4">
           {date}
         </span>
 
         {/* Degree */}
-        <h3 className="text-lg md:text-xl font-semibold text-foreground">
+        <h3 className="text-lg md:text-xl font-display font-semibold text-foreground tracking-tight">
           {degree}
         </h3>
 
@@ -57,14 +57,8 @@ export default function EducationElement({
           </a>
         )}
 
-        {/* Shine border on hover */}
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <ShineBorder
-            borderWidth={1}
-            duration={14}
-            shineColor={['#00fff0', '#ff00aa']}
-          />
-        </div>
+        {/* Editorial accent line on hover */}
+        <div className="absolute top-0 left-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-lg" />
       </div>
     </div>
   );

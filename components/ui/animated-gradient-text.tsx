@@ -12,9 +12,9 @@ export interface AnimatedGradientTextProps
 export function AnimatedGradientText({
   children,
   className,
-  speed = 1,
-  colorFrom = "#ffaa40",
-  colorTo = "#9c40ff",
+  speed = 0.5,
+  colorFrom = "#b85a32",
+  colorTo = "#822e3a",
   ...props
 }: AnimatedGradientTextProps) {
   return (

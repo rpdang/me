@@ -125,7 +125,7 @@ export const Particles: React.FC<ParticlesProps> = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const animateRef = useRef<() => void>()
+  const animateRef = useRef<(() => void) | undefined>(undefined)
 
   useEffect(() => {
     if (canvasRef.current) {

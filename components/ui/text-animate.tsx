@@ -1,20 +1,9 @@
 "use client"
-/* eslint-disable react-hooks/static-components */
 
-import { ElementType, memo, useMemo } from "react"
-import { AnimatePresence, motion, MotionProps, Variants } from "motion/react"
+import { memo } from "react"
+import { AnimatePresence, motion, Variants } from "motion/react"
 
 import { cn } from "@/lib/utils"
-
-// Pre-create motion components for common elements
-const motionComponentCache = new Map<ElementType, ReturnType<typeof motion.create>>()
-
-function getMotionComponent(Component: ElementType) {
-  if (!motionComponentCache.has(Component)) {
-    motionComponentCache.set(Component, motion.create(Component))
-  }
-  return motionComponentCache.get(Component)!
-}
 
 type AnimationType = "text" | "word" | "character" | "line"
 type AnimationVariant =
@@ -29,7 +18,7 @@ type AnimationVariant =
   | "scaleUp"
   | "scaleDown"
 
-interface TextAnimateProps extends MotionProps {
+interface TextAnimateProps {
   /**
    * The text content to animate
    */
@@ -54,10 +43,6 @@ interface TextAnimateProps extends MotionProps {
    * Custom motion variants for the animation
    */
   variants?: Variants
-  /**
-   * The element type to render
-   */
-  as?: ElementType
   /**
    * How to split the text ("text", "word", "character")
    */
@@ -140,17 +125,17 @@ const defaultItemAnimationVariants: Record<
   blurIn: {
     container: defaultContainerVariants,
     item: {
-      hidden: { opacity: 0, filter: "blur(10px)" },
+      hidden: { opacity: 0, filter: "blur(4px)" },
       show: {
         opacity: 1,
         filter: "blur(0px)",
         transition: {
-          duration: 0.3,
+          duration: 0.4,
         },
       },
       exit: {
         opacity: 0,
-        filter: "blur(10px)",
+        filter: "blur(4px)",
         transition: { duration: 0.3 },
       },
     },
@@ -158,21 +143,21 @@ const defaultItemAnimationVariants: Record<
   blurInUp: {
     container: defaultContainerVariants,
     item: {
-      hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
+      hidden: { opacity: 0, filter: "blur(4px)", y: 16 },
       show: {
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
         transition: {
-          y: { duration: 0.3 },
-          opacity: { duration: 0.4 },
-          filter: { duration: 0.3 },
+          y: { duration: 0.4 },
+          opacity: { duration: 0.5 },
+          filter: { duration: 0.4 },
         },
       },
       exit: {
         opacity: 0,
-        filter: "blur(10px)",
-        y: 20,
+        filter: "blur(4px)",
+        y: 16,
         transition: {
           y: { duration: 0.3 },
           opacity: { duration: 0.4 },
@@ -184,15 +169,15 @@ const defaultItemAnimationVariants: Record<
   blurInDown: {
     container: defaultContainerVariants,
     item: {
-      hidden: { opacity: 0, filter: "blur(10px)", y: -20 },
+      hidden: { opacity: 0, filter: "blur(4px)", y: -16 },
       show: {
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
         transition: {
-          y: { duration: 0.3 },
-          opacity: { duration: 0.4 },
-          filter: { duration: 0.3 },
+          y: { duration: 0.4 },
+          opacity: { duration: 0.5 },
+          filter: { duration: 0.4 },
         },
       },
     },
@@ -320,16 +305,12 @@ const TextAnimateBase = ({
   variants,
   className,
   segmentClassName,
-  as: Component = "p",
   startOnView = true,
   once = false,
   by = "word",
   animation = "fadeIn",
   accessible = true,
-  ...props
 }: TextAnimateProps) => {
-  const MotionComponent = useMemo(() => getMotionComponent(Component), [Component])
-
   let segments: string[] = []
   switch (by) {
     case "word":
@@ -394,7 +375,7 @@ const TextAnimateBase = ({
 
   return (
     <AnimatePresence mode="popLayout">
-      <MotionComponent
+      <motion.p
         variants={finalVariants.container as Variants}
         initial="hidden"
         whileInView={startOnView ? "show" : undefined}
@@ -403,7 +384,6 @@ const TextAnimateBase = ({
         className={cn("whitespace-pre-wrap", className)}
         viewport={{ once }}
         aria-label={accessible ? children : undefined}
-        {...props}
       >
         {accessible && <span className="sr-only">{children}</span>}
         {segments.map((segment, i) => (
@@ -421,7 +401,7 @@ const TextAnimateBase = ({
             {segment}
           </motion.span>
         ))}
-      </MotionComponent>
+      </motion.p>
     </AnimatePresence>
   )
 }

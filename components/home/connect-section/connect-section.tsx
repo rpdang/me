@@ -13,30 +13,28 @@ export default function ConnectSection() {
       className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3, duration: 0.5 }}
+      transition={{ delay: 0.3, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
     >
       {/* LinkedIn Connect - Shimmer Button */}
-      <ShimmerButton
-        className="group text-base font-medium"
-        shimmerColor="#00fff0"
-        shimmerSize="0.1em"
-        shimmerDuration="2.5s"
-        background="hsl(var(--card))"
-        borderRadius="9999px"
+      <a
+        href="https://linkedin.com/in/robin-dang"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <a
-          href="https://linkedin.com/in/robin-dang"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 px-2"
+        <ShimmerButton
+          shimmerColor="#ffffff"
+          shimmerSize="0.1em"
+          shimmerDuration="2s"
+          background="hsl(16, 60%, 45%)"
+          className="font-sans font-medium text-white"
         >
-          <BsLinkedin className="w-4 h-4" />
+          <BsLinkedin className="w-4 h-4 mr-2" />
           Let's Connect
-          <HiArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
-        </a>
-      </ShimmerButton>
+          <HiArrowRight className="w-4 h-4 ml-2 opacity-70 group-hover:translate-x-1 transition-transform" />
+        </ShimmerButton>
+      </a>
 
-      {/* Social Links - Glass style */}
+      {/* Social Links - Editorial style */}
       <div className="flex items-center gap-3">
         <motion.a
           href="https://github.com/rpdang"
@@ -48,15 +46,15 @@ export default function ConnectSection() {
             'bg-card border border-border',
             'text-foreground hover:text-primary',
             'transition-all duration-300',
-            'hover:shadow-glow-cyan hover:border-primary/30'
+            'hover:border-primary/30 editorial-shadow hover:editorial-shadow-hover'
           )}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label="GitHub"
         >
           <FaGithubSquare className="w-6 h-6" />
 
-          {/* Glow effect on hover */}
+          {/* Subtle highlight on hover */}
           <span className="absolute inset-0 rounded-full bg-primary/0 group-hover:bg-primary/5 transition-colors" />
         </motion.a>
       </div>

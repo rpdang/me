@@ -1,6 +1,5 @@
 "use client";
 
-import { BorderBeam } from "@/components/ui/border-beam";
 import profilePic from "@/public/robin.jpg";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -20,8 +19,8 @@ export default function Avatar() {
           }}
           className="relative"
         >
-          {/* Avatar container with glow */}
-          <div className="relative rounded-full p-[3px] bg-linear-to-br from-neon-cyan via-neon-purple to-neon-magenta">
+          {/* Avatar container with editorial warm gradient border */}
+          <div className="relative rounded-full p-[3px] bg-linear-to-br from-primary via-accent to-primary">
             <div className="rounded-full bg-background p-[2px]">
               <Image
                 className="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover"
@@ -33,15 +32,6 @@ export default function Avatar() {
                 priority={true}
               />
             </div>
-
-            {/* Border beam animation */}
-            <BorderBeam
-              size={80}
-              duration={4}
-              colorFrom="#00fff0"
-              colorTo="#ff00aa"
-              borderWidth={2}
-            />
           </div>
         </motion.div>
       </div>

@@ -8,35 +8,35 @@ import { motion } from "framer-motion";
 export default function IntroText() {
   return (
     <div className="mb-10 mt-6 px-4 text-center">
-      {/* Name with HyperText scramble effect */}
+      {/* Name with HyperText scramble effect - Editorial style */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         className="mb-4"
       >
         <HyperText
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-2 block font-mono"
-          duration={1200}
+          className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight"
+          duration={1500}
           delay={300}
           animateOnHover={true}
         >
-          ROBIN DANG
+          Robin Dang
         </HyperText>
       </motion.div>
 
-      {/* Role with gradient text */}
+      {/* Role with gradient text - Editorial warm tones */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
         className="mb-6"
       >
         <AnimatedGradientText
-          className="text-xl sm:text-2xl font-semibold"
-          colorFrom="#00fff0"
-          colorTo="#ff00aa"
-          speed={1}
+          className="text-xl sm:text-2xl font-display font-medium tracking-tight"
+          colorFrom="#b85a32"
+          colorTo="#822e3a"
+          speed={0.5}
         >
           Software Engineer
         </AnimatedGradientText>
@@ -46,14 +46,14 @@ export default function IntroText() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
         className="max-w-2xl mx-auto"
       >
         <TextAnimate
           animation="blurInUp"
           by="word"
-          className="text-lg sm:text-xl text-muted-foreground leading-relaxed"
-          duration={0.8}
+          className="text-lg sm:text-xl text-muted-foreground leading-relaxed font-sans"
+          duration={1}
           delay={0.5}
         >
           A curious software engineer who loves building and learning new stuff.

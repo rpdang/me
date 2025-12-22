@@ -1,7 +1,6 @@
 import culinaro from "@/public/culinario.png";
 import leya from "@/public/leya.png";
 import lokasa from "@/public/lokasa.png";
-import mePortfolio from "@/public/me-portfolio.png";
 import poodl from "@/public/poodl.png";
 import React from "react";
 import { FaBook, FaGraduationCap } from "react-icons/fa";
@@ -144,16 +143,16 @@ export const educationData: Education[] = [
 
 export const projectsData = [
   {
-    title: "Lokasa",
+    title: "Real Estate Marketplace",
     description:
       "Sweden's largest commercial real estate marketplace with 23,000+ listings. Features property search, SmartMatch recommendations, and market insights.",
     tags: ["Next.js", "TypeScript", "Tailwind", "Supabase", "MapLibre"],
     imageUrl: lokasa,
   },
   {
-    title: "Poodl",
+    title: "AI GEO Tracking Platform",
     description:
-      "AI GEO tracking platform that monitors brand visibility across ChatGPT, Claude, Gemini, and Perplexity with real-time analytics and alerts.",
+      "Tracks brand visibility across ChatGPT, Claude, Gemini, and Perplexity with real-time analytics and alerts.",
     tags: ["Next.js", "TypeScript", "Tailwind", "AI", "Analytics"],
     imageUrl: poodl,
   },
@@ -179,13 +178,6 @@ export const projectsData = [
       "Android app dedicated to discorvering hidden gems among local restaurants.",
     tags: ["Android", "Java", "Kotlin"],
     imageUrl: culinaro,
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "Personal website project developed during the exploration and learning phase of Next.js 14 and Tailwind.",
-    tags: ["Next.js", "TypeScript", "React", "Tailwind", "Framer Motion"],
-    imageUrl: mePortfolio,
   },
 ] as const;
 

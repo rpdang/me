@@ -5,8 +5,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
 import { MagicCard } from '@/components/ui/magic-card';
-import { BorderBeam } from '@/components/ui/border-beam';
-import { BlurFade } from '@/components/ui/blur-fade';
 
 type ProjectProps = (typeof projectsData)[number];
 
@@ -34,33 +32,35 @@ export default function ProjectElement({
       className="group mb-6 sm:mb-10 last:mb-0"
     >
       <MagicCard
-        className="relative overflow-hidden rounded-xl p-0"
+        className="relative overflow-hidden rounded-lg p-0"
         gradientSize={300}
-        gradientColor="rgba(0, 255, 240, 0.15)"
-        gradientOpacity={0.8}
-        gradientFrom="#00fff0"
-        gradientTo="#ff00aa"
+        gradientColor="rgba(184, 90, 50, 0.06)"
+        gradientOpacity={0.6}
       >
-        <div className="relative sm:h-88 overflow-hidden rounded-xl bg-card">
+        <div className="relative sm:h-88 overflow-hidden rounded-lg bg-card">
+          {/* Editorial accent line on hover */}
+          <div className="absolute top-0 left-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
           {/* Content wrapper */}
           <div className="flex flex-col sm:flex-row h-full">
             {/* Text content */}
             <div className="p-6 sm:p-8 sm:w-1/2 flex flex-col justify-center sm:group-even:order-2 sm:group-even:pl-8">
-              <h3 className="text-2xl font-mono font-bold text-foreground mb-3">
+              <h3 className="text-2xl font-display font-bold text-foreground mb-3 tracking-tight">
                 {title}
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 {description}
               </p>
-              
-              {/* Tags */}
+
+              {/* Tags - Editorial style */}
               <ul className="flex flex-wrap gap-2 mt-auto">
                 {tags.map((tag, index) => (
                   <li
                     key={index}
-                    className="px-3 py-1 text-xs font-mono uppercase tracking-wider rounded-full
-                               bg-primary/10 text-primary border border-primary/20
-                               hover:bg-primary/20 transition-colors"
+                    className="px-3 py-1 text-xs font-sans uppercase tracking-[0.15em]
+                               bg-secondary text-secondary-foreground border border-border
+                               hover:bg-primary/10 hover:text-primary hover:border-primary/20
+                               transition-colors duration-200 rounded"
                   >
                     {tag}
                   </li>
@@ -70,7 +70,7 @@ export default function ProjectElement({
 
             {/* Image */}
             <div className="relative sm:w-1/2 h-64 sm:h-full sm:group-even:order-1">
-              <div className="absolute inset-0 sm:inset-4 overflow-hidden rounded-lg sm:rounded-xl shadow-2xl">
+              <div className="absolute inset-0 sm:inset-4 overflow-hidden rounded-lg shadow-lg">
                 <Image
                   className="w-full h-full object-cover object-top
                              transition-all duration-500 ease-out
@@ -81,22 +81,11 @@ export default function ProjectElement({
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                
+
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-linear-to-t from-card/80 via-transparent to-transparent opacity-60" />
               </div>
             </div>
-          </div>
-
-          {/* Border beam on hover */}
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <BorderBeam
-              size={150}
-              duration={6}
-              colorFrom="#00fff0"
-              colorTo="#ff00aa"
-              borderWidth={2}
-            />
           </div>
         </div>
       </MagicCard>

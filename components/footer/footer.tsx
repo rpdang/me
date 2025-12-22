@@ -36,7 +36,7 @@ export default function Footer() {
                   'text-muted-foreground hover:text-primary',
                   'border border-border/50 hover:border-primary/30',
                   'transition-all duration-300',
-                  'hover:shadow-glow-cyan/30'
+                  'editorial-shadow hover:editorial-shadow-hover'
                 )}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="text-center space-y-2">
             <p className="text-sm text-muted-foreground">
               &copy; {currentYear}{' '}
-              <span className="font-mono text-primary">Robin Dang</span>
+              <span className="font-display text-primary">Robin Dang</span>
               {' '}| All rights reserved
             </p>
             
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Subtle branding */}
           <motion.div
-            className="mt-4 flex items-center gap-2 text-xs font-mono text-muted-foreground/40"
+            className="mt-4 flex items-center gap-2 text-xs font-sans text-muted-foreground/40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}

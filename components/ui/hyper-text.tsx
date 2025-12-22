@@ -1,14 +1,13 @@
 "use client"
-/* eslint-disable react-hooks/static-components */
 
-import { useEffect, useMemo, useRef, useState } from "react"
-import { AnimatePresence, motion, MotionProps } from "motion/react"
+import { useEffect, useRef, useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
 type CharacterSet = string[] | readonly string[]
 
-interface HyperTextProps extends MotionProps {
+interface HyperTextProps {
   /** The text content to be animated */
   children: string
   /** Optional className for styling */
@@ -17,8 +16,6 @@ interface HyperTextProps extends MotionProps {
   duration?: number
   /** Delay before animation starts in milliseconds */
   delay?: number
-  /** Component to render as - defaults to div */
-  as?: React.ElementType
   /** Whether to start animation when element comes into view */
   startOnView?: boolean
   /** Whether to trigger animation on hover */
@@ -28,43 +25,26 @@ interface HyperTextProps extends MotionProps {
 }
 
 const DEFAULT_CHARACTER_SET = Object.freeze(
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("")
 ) as readonly string[]
 
 const getRandomInt = (max: number): number => Math.floor(Math.random() * max)
 
-// Pre-create motion components for common elements
-const motionComponentCache = new Map<React.ElementType, ReturnType<typeof motion.create>>()
-
-function getMotionComponent(Component: React.ElementType) {
-  if (!motionComponentCache.has(Component)) {
-    motionComponentCache.set(
-      Component,
-      motion.create(Component, { forwardMotionProps: true })
-    )
-  }
-  return motionComponentCache.get(Component)!
-}
-
 export function HyperText({
   children,
   className,
-  duration = 800,
+  duration = 1200,
   delay = 0,
-  as: Component = "div",
   startOnView = false,
   animateOnHover = true,
   characterSet = DEFAULT_CHARACTER_SET,
-  ...props
 }: HyperTextProps) {
-  const MotionComponent = useMemo(() => getMotionComponent(Component), [Component])
-
   const [displayText, setDisplayText] = useState<string[]>(() =>
     children.split("")
   )
   const [isAnimating, setIsAnimating] = useState(false)
   const iterationCount = useRef(0)
-  const elementRef = useRef<HTMLElement>(null)
+  const elementRef = useRef<HTMLDivElement>(null)
 
   const handleAnimationTrigger = () => {
     if (animateOnHover && !isAnimating) {
@@ -138,22 +118,24 @@ export function HyperText({
   }, [children, duration, isAnimating, characterSet])
 
   return (
-    <MotionComponent
+    <motion.div
       ref={elementRef}
-      className={cn("overflow-hidden py-2 text-4xl font-bold", className)}
+      className={cn("overflow-hidden py-2 font-display text-4xl font-bold tracking-tight", className)}
       onMouseEnter={handleAnimationTrigger}
-      {...props}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
       <AnimatePresence>
         {displayText.map((letter, index) => (
           <motion.span
             key={index}
-            className={cn("font-mono", letter === " " ? "w-3" : "")}
+            className={cn("inline-block", letter === " " ? "w-3" : "")}
           >
-            {letter.toUpperCase()}
+            {letter}
           </motion.span>
         ))}
       </AnimatePresence>
-    </MotionComponent>
+    </motion.div>
   )
 }

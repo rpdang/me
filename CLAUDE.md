@@ -44,10 +44,12 @@ Sections use `useSectionInView(sectionName, threshold)` hook from `lib/hooks.ts`
 
 ### Styling
 
-- Tailwind CSS with custom neon color palette (`neon-cyan`, `neon-magenta`, `neon-purple`)
+- Tailwind CSS with warm editorial color palette (terracotta, burgundy, warm neutrals)
 - CSS variables for shadcn semantic colors (defined in `globals.css`)
 - Class-based dark mode (`darkMode: ['class']`)
-- Custom animations in `tailwind.config.js` (shimmer, glow, float, etc.)
+- Typography: Playfair Display (headlines), Source Sans 3 (body), JetBrains Mono (code)
+- Custom utilities: `editorial-headline`, `editorial-link`, `editorial-shadow`
+- Subtle animations with sophisticated restraint (reduced blur, slower timings)
 - `cn()` utility from `lib/utils.ts` for conditional class merging
 
 ### Data
