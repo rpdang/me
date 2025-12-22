@@ -23,7 +23,7 @@ interface NeonGradientCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * @description
    * The component to be rendered as the card
    * */
-  as?: ReactElement
+  as?: ReactElement<any>
   /**
    * @default ""
    * @type string
