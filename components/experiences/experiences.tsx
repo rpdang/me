@@ -13,7 +13,7 @@ export default function Experiences() {
     <section
       ref={ref}
       id="experience"
-      className="scroll-mt-28 mb-28 sm:mb-40 max-w-[68rem] mx-auto px-4"
+      className="scroll-mt-28 mb-28 sm:mb-40 max-w-272 mx-auto px-4"
     >
       <BlurFade delay={0.1} inView>
         <SectionHeading>Experience</SectionHeading>

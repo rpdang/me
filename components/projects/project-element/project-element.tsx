@@ -41,7 +41,7 @@ export default function ProjectElement({
         gradientFrom="#00fff0"
         gradientTo="#ff00aa"
       >
-        <div className="relative sm:h-[22rem] overflow-hidden rounded-xl bg-card">
+        <div className="relative sm:h-88 overflow-hidden rounded-xl bg-card">
           {/* Content wrapper */}
           <div className="flex flex-col sm:flex-row h-full">
             {/* Text content */}
@@ -83,7 +83,7 @@ export default function ProjectElement({
                 />
                 
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-linear-to-t from-card/80 via-transparent to-transparent opacity-60" />
               </div>
             </div>
           </div>

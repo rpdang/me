@@ -13,7 +13,7 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="mb-28 max-w-[50rem] scroll-mt-28 px-4"
+      className="mb-28 max-w-200 scroll-mt-28 px-4"
     >
       <BlurFade delay={0.1} inView>
         <SectionHeading>About me</SectionHeading>
@@ -21,7 +21,7 @@ export default function About() {
 
       <BlurFade delay={0.2} inView>
         <NeonGradientCard
-          className="max-w-[45rem] mx-auto"
+          className="max-w-180 mx-auto"
           borderSize={1}
           borderRadius={16}
           neonColors={{

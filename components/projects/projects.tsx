@@ -13,7 +13,7 @@ export default function Projects() {
     <section
       ref={ref}
       id="projects"
-      className="scroll-mt-28 mb-28 max-w-[50rem] mx-auto px-4"
+      className="scroll-mt-28 mb-28 max-w-200 mx-auto px-4"
     >
       <BlurFade delay={0.1} inView>
         <SectionHeading>My Projects</SectionHeading>

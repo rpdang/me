@@ -29,17 +29,17 @@ export default function Header() {
     useActiveSectionContext();
 
   return (
-    <header className="z-[999] relative">
+    <header className="z-999 relative">
       {/* Mobile header - pill style */}
       <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-full border-b border-border bg-background/80 backdrop-blur-xl sm:hidden"
+        className="fixed top-0 left-1/2 h-18 w-full border-b border-border bg-background/80 backdrop-blur-xl sm:hidden"
         initial={{ y: -100, x: '-50%', opacity: 0 }}
         animate={{ y: 0, x: '-50%', opacity: 1 }}
       />
       
       {/* Mobile nav */}
       <nav className="flex fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:hidden">
-        <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-muted-foreground">
+        <ul className="flex w-88 flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-muted-foreground">
           {links.map(({ name, hash }) => (
             <motion.li
               className="h-3/4 flex items-center justify-center relative"
@@ -80,7 +80,7 @@ export default function Header() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
         <Dock
-          className="!mt-0 !mx-0 bg-card/80 border border-border backdrop-blur-xl px-4 items-center rounded-full"
+          className="mt-0! mx-0! bg-card/80 border border-border backdrop-blur-xl px-4 items-center rounded-full"
           iconSize={40}
           iconMagnification={60}
           iconDistance={120}

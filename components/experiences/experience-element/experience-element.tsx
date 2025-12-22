@@ -104,7 +104,7 @@ export default function ExperienceElement({
     return (
       <div className="group relative h-full">
         {/* Outer glow - visible in both themes */}
-        <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-primary/20 via-transparent to-accent/20 opacity-50 group-hover:opacity-80 blur-xl transition-opacity duration-700 -z-10" />
+        <div className="absolute -inset-1 rounded-3xl bg-linear-to-r from-primary/20 via-transparent to-accent/20 opacity-50 group-hover:opacity-80 blur-xl transition-opacity duration-700 -z-10" />
         
         <MagicCard
           gradientSize={350}
@@ -119,10 +119,10 @@ export default function ExperienceElement({
             'tech-corners-featured'
           )}>
             {/* Theme-aware background gradient for featured */}
-            <div className="absolute inset-0 bg-gradient-to-br from-card via-card to-primary/5 dark:from-card dark:via-card dark:to-primary/10" />
+            <div className="absolute inset-0 bg-linear-to-br from-card via-card to-primary/5 dark:from-card dark:via-card dark:to-primary/10" />
             
             {/* Subtle accent gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/[0.03] via-transparent to-accent/[0.02]" />
+            <div className="absolute inset-0 bg-linear-to-t from-primary/3 via-transparent to-accent/2" />
             
             {cardContent}
           </div>
@@ -147,13 +147,13 @@ export default function ExperienceElement({
         className={cn(
           'relative h-full w-full overflow-hidden rounded-2xl transition-all duration-500',
           'border border-border hover:border-primary/30',
-          'bg-card/80 dark:bg-card/60 backdrop-blur-sm',
+          'bg-card/80 dark:bg-card/60 backdrop-blur-xs',
           'hover:scale-[1.02] hover:shadow-lg dark:hover:shadow-primary/5',
           'tech-corners-standard'
         )}
       >
         {/* Subtle gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-linear-to-b from-secondary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {cardContent}
 

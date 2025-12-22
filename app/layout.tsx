@@ -33,16 +33,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="en" className="scroll-smooth!">
       <body
         className={`${jetbrainsMono.variable} ${outfit.variable} font-sans bg-background text-foreground relative pt-28 sm:pt-36 min-h-screen overflow-x-hidden`}
       >
         {/* Ambient background gradient - subtle version for light mode */}
-        <div className="fixed inset-0 -z-20 bg-gradient-to-b from-background via-background to-background" />
+        <div className="fixed inset-0 -z-20 bg-linear-to-b from-background via-background to-background" />
         
         {/* Neon accent glows - positioned for visual interest */}
-        <div className="fixed top-[-20%] right-[-10%] -z-10 h-[40rem] w-[40rem] rounded-full bg-neon-cyan/5 blur-[120px] dark:bg-neon-cyan/10" />
-        <div className="fixed bottom-[-20%] left-[-10%] -z-10 h-[40rem] w-[40rem] rounded-full bg-neon-magenta/5 blur-[120px] dark:bg-neon-magenta/10" />
+        <div className="fixed top-[-20%] right-[-10%] -z-10 h-160 w-160 rounded-full bg-neon-cyan/5 blur-[120px] dark:bg-neon-cyan/10" />
+        <div className="fixed bottom-[-20%] left-[-10%] -z-10 h-160 w-160 rounded-full bg-neon-magenta/5 blur-[120px] dark:bg-neon-magenta/10" />
         
         {/* Interactive particle background */}
         <Particles
@@ -57,7 +57,7 @@ export default function RootLayout({
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
             {/* Scroll progress indicator */}
-            <ScrollProgress className="fixed top-0 left-0 right-0 z-[1000] h-[2px] bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta" />
+            <ScrollProgress className="fixed top-0 left-0 right-0 z-1000 h-[2px] bg-linear-to-r from-neon-cyan via-neon-purple to-neon-magenta" />
             
             <Header />
             {children}

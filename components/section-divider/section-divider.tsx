@@ -15,7 +15,7 @@ export default function SectionDivider() {
       {/* Dot pattern with gradient fade */}
       <DotPattern
         className={cn(
-          '[mask-image:radial-gradient(ellipse_at_center,white_30%,transparent_70%)]',
+          'mask-[radial-gradient(ellipse_at_center,white_30%,transparent_70%)]',
           'opacity-40 dark:opacity-30'
         )}
         width={16}
@@ -24,7 +24,7 @@ export default function SectionDivider() {
       />
       
       {/* Center gradient line */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />
     </motion.div>
   );
 }

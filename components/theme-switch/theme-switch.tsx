@@ -11,14 +11,14 @@ export default function ThemeSwitch() {
   return (
     <motion.button
       className={cn(
-        'fixed bottom-5 right-5 z-[999]',
+        'fixed bottom-5 right-5 z-999',
         'h-12 w-12 rounded-full',
         'bg-card border border-border backdrop-blur-xl',
         'flex items-center justify-center',
         'text-muted-foreground hover:text-primary',
         'hover:border-primary/30',
         'hover:shadow-glow-cyan transition-all duration-300',
-        'focus:outline-none focus:ring-2 focus:ring-primary/50'
+        'focus:outline-hidden focus:ring-2 focus:ring-primary/50'
       )}
       onClick={toggle}
       initial={{ scale: 0, rotate: -180 }}

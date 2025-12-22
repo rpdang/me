@@ -13,7 +13,7 @@ export default function Education() {
     <section
       ref={ref}
       id="education"
-      className="scroll-mt-28 mb-28 sm:mb-40 max-w-[50rem] mx-auto px-4"
+      className="scroll-mt-28 mb-28 sm:mb-40 max-w-200 mx-auto px-4"
     >
       <BlurFade delay={0.1} inView>
         <SectionHeading>Education</SectionHeading>

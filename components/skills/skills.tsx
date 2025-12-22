@@ -45,7 +45,7 @@ export default function Skills() {
     <section
       ref={ref}
       id="skills"
-      className="mb-28 max-w-[50rem] scroll-mt-28 text-center sm:mb-40 mx-auto px-4"
+      className="mb-28 max-w-200 scroll-mt-28 text-center sm:mb-40 mx-auto px-4"
     >
       <BlurFade delay={0.1} inView>
         <SectionHeading>Technologies I've Worked With</SectionHeading>

@@ -12,7 +12,7 @@ export default function Home() {
     <section
       ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-28 max-w-200 text-center sm:mb-0 scroll-mt-400"
     >
       <Avatar />
       <IntroText />

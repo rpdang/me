@@ -11,11 +11,11 @@ export default function Footer() {
   return (
     <footer className="relative mt-20 pb-10">
       {/* Gradient fade from content to footer */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-transparent to-background pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto px-4">
         {/* Divider line */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-10" />
+        <div className="w-full h-px bg-linear-to-r from-transparent via-border to-transparent mb-10" />
 
         <div className="flex flex-col items-center gap-6">
           {/* Social links */}
