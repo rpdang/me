@@ -1,4 +1,5 @@
 import About from '@/components/about';
+import Contact from '@/components/contact';
 import Education from '@/components/education';
 import Experience from '@/components/experiences';
 import Home from '@/components/home';
@@ -11,12 +12,12 @@ export default function Page() {
     <main className="flex flex-col items-center px-4">
       <Home />
       <SectionDivider />
-      <About />
+      <Experience />
       <Projects />
       <Skills />
-      <Experience />
+      <About />
       <Education />
-      {/* <Contact /> */}
+      <Contact />
     </main>
   );
 }

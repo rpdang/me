@@ -16,7 +16,7 @@ export default function Projects() {
       className="scroll-mt-28 mb-28 max-w-200 mx-auto px-4"
     >
       <BlurFade delay={0.1} inView>
-        <SectionHeading>My Projects</SectionHeading>
+        <SectionHeading>Projects</SectionHeading>
       </BlurFade>
 
       <BlurFade delay={0.2} inView>

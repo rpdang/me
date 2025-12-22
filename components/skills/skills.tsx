@@ -1,23 +1,13 @@
 "use client";
 
 import { BlurFade } from "@/components/ui/blur-fade";
-import { IconCloud } from "@/components/ui/icon-cloud";
 import { skillCategoriesData, SkillCategory } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
-import SectionHeading from "../section-heading/section-heading";
-import { MagicCard } from "@/components/ui/magic-card";
 import Image from "next/image";
+import SectionHeading from "../section-heading/section-heading";
 
-// Generate all skill images for IconCloud from categories
-const allSkillImages = skillCategoriesData.flatMap((category) =>
-  category.skills.map(
-    (skill) =>
-      `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.slug}.svg`
-  )
-);
-
-// Skill category card component
+// Skill category card component - simplified horizontal layout
 function SkillCategoryCard({
   category,
   index,
@@ -26,45 +16,36 @@ function SkillCategoryCard({
   index: number;
 }) {
   return (
-    <BlurFade delay={0.3 + index * 0.1} inView>
-      <MagicCard
-        className="p-5 rounded-xl h-full"
-        gradientSize={180}
-        gradientColor="rgba(184, 90, 50, 0.04)"
-      >
-        <div className="text-left">
-          <h3 className="font-display text-base font-semibold text-foreground mb-0.5">
-            {category.name}
-          </h3>
-          <p className="text-[10px] text-muted-foreground mb-3 font-mono uppercase tracking-wider">
-            {category.description}
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {category.skills.map((skill, i) => (
-              <motion.div
-                key={skill.name}
-                className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-secondary/50 border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-colors"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.05 * i }}
-                whileHover={{ scale: 1.03 }}
-              >
-                <Image
-                  src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.slug}.svg`}
-                  alt={skill.name}
-                  width={14}
-                  height={14}
-                  className="opacity-80 dark:invert"
-                />
-                <span className="text-[11px] font-mono text-muted-foreground">
-                  {skill.name}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+    <BlurFade delay={0.1 + index * 0.05} inView>
+      <div className="text-left">
+        <h3 className="font-display text-sm font-semibold text-foreground mb-2">
+          {category.name}
+        </h3>
+        <div className="flex flex-wrap gap-2">
+          {category.skills.map((skill, i) => (
+            <motion.div
+              key={skill.name}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-secondary/40 border border-border/40 hover:border-primary/30 hover:bg-primary/5 transition-colors"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.03 * i }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <Image
+                src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.slug}.svg`}
+                alt={skill.name}
+                width={16}
+                height={16}
+                className="opacity-80 dark:invert"
+              />
+              <span className="text-xs font-mono text-muted-foreground">
+                {skill.name}
+              </span>
+            </motion.div>
+          ))}
         </div>
-      </MagicCard>
+      </div>
     </BlurFade>
   );
 }
@@ -82,22 +63,14 @@ export default function Skills() {
         <SectionHeading>Technologies I've Worked With</SectionHeading>
       </BlurFade>
 
-      <BlurFade delay={0.3} inView>
-        <div className="relative flex justify-center items-center mb-10">
-          {/* Gradient glow behind the cloud */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-80 h-80 bg-gradient-radial from-primary/20 via-accent/10 to-transparent blur-3xl opacity-50" />
-          </div>
-
-          {/* Icon Cloud */}
-          <div className="relative z-10">
-            <IconCloud images={allSkillImages} />
-          </div>
-        </div>
+      <BlurFade delay={0.15} inView>
+        <p className="text-muted-foreground text-center mb-8 max-w-lg mx-auto text-sm">
+          A selection of tools and technologies I've used.
+        </p>
       </BlurFade>
 
-      {/* Category cards grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+      {/* Simplified grid layout - scannable in 3 seconds */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {skillCategoriesData.map((category, index) => (
           <SkillCategoryCard
             key={category.name}

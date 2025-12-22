@@ -12,7 +12,8 @@ import {
   HiCode,
   HiLightningBolt,
   HiBriefcase,
-  HiAcademicCap
+  HiAcademicCap,
+  HiMail
 } from 'react-icons/hi';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -22,6 +23,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Skills: HiLightningBolt,
   Experience: HiBriefcase,
   Education: HiAcademicCap,
+  Contact: HiMail,
 };
 
 export default function Header() {

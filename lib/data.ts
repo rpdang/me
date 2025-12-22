@@ -1,4 +1,3 @@
-import culinaro from "@/public/culinario.png";
 import leya from "@/public/leya.png";
 import lokasa from "@/public/lokasa.png";
 import poodl from "@/public/poodl.png";
@@ -13,8 +12,8 @@ export const links = [
     hash: "#home",
   },
   {
-    name: "About",
-    hash: "#about",
+    name: "Experience",
+    hash: "#experience",
   },
   {
     name: "Projects",
@@ -25,12 +24,16 @@ export const links = [
     hash: "#skills",
   },
   {
-    name: "Experience",
-    hash: "#experience",
+    name: "About",
+    hash: "#about",
   },
   {
     name: "Education",
     hash: "#education",
+  },
+  {
+    name: "Contact",
+    hash: "#contact",
   },
 ] as const;
 
@@ -76,7 +79,7 @@ export const experiencesData: Experience[] = [
   },
   {
     title: "Founding Software Engineer",
-    company: "Leya AI (YC W24)",
+    company: "Legora (Leya AI, YC W24)",
     location: "Stockholm, Sweden",
     icon: React.createElement(HiDesktopComputer),
     date: "Jul 2023 - Nov 2023",
@@ -155,7 +158,6 @@ export const projectsData = [
       "Tracks brand visibility across ChatGPT, Claude, Gemini, and Perplexity with real-time analytics and alerts.",
     tags: ["Next.js", "TypeScript", "Tailwind", "AI", "Analytics"],
     imageUrl: poodl,
-    demoUrl: "https://poodl.io",
   },
   {
     title: "Legora (Leya AI YC W24)",
@@ -174,13 +176,6 @@ export const projectsData = [
     imageUrl: leya,
     demoUrl: "https://www.legora.com",
   },
-  {
-    title: "Discover Local Restaurants",
-    description:
-      "Android app dedicated to discorvering hidden gems among local restaurants.",
-    tags: ["Android", "Java", "Kotlin"],
-    imageUrl: culinaro,
-  },
 ] as const;
 
 export type SkillCategory = {
@@ -195,6 +190,8 @@ export const skillCategoriesData: SkillCategory[] = [
     description: "Programming languages",
     skills: [
       { name: "Java", slug: "java/java-original" },
+      { name: "Kotlin", slug: "kotlin/kotlin-original" },
+      { name: "JavaScript", slug: "javascript/javascript-original" },
       { name: "TypeScript", slug: "typescript/typescript-original" },
       { name: "Python", slug: "python/python-original" },
       { name: "Go", slug: "go/go-original-wordmark" },
@@ -207,6 +204,10 @@ export const skillCategoriesData: SkillCategory[] = [
       { name: "Next.js", slug: "nextjs/nextjs-original" },
       { name: "React", slug: "react/react-original" },
       { name: "Node.js", slug: "nodejs/nodejs-original" },
+      { name: "Express", slug: "express/express-original" },
+      { name: "Fastify", slug: "fastify/fastify-original" },
+      { name: "Spring", slug: "spring/spring-original" },
+      { name: "FastAPI", slug: "fastapi/fastapi-original" },
       { name: "Tailwind", slug: "tailwindcss/tailwindcss-original" },
     ],
   },
@@ -218,25 +219,23 @@ export const skillCategoriesData: SkillCategory[] = [
       { name: "MySQL", slug: "mysql/mysql-original" },
       { name: "MongoDB", slug: "mongodb/mongodb-original" },
       { name: "Elasticsearch", slug: "elasticsearch/elasticsearch-original" },
+      { name: "Redis", slug: "redis/redis-original" },
+      { name: "Supabase", slug: "supabase/supabase-original" },
+      { name: "Firebase", slug: "firebase/firebase-original" },
     ],
   },
   {
-    name: "DevOps",
-    description: "Infrastructure & deployment",
+    name: "Cloud & DevOps",
+    description: "Infrastructure",
     skills: [
+      {
+        name: "AWS",
+        slug: "amazonwebservices/amazonwebservices-original-wordmark",
+      },
+      { name: "Azure", slug: "azure/azure-original" },
       { name: "Docker", slug: "docker/docker-original" },
       { name: "Kubernetes", slug: "kubernetes/kubernetes-original" },
-      { name: "Firebase", slug: "firebase/firebase-original" },
-      { name: "Supabase", slug: "supabase/supabase-original" },
-    ],
-  },
-  {
-    name: "AI & ML",
-    description: "Machine learning tools",
-    skills: [
-      { name: "OpenAI", slug: "openai/openai-original" },
-      { name: "Langchain", slug: "langchain/langchain-original" },
-      { name: "Weaviate", slug: "weaviate/weaviate-original" },
+      { name: "Terraform", slug: "terraform/terraform-original" },
     ],
   },
   {
@@ -244,8 +243,9 @@ export const skillCategoriesData: SkillCategory[] = [
     description: "Development tools",
     skills: [
       { name: "Git", slug: "git/git-original" },
-      { name: "Azure", slug: "azure/azure-original" },
-      { name: "MapLibre", slug: "maplibre/maplibre-original" },
+      { name: "GitHub", slug: "github/github-original" },
+      { name: "Kafka", slug: "apachekafka/apachekafka-original" },
+      { name: "GraphQL", slug: "graphql/graphql-plain" },
     ],
   },
 ];
