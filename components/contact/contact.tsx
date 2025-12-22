@@ -1,12 +1,12 @@
 "use client";
 
 import { BlurFade } from "@/components/ui/blur-fade";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
 import { BsLinkedin } from "react-icons/bs";
-import { HiMail, HiCalendar } from "react-icons/hi";
+import { HiCalendar, HiMail } from "react-icons/hi";
 import SectionHeading from "../section-heading";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 // Abstract decorative shapes component
 function ArtisticShapes() {
@@ -14,7 +14,7 @@ function ArtisticShapes() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
       {/* Large soft blob - top left */}
       <motion.div
-        className="absolute -top-20 -left-32 w-80 h-80 rounded-full opacity-[0.08] dark:opacity-[0.12]"
+        className="absolute -top-20 -left-32 w-80 h-80 rounded-full opacity-[0.2] dark:opacity-[0.12]"
         style={{
           background:
             "radial-gradient(circle at 30% 30%, hsl(16 60% 45%) 0%, hsl(350 45% 35%) 50%, transparent 70%)",
@@ -33,7 +33,7 @@ function ArtisticShapes() {
 
       {/* Medium blob - top right */}
       <motion.div
-        className="absolute -top-10 -right-20 w-60 h-60 rounded-full opacity-[0.06] dark:opacity-[0.1]"
+        className="absolute -top-10 -right-20 w-60 h-60 rounded-full opacity-[0.15] dark:opacity-[0.1]"
         style={{
           background:
             "radial-gradient(circle at 70% 40%, hsl(45 40% 65%) 0%, hsl(16 60% 45%) 60%, transparent 75%)",
@@ -53,7 +53,7 @@ function ArtisticShapes() {
 
       {/* Small accent blob - bottom left */}
       <motion.div
-        className="absolute bottom-10 left-10 w-32 h-32 rounded-full opacity-[0.1] dark:opacity-[0.15]"
+        className="absolute bottom-10 left-10 w-32 h-32 rounded-full opacity-[0.25] dark:opacity-[0.15]"
         style={{
           background:
             "radial-gradient(circle, hsl(350 45% 35%) 0%, transparent 70%)",
@@ -72,7 +72,7 @@ function ArtisticShapes() {
 
       {/* Small gold accent - bottom right */}
       <motion.div
-        className="absolute bottom-20 right-20 w-24 h-24 rounded-full opacity-[0.08] dark:opacity-[0.12]"
+        className="absolute bottom-20 right-20 w-24 h-24 rounded-full opacity-[0.2] dark:opacity-[0.12]"
         style={{
           background:
             "radial-gradient(circle, hsl(45 60% 55%) 0%, transparent 70%)",
@@ -91,7 +91,7 @@ function ArtisticShapes() {
 
       {/* Decorative lines */}
       <svg
-        className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-full opacity-[0.04] dark:opacity-[0.08]"
+        className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-full opacity-[0.12] dark:opacity-[0.08]"
         viewBox="0 0 800 400"
         preserveAspectRatio="xMidYMid slice"
       >
@@ -123,8 +123,7 @@ function ArtisticShapes() {
           style={{
             left: `${15 + i * 15}%`,
             top: `${20 + (i % 3) * 25}%`,
-            background:
-              i % 2 === 0 ? "hsl(16 60% 45%)" : "hsl(350 45% 35%)",
+            background: i % 2 === 0 ? "hsl(16 60% 45%)" : "hsl(350 45% 35%)",
             opacity: 0.15,
           }}
           animate={{
@@ -150,7 +149,7 @@ export default function Contact() {
     <section
       ref={ref}
       id="contact"
-      className="relative mb-28 max-w-200 scroll-mt-28 text-center sm:mb-40 mx-auto px-4"
+      className="relative mb-28 max-w-200 scroll-mt-28 text-center sm:mb-40 mx-auto px-8 sm:px-16 py-12 sm:py-16 rounded-3xl bg-card/50 border border-border/50 backdrop-blur-sm overflow-hidden"
     >
       <ArtisticShapes />
       <BlurFade delay={0.1} inView>

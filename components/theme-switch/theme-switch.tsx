@@ -2,11 +2,22 @@
 
 import { useTheme } from '@/context/theme-context';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { cn } from '@/lib/utils';
 
 export default function ThemeSwitch() {
   const { theme, toggle } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Only render theme-dependent content after mounting to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <motion.button

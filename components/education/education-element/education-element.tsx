@@ -2,7 +2,6 @@
 
 import { Education } from '@/lib/data';
 import { cn } from '@/lib/utils';
-import { useTheme } from '@/context/theme-context';
 import { HiExternalLink } from 'react-icons/hi';
 import Image from 'next/image';
 
@@ -13,7 +12,6 @@ type EducationProps = {
 export default function EducationElement({
   education: { institution, date, degree, location, description, link },
 }: EducationProps) {
-  const { theme } = useTheme();
   // Check if it's a KTH education to show logo
   const isKTH = institution.toLowerCase().includes('kth');
 
@@ -31,12 +29,21 @@ export default function EducationElement({
         <div className="flex items-start justify-between mb-4">
           {isKTH && (
             <div className="w-10 h-10 rounded overflow-hidden shrink-0">
+              {/* Light mode logo */}
               <Image
-                src={theme === "dark" ? "/logos/kth_white.svg" : "/logos/kth.svg"}
+                src="/logos/kth.svg"
                 alt="KTH Royal Institute of Technology"
                 width={40}
                 height={40}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain dark:hidden"
+              />
+              {/* Dark mode logo */}
+              <Image
+                src="/logos/kth_white.svg"
+                alt="KTH Royal Institute of Technology"
+                width={40}
+                height={40}
+                className="w-full h-full object-contain hidden dark:block"
               />
             </div>
           )}

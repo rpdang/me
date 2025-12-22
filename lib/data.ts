@@ -156,7 +156,16 @@ export const projectsData = [
     title: "AI GEO Tracking Platform",
     description:
       "Tracks brand visibility across ChatGPT, Claude, Gemini, and Perplexity with real-time analytics and alerts.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "AI", "Analytics"],
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "OpenAI",
+      "Langchain",
+      "Gemini",
+      "Perplexity",
+      "Analytics",
+    ],
     imageUrl: poodl,
   },
   {
