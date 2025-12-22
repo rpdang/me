@@ -6,12 +6,73 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import ThemeContextProvider from "@/context/theme-context";
 import { Analytics } from "@vercel/analytics/react";
+import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL("https://robindang.me"),
   title: "Robin Dang | Software Engineer",
-  description: "Robin Dang's portfolio - Software Engineer & Technical Lead",
+  description:
+    "Robin Dang's portfolio - Software Engineer & Technical Lead with experience at Uber, Booking.com, and startups.",
+  keywords: [
+    "Software Engineer",
+    "Full Stack Developer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Robin Dang",
+  ],
+  authors: [{ name: "Robin Dang" }],
+  creator: "Robin Dang",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://robindang.me",
+    title: "Robin Dang | Software Engineer",
+    description:
+      "Software Engineer & Technical Lead with experience at Uber, Booking.com, and startups.",
+    siteName: "Robin Dang Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Robin Dang | Software Engineer",
+    description:
+      "Software Engineer & Technical Lead with experience at Uber, Booking.com, and startups.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Robin Dang",
+  jobTitle: "Software Engineer",
+  description: "Software Engineer & Technical Lead",
+  url: "https://robindang.me",
+  sameAs: [
+    "https://github.com/rpdang",
+    "https://linkedin.com/in/robin-dang",
+  ],
+  knowsAbout: [
+    "Software Engineering",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Java",
+    "Python",
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "Uber",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "KTH Royal Institute of Technology",
+  },
 };
 
 export default function RootLayout({
@@ -22,6 +83,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth!">
       <body className="font-sans bg-background text-foreground relative pt-28 sm:pt-36 min-h-screen overflow-x-hidden">
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         {/* Clean editorial background */}
         <div className="fixed inset-0 -z-20 bg-background" />
 

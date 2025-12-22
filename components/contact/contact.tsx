@@ -8,6 +8,141 @@ import { HiMail, HiCalendar } from "react-icons/hi";
 import SectionHeading from "../section-heading";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
+// Abstract decorative shapes component
+function ArtisticShapes() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+      {/* Large soft blob - top left */}
+      <motion.div
+        className="absolute -top-20 -left-32 w-80 h-80 rounded-full opacity-[0.08] dark:opacity-[0.12]"
+        style={{
+          background:
+            "radial-gradient(circle at 30% 30%, hsl(16 60% 45%) 0%, hsl(350 45% 35%) 50%, transparent 70%)",
+        }}
+        animate={{
+          scale: [1, 1.05, 1],
+          x: [0, 10, 0],
+          y: [0, -10, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Medium blob - top right */}
+      <motion.div
+        className="absolute -top-10 -right-20 w-60 h-60 rounded-full opacity-[0.06] dark:opacity-[0.1]"
+        style={{
+          background:
+            "radial-gradient(circle at 70% 40%, hsl(45 40% 65%) 0%, hsl(16 60% 45%) 60%, transparent 75%)",
+        }}
+        animate={{
+          scale: [1, 1.08, 1],
+          x: [0, -15, 0],
+          y: [0, 8, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+      />
+
+      {/* Small accent blob - bottom left */}
+      <motion.div
+        className="absolute bottom-10 left-10 w-32 h-32 rounded-full opacity-[0.1] dark:opacity-[0.15]"
+        style={{
+          background:
+            "radial-gradient(circle, hsl(350 45% 35%) 0%, transparent 70%)",
+        }}
+        animate={{
+          scale: [1, 1.1, 1],
+          y: [0, -5, 0],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.5,
+        }}
+      />
+
+      {/* Small gold accent - bottom right */}
+      <motion.div
+        className="absolute bottom-20 right-20 w-24 h-24 rounded-full opacity-[0.08] dark:opacity-[0.12]"
+        style={{
+          background:
+            "radial-gradient(circle, hsl(45 60% 55%) 0%, transparent 70%)",
+        }}
+        animate={{
+          scale: [1, 1.15, 1],
+          x: [0, -8, 0],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+      />
+
+      {/* Decorative lines */}
+      <svg
+        className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-full opacity-[0.04] dark:opacity-[0.08]"
+        viewBox="0 0 800 400"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <motion.path
+          d="M-50,200 Q200,100 400,200 T850,200"
+          stroke="hsl(16 60% 45%)"
+          strokeWidth="1"
+          fill="none"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+        />
+        <motion.path
+          d="M-50,220 Q200,320 400,220 T850,220"
+          stroke="hsl(350 45% 35%)"
+          strokeWidth="0.5"
+          fill="none"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 2.5, ease: "easeOut", delay: 0.3 }}
+        />
+      </svg>
+
+      {/* Small floating dots */}
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 rounded-full"
+          style={{
+            left: `${15 + i * 15}%`,
+            top: `${20 + (i % 3) * 25}%`,
+            background:
+              i % 2 === 0 ? "hsl(16 60% 45%)" : "hsl(350 45% 35%)",
+            opacity: 0.15,
+          }}
+          animate={{
+            y: [0, -10, 0],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 4 + i,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.5,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Contact() {
   const { ref } = useSectionInView("Contact");
 
@@ -15,8 +150,9 @@ export default function Contact() {
     <section
       ref={ref}
       id="contact"
-      className="mb-28 max-w-200 scroll-mt-28 text-center sm:mb-40 mx-auto px-4"
+      className="relative mb-28 max-w-200 scroll-mt-28 text-center sm:mb-40 mx-auto px-4"
     >
+      <ArtisticShapes />
       <BlurFade delay={0.1} inView>
         <SectionHeading>Let's Build Something Together</SectionHeading>
       </BlurFade>
