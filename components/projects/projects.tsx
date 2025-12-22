@@ -2,12 +2,13 @@
 
 import { BlurFade } from "@/components/ui/blur-fade";
 import { projectsData } from "@/lib/data";
-import { useSectionInView } from "@/lib/hooks";
+import { useIsMobile, useSectionInView } from "@/lib/hooks";
 import SectionHeading from "../section-heading";
 import ProjectElement from "./project-element";
 
 export default function Projects() {
-  const { ref } = useSectionInView("Projects");
+  const isMobile = useIsMobile();
+  const { ref } = useSectionInView("Projects", isMobile ? 0.3 : 0.5);
 
   return (
     <section

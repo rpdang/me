@@ -2,7 +2,7 @@
 
 import { BlurFade } from "@/components/ui/blur-fade";
 import { skillCategoriesData, SkillCategory } from "@/lib/data";
-import { useSectionInView } from "@/lib/hooks";
+import { useIsMobile, useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionHeading from "../section-heading/section-heading";
@@ -51,7 +51,8 @@ function SkillCategoryCard({
 }
 
 export default function Skills() {
-  const { ref } = useSectionInView("Skills");
+  const isMobile = useIsMobile();
+  const { ref } = useSectionInView("Skills", isMobile ? 0.3 : 0.5);
 
   return (
     <section

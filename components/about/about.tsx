@@ -3,12 +3,13 @@
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { MagicCard } from "@/components/ui/magic-card";
-import { useSectionInView } from "@/lib/hooks";
+import { useIsMobile, useSectionInView } from "@/lib/hooks";
 import Image from "next/image";
 import SectionHeading from "../section-heading";
 
 export default function About() {
-  const { ref } = useSectionInView("About", 0.75);
+  const isMobile = useIsMobile();
+  const { ref } = useSectionInView("About", isMobile ? 0.4 : 0.75);
 
   return (
     <section id="about" ref={ref} className="mb-28 max-w-200 scroll-mt-28 px-4">

@@ -1,12 +1,13 @@
 'use client';
 
-import { useSectionInView } from '@/lib/hooks';
+import { useIsMobile, useSectionInView } from '@/lib/hooks';
 import Avatar from './avatar';
 import ConnectSection from './connect-section';
 import IntroText from './intro-text';
 
 export default function Home() {
-  const { ref } = useSectionInView('Home', 0.75);
+  const isMobile = useIsMobile();
+  const { ref } = useSectionInView('Home', isMobile ? 0.4 : 0.75);
 
   return (
     <section

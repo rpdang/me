@@ -219,6 +219,29 @@
   }
 }
 
+/* Rainbow Button Animation */
+@keyframes rainbow {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+@utility animate-rainbow {
+  animation: rainbow var(--speed, 2s) infinite linear;
+}
+
+/* Rainbow Button Color Variables */
+:root {
+  --color-1: 0deg 100% 63%;
+  --color-2: 270deg 100% 63%;
+  --color-3: 210deg 100% 63%;
+  --color-4: 195deg 100% 63%;
+  --color-5: 90deg 100% 63%;
+}
+
 /* Shimmer Button Keyframes - must be outside @theme for runtime CSS variables */
 @keyframes shimmer-slide {
   to {
