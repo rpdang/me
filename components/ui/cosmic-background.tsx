@@ -190,7 +190,7 @@ export function CosmicBackground({
       particles: Particle[],
       isDark: boolean
     ) => {
-      const opacityMultiplier = isDark ? 0.15 : 0.3;
+      const opacityMultiplier = isDark ? 0.25 : 0.4;
 
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {

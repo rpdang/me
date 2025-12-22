@@ -19,10 +19,12 @@ export default function About() {
 
       <BlurFade delay={0.2} inView>
         <MagicCard
-          className="max-w-180 mx-auto rounded-lg border border-border p-6"
-          gradientSize={300}
-          gradientColor="rgba(184, 90, 50, 0.04)"
-          gradientOpacity={0.5}
+          className="max-w-180 mx-auto rounded-lg p-6"
+          gradientSize={400}
+          gradientColor="rgba(184, 90, 50, 0.15)"
+          gradientOpacity={0.8}
+          gradientFrom="#b85a32"
+          gradientTo="#822e3a"
         >
           <div className="text-center leading-8 space-y-4">
             <BlurFade delay={0.3} inView>

@@ -19,10 +19,10 @@ export function MagicCard({
   children,
   className,
   gradientSize = 200,
-  gradientColor = "rgba(184, 90, 50, 0.06)",
-  gradientOpacity = 0.6,
-  gradientFrom = "hsl(var(--primary))",
-  gradientTo = "hsl(var(--accent))",
+  gradientColor = "#262626",
+  gradientOpacity = 0.8,
+  gradientFrom = "#9E7AFF",
+  gradientTo = "#FE8BBB",
 }: MagicCardProps) {
   const mouseX = useMotionValue(-gradientSize)
   const mouseY = useMotionValue(-gradientSize)
@@ -63,26 +63,26 @@ export function MagicCard({
 
     return () => {
       window.removeEventListener("pointerout", handleGlobalPointerOut)
-      window.removeEventListener("blur-sm", reset)
+      window.removeEventListener("blur", reset)
       document.removeEventListener("visibilitychange", handleVisibility)
     }
   }, [reset])
 
   return (
     <div
-      className={cn("group relative flex flex-col rounded-[inherit]", className)}
+      className={cn("group relative rounded-[inherit]", className)}
       onPointerMove={handlePointerMove}
       onPointerLeave={reset}
       onPointerEnter={reset}
     >
       <motion.div
-        className="bg-border pointer-events-none absolute inset-0 rounded-[inherit] duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 rounded-[inherit]"
         style={{
           background: useMotionTemplate`
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
           ${gradientFrom},
           ${gradientTo},
-          var(--border) 100%
+          hsl(var(--border)) 100%
           )
           `,
         }}
@@ -97,7 +97,7 @@ export function MagicCard({
           opacity: gradientOpacity,
         }}
       />
-      <div className="relative flex-1">{children}</div>
+      <div className="relative">{children}</div>
     </div>
   )
 }

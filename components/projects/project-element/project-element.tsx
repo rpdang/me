@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
 import { MagicCard } from '@/components/ui/magic-card';
+import { DotPattern } from '@/components/ui/dot-pattern';
 import { HiExternalLink } from 'react-icons/hi';
 
 type ProjectProps = (typeof projectsData)[number];
@@ -39,7 +40,15 @@ export default function ProjectElement({
         gradientColor="rgba(184, 90, 50, 0.06)"
         gradientOpacity={0.6}
       >
-        <div className="relative sm:h-88 overflow-hidden rounded-lg bg-card">
+        <div className="relative sm:h-88 overflow-hidden rounded-lg bg-card border border-border hover:border-primary/30 editorial-shadow hover:editorial-shadow-hover transition-all duration-300">
+          {/* Subtle dot pattern background */}
+          <DotPattern
+            className="[mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)] text-primary/30 dark:text-primary/25"
+            width={20}
+            height={20}
+            cr={1}
+          />
+
           {/* Editorial accent line on hover */}
           <div className="absolute top-0 left-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
 

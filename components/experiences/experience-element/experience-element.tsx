@@ -1,5 +1,6 @@
 "use client";
 
+import { ShineBorder } from "@/components/ui/shine-border";
 import { Experience } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -16,24 +17,27 @@ export default function ExperienceElement({
   isLast = false,
 }: ExperienceProps) {
   return (
-    <div
-      className={cn(
-        "relative flex gap-4 sm:gap-6 pl-0",
-        !isLast && "pb-8"
-      )}
-    >
+    <div className={cn("relative flex gap-4 sm:gap-6 pl-0", !isLast && "pb-8")}>
       {/* Timeline dot & logo */}
-      <div className="relative flex-shrink-0 z-10">
+      <div className="relative shrink-0 z-10">
         <div
           className={cn(
             "relative flex items-center justify-center rounded-xl transition-all duration-300",
             "w-12 h-12 sm:w-16 sm:h-16",
-            "bg-card border-2",
+            "bg-card",
             isFirst
-              ? "border-primary/40 shadow-md shadow-primary/10"
-              : "border-border hover:border-primary/20"
+              ? "shadow-md shadow-primary/10"
+              : "border-2 border-border hover:border-primary/20"
           )}
         >
+          {/* Shine border effect for current position */}
+          {isFirst && (
+            <ShineBorder
+              shineColor={["hsl(16, 60%, 45%)", "hsl(350, 45%, 35%)"]}
+              borderWidth={2}
+              duration={10}
+            />
+          )}
           {logo ? (
             <Image
               src={logo}
@@ -76,7 +80,7 @@ export default function ExperienceElement({
           </div>
 
           {/* Date badge */}
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             {isFirst && (
               <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-mono text-[10px] uppercase tracking-wider bg-primary/10 text-primary border border-primary/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
@@ -92,7 +96,7 @@ export default function ExperienceElement({
         {/* Location */}
         <p className="text-sm text-muted-foreground flex items-center gap-1.5 mt-1">
           <svg
-            className="w-3.5 h-3.5 opacity-60 flex-shrink-0"
+            className="w-3.5 h-3.5 opacity-60 shrink-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

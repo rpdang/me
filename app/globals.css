@@ -101,7 +101,7 @@
   --animate-scale-in: scaleIn 0.4s var(--ease-editorial-out) forwards;
   --animate-text-reveal: textReveal 0.8s var(--ease-editorial-out) forwards;
   --animate-underline: underlineExpand 0.3s var(--ease-editorial-out) forwards;
-  --animate-shine: shine var(--duration) infinite linear;
+  --animate-shine: shine var(--duration, 14s) infinite linear;
   --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
 
   @keyframes shine {
@@ -541,4 +541,11 @@
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary) / 0.5);
   }
+}
+
+/* View Transitions API - Theme Toggle Animation */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
