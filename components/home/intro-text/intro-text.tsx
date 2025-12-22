@@ -21,8 +21,25 @@ export default function IntroText() {
           delay={300}
           animateOnHover={true}
         >
-          Robin Dang
+          ROBIN DANG
         </HyperText>
+      </motion.div>
+
+      {/* Role with gradient text - Editorial warm tones */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        className="mb-4"
+      >
+        <AnimatedGradientText
+          className="text-xl sm:text-3xl font-display font-medium tracking-tight"
+          colorFrom="#b85a32"
+          colorTo="#822e3a"
+          speed={0.5}
+        >
+          Software Engineer
+        </AnimatedGradientText>
       </motion.div>
 
       {/* Social proof tagline */}
@@ -35,23 +52,6 @@ export default function IntroText() {
         <span className="text-sm sm:text-base font-mono text-muted-foreground tracking-wide">
           Currently @Uber | Ex-Booking.com, Legora (Leya AI YC W24)
         </span>
-      </motion.div>
-
-      {/* Role with gradient text - Editorial warm tones */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        className="mb-6"
-      >
-        <AnimatedGradientText
-          className="text-xl sm:text-2xl font-display font-medium tracking-tight"
-          colorFrom="#b85a32"
-          colorTo="#822e3a"
-          speed={0.5}
-        >
-          Software Engineer
-        </AnimatedGradientText>
       </motion.div>
 
       {/* Intro paragraph with animated text */}

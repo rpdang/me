@@ -1,15 +1,16 @@
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import ThemeSwitch from '@/components/theme-switch';
-import ActiveSectionContextProvider from '@/context/active-section-context';
-import ThemeContextProvider from '@/context/theme-context';
-import { Toaster } from 'react-hot-toast';
-import { Analytics } from '@vercel/analytics/react';
-import { ScrollProgress } from '@/components/ui/scroll-progress';
-import './globals.css';
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import ThemeSwitch from "@/components/theme-switch";
+import { CosmicBackground } from "@/components/ui/cosmic-background";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import ActiveSectionContextProvider from "@/context/active-section-context";
+import ThemeContextProvider from "@/context/theme-context";
+import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "react-hot-toast";
+import "./globals.css";
 
 export const metadata = {
-  title: 'Robin Dang | Software Engineer',
+  title: "Robin Dang | Software Engineer",
   description: "Robin Dang's portfolio - Software Engineer & Technical Lead",
 };
 
@@ -20,9 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth!">
-      <body
-        className="font-sans bg-background text-foreground relative pt-28 sm:pt-36 min-h-screen overflow-x-hidden"
-      >
+      <body className="font-sans bg-background text-foreground relative pt-28 sm:pt-36 min-h-screen overflow-x-hidden">
         {/* Clean editorial background */}
         <div className="fixed inset-0 -z-20 bg-background" />
 
@@ -34,11 +33,15 @@ export default function RootLayout({
           }}
         />
 
+        {/* Cosmic particle background */}
+        <CosmicBackground className="fixed inset-0 -z-15" />
+
         {/* Subtle warm accent in corner - editorial style */}
         <div
           className="fixed -top-1/4 -right-1/4 w-[800px] h-[800px] -z-10 opacity-[0.02] dark:opacity-[0.03] pointer-events-none rounded-full"
           style={{
-            background: 'radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)',
+            background:
+              "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)",
           }}
         />
 
@@ -55,9 +58,9 @@ export default function RootLayout({
               position="top-right"
               toastOptions={{
                 style: {
-                  background: 'hsl(var(--card))',
-                  color: 'hsl(var(--card-foreground))',
-                  border: '1px solid hsl(var(--border))',
+                  background: "hsl(var(--card))",
+                  color: "hsl(var(--card-foreground))",
+                  border: "1px solid hsl(var(--border))",
                 },
               }}
             />
