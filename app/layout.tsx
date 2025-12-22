@@ -102,7 +102,7 @@ export default function RootLayout({
         />
 
         {/* Cosmic particle background */}
-        <CosmicBackground className="fixed inset-0 -z-15" />
+        <CosmicBackground className="fixed inset-0 -z-15" particleCount={100} />
 
         {/* Subtle warm accent in corner - editorial style */}
         <div

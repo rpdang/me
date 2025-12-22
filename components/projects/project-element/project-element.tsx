@@ -1,7 +1,7 @@
 'use client';
 
 import { projectsData } from '@/lib/data';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
 import { useRef } from 'react';
 import { MagicCard } from '@/components/ui/magic-card';

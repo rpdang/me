@@ -3,7 +3,7 @@
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { HyperText } from "@/components/ui/hyper-text";
 import { TextAnimate } from "@/components/ui/text-animate";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export default function IntroText() {
   return (

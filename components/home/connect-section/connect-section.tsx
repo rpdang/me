@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { FaGithubSquare } from 'react-icons/fa';
 import { HiArrowDown, HiCalendar } from 'react-icons/hi';
 import { ShimmerButton } from '@/components/ui/shimmer-button';

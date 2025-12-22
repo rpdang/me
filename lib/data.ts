@@ -191,6 +191,10 @@ export type SkillCategory = {
   name: string;
   description: string;
   skills: { name: string; slug: string }[];
+  gridClass?: string;
+  gradientFrom?: string;
+  gradientTo?: string;
+  featured?: boolean;
 };
 
 export const skillCategoriesData: SkillCategory[] = [
@@ -199,12 +203,17 @@ export const skillCategoriesData: SkillCategory[] = [
     description: "Programming languages",
     skills: [
       { name: "Java", slug: "java/java-original" },
+      { name: "C#", slug: "csharp/csharp-original" },
       { name: "Kotlin", slug: "kotlin/kotlin-original" },
       { name: "JavaScript", slug: "javascript/javascript-original" },
       { name: "TypeScript", slug: "typescript/typescript-original" },
       { name: "Python", slug: "python/python-original" },
       { name: "Go", slug: "go/go-original-wordmark" },
     ],
+    gridClass: "sm:col-span-2 lg:col-span-2",
+    gradientFrom: "#9E7AFF",
+    gradientTo: "#6366F1",
+    featured: true,
   },
   {
     name: "Frameworks",
@@ -219,19 +228,9 @@ export const skillCategoriesData: SkillCategory[] = [
       { name: "FastAPI", slug: "fastapi/fastapi-original" },
       { name: "Tailwind", slug: "tailwindcss/tailwindcss-original" },
     ],
-  },
-  {
-    name: "Databases",
-    description: "Data storage",
-    skills: [
-      { name: "PostgreSQL", slug: "postgresql/postgresql-original" },
-      { name: "MySQL", slug: "mysql/mysql-original" },
-      { name: "MongoDB", slug: "mongodb/mongodb-original" },
-      { name: "Elasticsearch", slug: "elasticsearch/elasticsearch-original" },
-      { name: "Redis", slug: "redis/redis-original" },
-      { name: "Supabase", slug: "supabase/supabase-original" },
-      { name: "Firebase", slug: "firebase/firebase-original" },
-    ],
+    gridClass: "sm:col-span-2 lg:col-span-1",
+    gradientFrom: "#06B6D4",
+    gradientTo: "#3B82F6",
   },
   {
     name: "Cloud & DevOps",
@@ -242,10 +241,28 @@ export const skillCategoriesData: SkillCategory[] = [
         slug: "amazonwebservices/amazonwebservices-original-wordmark",
       },
       { name: "Azure", slug: "azure/azure-original" },
+      { name: "Google Cloud", slug: "googlecloud/googlecloud-original" },
       { name: "Docker", slug: "docker/docker-original" },
       { name: "Kubernetes", slug: "kubernetes/kubernetes-original" },
       { name: "Terraform", slug: "terraform/terraform-original" },
     ],
+    gridClass: "lg:col-span-1",
+    gradientFrom: "#F59E0B",
+    gradientTo: "#EF4444",
+  },
+  {
+    name: "Databases",
+    description: "Data storage",
+    skills: [
+      { name: "PostgreSQL", slug: "postgresql/postgresql-original" },
+      { name: "MongoDB", slug: "mongodb/mongodb-original" },
+      { name: "Redis", slug: "redis/redis-original" },
+      { name: "Supabase", slug: "supabase/supabase-original" },
+      { name: "Elasticsearch", slug: "elasticsearch/elasticsearch-original" },
+    ],
+    gridClass: "lg:col-span-1",
+    gradientFrom: "#10B981",
+    gradientTo: "#14B8A6",
   },
   {
     name: "Tools",
@@ -253,9 +270,14 @@ export const skillCategoriesData: SkillCategory[] = [
     skills: [
       { name: "Git", slug: "git/git-original" },
       { name: "GitHub", slug: "github/github-original" },
-      { name: "Kafka", slug: "apachekafka/apachekafka-original" },
       { name: "GraphQL", slug: "graphql/graphql-plain" },
+      { name: "JetBrains", slug: "jetbrains/jetbrains-original" },
+      { name: "Jira", slug: "jira/jira-original" },
+      { name: "Notion", slug: "notion/notion-original" },
     ],
+    gridClass: "lg:col-span-1",
+    gradientFrom: "#EC4899",
+    gradientTo: "#8B5CF6",
   },
 ];
 

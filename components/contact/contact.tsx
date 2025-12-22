@@ -3,8 +3,9 @@
 import { BlurFade } from "@/components/ui/blur-fade";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+import { ShineBorder } from "@/components/ui/shine-border";
 import { useIsMobile, useSectionInView } from "@/lib/hooks";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { BsLinkedin } from "react-icons/bs";
 import { HiCalendar, HiMail } from "react-icons/hi";
 import SectionHeading from "../section-heading";
@@ -153,6 +154,11 @@ export default function Contact() {
       id="contact"
       className="relative mb-28 max-w-200 scroll-mt-28 text-center sm:mb-40 mx-auto px-8 sm:px-16 py-12 sm:py-16 rounded-3xl bg-card/50 border border-border/50 backdrop-blur-sm overflow-hidden"
     >
+      <ShineBorder
+        shineColor={["#9E7AFF", "#6366F1", "#EC4899"]}
+        borderWidth={1.5}
+        duration={10}
+      />
       <ArtisticShapes />
       <BlurFade delay={0.1} inView>
         <SectionHeading>Let's Build Something Together</SectionHeading>
@@ -192,7 +198,10 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <RainbowButton variant="outline" className="font-sans font-medium">
+              <RainbowButton
+                variant="outline"
+                className="font-sans font-medium"
+              >
                 <HiCalendar className="w-4 h-4 mr-2" />
                 Book a Call
               </RainbowButton>

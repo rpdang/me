@@ -3,7 +3,7 @@
 import { useActiveSectionContext } from '@/context/active-section-context';
 import { links } from '@/lib/data';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import { Dock, DockIcon } from '@/components/ui/dock';
 import {

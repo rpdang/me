@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from '@/context/theme-context';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useState, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { BsMoon, BsSun } from 'react-icons/bs';
