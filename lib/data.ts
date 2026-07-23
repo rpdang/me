@@ -1,5 +1,6 @@
 import leya from "@/public/leya.png";
 import lokasa from "@/public/lokasa.png";
+import loonar from "@/public/loonar.png";
 import poodl from "@/public/poodl.png";
 import React from "react";
 import { FaBook, FaGraduationCap } from "react-icons/fa";
@@ -60,13 +61,23 @@ export type Education = {
 
 export const experiencesData: Experience[] = [
   {
+    title: "Co-Founder & CTO",
+    company: "Loonar",
+    location: "Amsterdam, Netherlands",
+    icon: React.createElement(HiDesktopComputer),
+    date: "Feb 2026 - Present",
+    link: "https://loonar-ai.com",
+    logo: "/logos/loonar.svg",
+    gridClass: "md:col-span-2 md:row-span-2",
+  },
+  {
     title: "Software Engineer",
     company: "Uber",
     location: "Amsterdam, Netherlands",
     icon: React.createElement(HiDesktopComputer),
     date: "Oct 2024 - Present",
     logo: "/logos/uber.svg",
-    gridClass: "md:col-span-2 md:row-span-2",
+    gridClass: "md:col-span-1 md:row-span-1",
   },
   {
     title: "Senior Software Engineer",
@@ -144,6 +155,22 @@ export const educationData: Education[] = [
 ];
 
 export const projectsData = [
+  {
+    title: "Loonar",
+    description:
+      "AI-powered RFQ analysis platform for engineering procurement. Parses tender documents, matches line items against product catalogs, and runs deviation analysis and offer verification.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "GCP",
+      "Terraform",
+    ],
+    imageUrl: loonar,
+    demoUrl: "https://loonar-ai.com",
+  },
   {
     title: "Real Estate Marketplace",
     description:

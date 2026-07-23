@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Robin Dang - Software Engineer";
+export const alt = "Robin Dang - Co-Founder & CTO @ Loonar";
 export const size = {
   width: 1200,
   height: 630,
@@ -80,7 +80,7 @@ export default async function Image() {
               textTransform: "uppercase",
             }}
           >
-            Software Engineer
+            Co-Founder & CTO
           </div>
 
           {/* Tagline */}
@@ -92,7 +92,7 @@ export default async function Image() {
               marginTop: 16,
             }}
           >
-            Uber • Booking.com • KTH
+            Loonar • Uber • Booking.com
           </div>
         </div>
 

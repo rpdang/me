@@ -12,11 +12,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://robindang.me"),
-  title: "Robin Dang | Software Engineer",
+  title: "Robin Dang | Co-Founder & CTO @ Loonar",
   description:
-    "Robin Dang's portfolio - Software Engineer & Technical Lead with experience at Uber, Booking.com, and startups.",
+    "Robin Dang's portfolio - Co-Founder & CTO of Loonar and Software Engineer at Uber. Previously Booking.com and Legora (Leya AI, YC W24).",
   keywords: [
     "Software Engineer",
+    "Loonar",
+    "CTO",
+    "Co-Founder",
     "Full Stack Developer",
     "React",
     "Next.js",
@@ -29,16 +32,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://robindang.me",
-    title: "Robin Dang | Software Engineer",
+    title: "Robin Dang | Co-Founder & CTO @ Loonar",
     description:
-      "Software Engineer & Technical Lead with experience at Uber, Booking.com, and startups.",
+      "Co-Founder & CTO of Loonar and Software Engineer at Uber. Previously Booking.com and Legora (Leya AI, YC W24).",
     siteName: "Robin Dang Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Robin Dang | Software Engineer",
+    title: "Robin Dang | Co-Founder & CTO @ Loonar",
     description:
-      "Software Engineer & Technical Lead with experience at Uber, Booking.com, and startups.",
+      "Co-Founder & CTO of Loonar and Software Engineer at Uber. Previously Booking.com and Legora (Leya AI, YC W24).",
   },
   robots: {
     index: true,
@@ -50,8 +53,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Robin Dang",
-  jobTitle: "Software Engineer",
-  description: "Software Engineer & Technical Lead",
+  jobTitle: "Co-Founder & CTO",
+  description: "Co-Founder & CTO of Loonar and Software Engineer at Uber",
   url: "https://robindang.me",
   sameAs: [
     "https://github.com/rpdang",
@@ -65,10 +68,17 @@ const jsonLd = {
     "Java",
     "Python",
   ],
-  worksFor: {
-    "@type": "Organization",
-    name: "Uber",
-  },
+  worksFor: [
+    {
+      "@type": "Organization",
+      name: "Loonar",
+      url: "https://loonar-ai.com",
+    },
+    {
+      "@type": "Organization",
+      name: "Uber",
+    },
+  ],
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "KTH Royal Institute of Technology",

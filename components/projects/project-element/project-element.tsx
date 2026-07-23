@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import { MagicCard } from '@/components/ui/magic-card';
 import { DotPattern } from '@/components/ui/dot-pattern';
-import { HiExternalLink } from 'react-icons/hi';
 
 type ProjectProps = (typeof projectsData)[number];
 
@@ -15,8 +14,7 @@ export default function ProjectElement({
   description,
   tags,
   imageUrl,
-  demoUrl,
-}: ProjectProps & { demoUrl?: string }) {
+}: ProjectProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -78,21 +76,6 @@ export default function ProjectElement({
                 ))}
               </ul>
 
-              {/* Demo link */}
-              {demoUrl && (
-                <a
-                  href={demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link"
-                >
-                  <HiExternalLink className="w-4 h-4" />
-                  <span className="relative">
-                    View Live
-                    <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover/link:w-full transition-all duration-300" />
-                  </span>
-                </a>
-              )}
             </div>
 
             {/* Image */}

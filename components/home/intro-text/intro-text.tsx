@@ -38,7 +38,7 @@ export default function IntroText() {
           colorTo="#822e3a"
           speed={0.5}
         >
-          Software Engineer
+          Software Engineer & Co-Founder
         </AnimatedGradientText>
       </motion.div>
 
@@ -50,7 +50,7 @@ export default function IntroText() {
         className="mb-5"
       >
         <span className="text-sm sm:text-base font-mono text-muted-foreground tracking-wide">
-          Currently @Uber | Ex-Booking.com, Legora (Leya AI YC W24)
+          Co-Founder & CTO @Loonar | @Uber | Ex-Booking.com, Legora (Leya AI YC W24)
         </span>
       </motion.div>
 
