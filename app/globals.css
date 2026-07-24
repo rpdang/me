@@ -6,7 +6,8 @@
 
 @theme {
   /* Typography - System fonts with fallbacks */
-  --font-display: 'Poppins', Arial, sans-serif;
+  --font-display: var(--font-cabinet), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-general), "Helvetica Neue", Arial, sans-serif;
   --font-sans: 'Lora', Georgia, serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
 
@@ -17,6 +18,13 @@
   --color-editorial-terracotta: #b85a32;
   --color-editorial-burgundy: #822e3a;
   --color-editorial-gold: #d4a84b;
+
+  /* Act Tokens - new design system colors */
+  --color-act-cream: #f5f0e6;
+  --color-act-slate: #232830;
+  --color-terracotta: #b85a32;
+  --color-ink: #26221f;
+  --color-bone: #f2ede4;
 
   /* Semantic Colors (Tailwind integration) */
   --color-background: hsl(var(--background));
@@ -190,6 +198,49 @@
       transform: scaleX(1);
     }
   }
+}
+
+/* ---- Acts: single background layer + foreground, switched by data-act ---- */
+:root {
+  --act-cream-resolved: var(--color-act-cream);
+  --act-bg: var(--act-cream-resolved);
+  --act-fg: var(--color-ink);
+  --act-muted: color-mix(in srgb, var(--color-ink) 62%, transparent);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --act-cream-resolved: #ece5d8;
+  }
+}
+:root[data-act="slate"] {
+  --act-bg: var(--color-act-slate);
+  --act-fg: var(--color-bone);
+  --act-muted: color-mix(in srgb, var(--color-bone) 60%, transparent);
+}
+
+.act-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background-color: var(--act-bg);
+  transition: background-color 800ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .act-layer {
+    transition: none;
+  }
+}
+
+.grain-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root[data-act="slate"] .grain-layer {
+  opacity: 0.06;
 }
 
 /*
