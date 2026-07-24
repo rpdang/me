@@ -2,13 +2,14 @@
 
 import { motion } from "motion/react";
 import ChapterHeading from "@/components/narrative/chapter-heading";
+import MaskedLines from "@/components/narrative/masked-lines";
 import ThreadSegment from "@/components/thread/thread-segment";
 import { STORY } from "@/lib/story";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function TwoCultures() {
   const { ref } = useSectionInView("two-cultures", 0.3);
-  const { paragraphs, coordinates } = STORY.twoCultures;
+  const { paragraphs, pullQuote, closing, coordinates } = STORY.twoCultures;
 
   return (
     <section
@@ -32,6 +33,21 @@ export default function TwoCultures() {
               {text}
             </motion.p>
           ))}
+          <div className="py-6">
+            <MaskedLines
+              lines={[...pullQuote]}
+              className="font-display text-[clamp(2.25rem,5.5vw,4.5rem)] font-extrabold leading-[0.95] tracking-tight text-terracotta"
+            />
+          </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="font-body text-xl leading-relaxed md:text-2xl"
+          >
+            {closing}
+          </motion.p>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
