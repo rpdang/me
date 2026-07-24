@@ -67,7 +67,7 @@ export const STORY = {
 
   craft: {
     intro:
-      "Computer science at KTH in Stockholm, from first lecture to master's thesis, with real systems on the side.",
+      "Theory at KTH by day. Nasdaq's market infrastructure in between. I learned the craft from both directions.",
     milestones: [
       {
         title: "B.Sc. Computer Science, KTH",
