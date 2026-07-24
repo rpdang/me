@@ -116,7 +116,7 @@ export const STORY = {
 
   zeroToOne: {
     intro:
-      "Scale teaches you rigor. Starting from nothing teaches you everything else.",
+      "Millions of users taught me rigor. Zero users taught me everything else.",
     ventures: [
       {
         name: "Legora",
