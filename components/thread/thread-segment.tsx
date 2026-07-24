@@ -9,25 +9,37 @@ import {
   useTransform,
 } from "motion/react";
 
-// Every segment starts and ends at the horizontal center with a vertical
-// tangent, so consecutive segments join into one smooth continuous line.
-function weavePath(curve: "left" | "right", w: number, h: number) {
-  const cx = w / 2;
-  const amp = w * 0.32;
-  const side = curve === "right" ? amp : -amp;
+type Side = "left" | "right";
+
+function anchorX(side: Side, w: number) {
+  const inset = Math.max(20, Math.min(w * 0.08, 110));
+  return side === "left" ? inset : w - inset;
+}
+
+// The thread dwells in the chapter's empty margin and crosses the content
+// column at most once, low in the chapter where the section's bottom padding
+// is empty, on its way to the next chapter's side. Every segment starts and
+// ends with a vertical tangent so consecutive segments join smoothly.
+function sidePath(enter: Side, home: Side, exit: Side, w: number, h: number) {
+  const xe = anchorX(enter, w);
+  const xh = anchorX(home, w);
+  const xx = anchorX(exit, w);
   return [
-    `M ${cx} 0`,
-    `C ${cx} ${h * 0.09}, ${cx + side} ${h * 0.11}, ${cx + side} ${h * 0.25}`,
-    `C ${cx + side} ${h * 0.39}, ${cx} ${h * 0.41}, ${cx} ${h * 0.52}`,
-    `C ${cx} ${h * 0.64}, ${cx - side} ${h * 0.66}, ${cx - side} ${h * 0.77}`,
-    `C ${cx - side} ${h * 0.89}, ${cx} ${h * 0.91}, ${cx} ${h}`,
+    `M ${xe} 0`,
+    `C ${xe} ${h * 0.1}, ${xh} ${h * 0.12}, ${xh} ${h * 0.26}`,
+    `L ${xh} ${h * 0.68}`,
+    `C ${xh} ${h * 0.86}, ${xx} ${h * 0.88}, ${xx} ${h}`,
   ].join(" ");
 }
 
 export default function ThreadSegment({
-  curve = "right",
+  enter,
+  home,
+  exit,
 }: {
-  curve?: "left" | "right";
+  enter: Side;
+  home: Side;
+  exit: Side;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -64,12 +76,12 @@ export default function ThreadSegment({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // The path is generated in real pixel coordinates so the 2px stroke and
+  // The path is generated in real pixel coordinates so the 3px stroke and
   // motion's pathLength dash normalization both stay correct at every size.
   // Stretching a fixed viewBox with preserveAspectRatio="none" would force
   // vector-effect: non-scaling-stroke, which moves dash patterns into
   // screen space and shatters the scroll-drawn line into fragments.
-  const d = size ? weavePath(curve, size.w, size.h) : null;
+  const d = size ? sidePath(enter, home, exit, size.w, size.h) : null;
 
   return (
     <div ref={ref} className="pointer-events-none absolute inset-0" aria-hidden>

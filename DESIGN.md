@@ -12,14 +12,21 @@ One continuous terracotta line draws itself through the page as the visitor
 scrolls, passing through every chapter and acting as the visual thesis: one
 unbroken thread, end to end.
 
-- Desktop (`components/thread/thread-segment.tsx`): the thread weaves left/right
-  across the content column as an SVG path, one segment per chapter boundary.
-  Each segment has its own `useScroll({ target })`, smoothed through
+- `components/thread/thread-segment.tsx`: one SVG path segment per chapter,
+  generated in real pixel coordinates from the section's measured size
+  (ResizeObserver). Each segment takes `enter`/`home`/`exit` side props: it
+  dwells vertically in the chapter's empty margin (left in Two Cultures,
+  right elsewhere) and crosses the content column at most once, low in the
+  chapter's bottom padding, on its way to the next chapter's side. All
+  segments meet with vertical tangents so the line stays continuous. The
+  stroke is 3px terracotta at 45 percent opacity so content always wins;
+  the same geometry runs on every viewport, mobile included.
+- Each segment has its own `useScroll({ target })` with both offsets on one
+  viewport anchor (0.75) so segments hand off exactly, smoothed through
   `useSpring({ stiffness: 90, damping: 26 })` so it slightly "chases" scroll
-  rather than tracking it 1:1.
-- Mobile: the same component renders a straight vertical left-rail path instead
-  of the weaving curve (CSS breakpoint switch inside `ThreadSegment`, not a
-  separate component).
+  rather than tracking it 1:1. Never use `preserveAspectRatio="none"` plus
+  `vector-effect: non-scaling-stroke` here: that combination moves dash
+  patterns into screen space and shatters the scroll-drawn line.
 - Reduced motion: `pathLength` is hard-set to `1` (fully drawn, no scrub) via
   `useReducedMotion()`, so the thread is never mid-draw for a user who has asked
   for reduced motion.

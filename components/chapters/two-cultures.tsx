@@ -17,7 +17,7 @@ export default function TwoCultures() {
       id="two-cultures"
       className="relative scroll-mt-8 px-6 py-32 md:px-16 md:py-48"
     >
-      <ThreadSegment curve="right" />
+      <ThreadSegment enter="left" home="left" exit="right" />
       <div className="relative mx-auto max-w-5xl">
         <ChapterHeading number={1} title="Two Cultures" />
         <div className="ml-auto max-w-[58ch] space-y-8">
