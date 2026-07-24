@@ -100,14 +100,14 @@ export const STORY = {
       role: "Senior Software Engineer",
       period: "2022 to 2024",
       story:
-        "Led a small team reimagining how account managers work with hotel partners. We replaced spreadsheets with a greenfield internal tool used by every account manager in the company.",
+        "Hotel partnerships ran on spreadsheets. I led a small team that replaced them with one internal tool, now in every account manager's hands.",
     },
     uber: {
       company: "Uber",
       role: "Software Engineer, Production Engineering",
       period: "2024 to present",
       story:
-        "Production engineering sits between SRE and software engineering. The roadmap is Uber's hardest, most critical incidents: understand them deeply, then build the systems that make them impossible to repeat.",
+        "Production engineering sits between SRE and software engineering. I take Uber's hardest incidents apart and build what makes them impossible to repeat.",
     },
     pinnedQuote: "Anyone can fix an incident. The job is making it the last one.",
     stat: { value: 100, suffix: "%", label: "of account managers on the tool my team built" },
