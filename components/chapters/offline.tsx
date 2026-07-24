@@ -17,7 +17,7 @@ export default function Offline() {
     >
       <ThreadSegment curve="left" />
       <div className="relative mx-auto max-w-5xl">
-        <ChapterHeading number={6} title="Offline" />
+        <ChapterHeading number={5} title="Offline" />
         <div className="max-w-[52ch] space-y-6">
           {STORY.offline.paragraphs.map((text, i) => (
             <motion.p

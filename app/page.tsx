@@ -3,7 +3,6 @@ import TwoCultures from "@/components/chapters/two-cultures";
 import Craft from "@/components/chapters/craft";
 import Scale from "@/components/chapters/scale";
 import ZeroToOne from "@/components/chapters/zero-to-one";
-import Company from "@/components/chapters/company";
 import Offline from "@/components/chapters/offline";
 import Epilogue from "@/components/chapters/epilogue";
 import ActBackground from "@/components/narrative/act-background";
@@ -19,7 +18,6 @@ export default function Home() {
       <Craft />
       <Scale />
       <ZeroToOne />
-      <Company />
       <Offline />
       <Epilogue />
     </main>

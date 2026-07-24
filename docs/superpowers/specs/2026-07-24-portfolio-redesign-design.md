@@ -237,3 +237,12 @@ where a chapter maps 1:1 (e.g. `#home` → prologue) so inbound links don't brea
 - New photography/imagery for Ch. 1 and Ch. 6: nice-to-have; design must work
   typographically without it. Product screenshots for Ch. 5 come from existing assets.
 - Analytics: keep `@vercel/analytics` as-is.
+
+## Amendment (2026-07-24, approved): Story rebalance v2
+
+Loonar demoted from destination chapter to a venture entry; Robin's primary identity
+is software engineer (production engineering at Uber, current). "The Company" chapter
+and its screenshots/stats/CTA are removed; chapters renumber to Prologue, 1 Two
+Cultures, 2 The Craft, 3 Scale (Uber-weighted), 4 Zero to One (ventures incl.
+Loonar, listed last), 5 Offline, Epilogue. The thread ends at the present rather
+than resolving into Loonar. Metadata identity: "Software Engineer" first.

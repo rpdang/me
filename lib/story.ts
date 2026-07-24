@@ -4,7 +4,6 @@ export type ChapterId =
   | "craft"
   | "scale"
   | "zero-to-one"
-  | "company"
   | "offline"
   | "epilogue";
 
@@ -23,8 +22,7 @@ export const CHAPTERS: readonly ChapterMeta[] = [
   { id: "craft", number: 2, title: "The Craft", act: "cream" },
   { id: "scale", number: 3, title: "Scale", act: "slate" },
   { id: "zero-to-one", number: 4, title: "Zero to One", act: "slate" },
-  { id: "company", number: 5, title: "The Company", act: "cream" },
-  { id: "offline", number: 6, title: "Offline", act: "cream" },
+  { id: "offline", number: 5, title: "Offline", act: "cream" },
   { id: "epilogue", number: null, title: "Say Hej", act: "cream" },
 ] as const;
 
@@ -52,8 +50,8 @@ export interface Venture {
 export const STORY = {
   prologue: {
     headlineLines: ["I build things", "end to end."],
-    sub: "Robin Dang. Co-founder and CTO of Loonar. I turn hard problems into products that feel easy.",
-    credentials: ["Loonar", "Uber", "Booking.com", "Legora (YC W24)"],
+    sub: "Robin Dang. Software engineer. I keep Uber's hardest systems standing by day and build Loonar on the side.",
+    credentials: ["Uber", "Booking.com", "Legora (YC W24)", "Loonar"],
   },
 
   twoCultures: {
@@ -107,7 +105,7 @@ export const STORY = {
       role: "Software Engineer, Production Engineering",
       period: "2024 to present",
       story:
-        "Production engineering sits between SRE and software engineering. The roadmap is Uber's hardest, most critical incidents.",
+        "Production engineering sits between SRE and software engineering. The roadmap is Uber's hardest, most critical incidents: understand them deeply, then build the systems that make them impossible to repeat.",
     },
     pinnedQuote: "Do not just fix the incident. Eliminate the category, forever.",
     stat: { value: 100, suffix: "%", label: "of account managers on the tool my team built" },
@@ -142,34 +140,16 @@ export const STORY = {
         status: "live",
         stack: ["Python", "LLM evals"],
       },
+      {
+        name: "Loonar",
+        role: "Co-Founder and CTO",
+        story:
+          "Consulting on AI projects, the same request kept coming from unrelated clients: help us survive RFQs in engineering procurement. So I co-founded Loonar to productize the answer. Early days: bootstrapped, pilot customers, and a small engineering team I lead as the technical co-founder.",
+        status: "live",
+        stack: ["Python", "FastAPI", "React", "GCP"],
+        href: "https://loonar-ai.com",
+      },
     ] satisfies Venture[],
-  },
-
-  company: {
-    origin: [
-      "Consulting on AI projects, the same request kept appearing from completely different clients: help us survive RFQs in engineering procurement.",
-      "Different industries, same broken workflow. When a problem follows you around, you stop consulting and start building.",
-    ],
-    facts: [
-      { label: "Stage", value: "Pre-seed, bootstrapped" },
-      { label: "Pilots", value: "20" },
-      { label: "Co-founders", value: "3, sole technical" },
-      { label: "Engineering team", value: "4 engineers" },
-    ],
-    capabilities: [
-      "RFQ analysis",
-      "Deviation analysis",
-      "Offer check",
-      "Product matching",
-      "RAG",
-      "Content library",
-    ],
-    closing:
-      "Everything the thread passed through leads here: scale years for rigor, founding years for speed, and a problem worth solving end to end.",
-    href: "https://loonar-ai.com",
-    screenshots: [
-      { src: "/loonar.png", alt: "Loonar RFQ analysis interface" },
-    ],
   },
 
   offline: {
@@ -180,7 +160,7 @@ export const STORY = {
   },
 
   epilogue: {
-    line: "The next chapter is being written at Loonar.",
+    line: "The next chapter is still being written.",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/robin-dang" },
       { label: "GitHub", href: "https://github.com/rpdang" },
