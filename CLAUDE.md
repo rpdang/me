@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working in this repository.
 
 ## Commands
 
@@ -10,100 +10,79 @@ npm run build    # Production build
 npm run lint     # Run ESLint
 ```
 
+## What this is
+
+"The Thread": a single-page, scroll-driven narrative portfolio for Robin Dang,
+built on **Next.js 16 App Router**, React 19, TypeScript, and Tailwind CSS v4.
+There is no multi-section resume layout; `app/page.tsx` renders one `<main>`
+composed of a prologue, five numbered chapters, and an epilogue, each its own
+client component under `components/chapters/`.
+
 ## Architecture
 
-This is a **Next.js 16 App Router** personal portfolio site using React 19, TypeScript, and Tailwind CSS v4.
+- `components/chapters/` - one component per chapter (`prologue`, `two-cultures`,
+  `craft`, `scale`, `zero-to-one`, `offline`, `epilogue`). Pure presentation:
+  they import from `lib/story.ts` and render it, they do not hardcode copy.
+- `components/narrative/` - shared primitives used across chapters:
+  `ChapterHeading`, `MaskedLines`, `PinnedQuote`, `CountUp`, `ActBackground`.
+- `components/thread/` - the thread system: `ThreadSegment` (the terracotta
+  line that draws itself per chapter boundary via `useScroll` + `useSpring`),
+  `MilestoneDot`, and `ChapterRail` (fixed right-edge nav, desktop only).
+- `lib/story.ts` - single source of truth for all content: the `STORY` object
+  (copy, dates, numbers, links) and the `CHAPTERS` array (id, number, title,
+  act) that drives chapter metadata everywhere else. Changing the story means
+  editing this file; changing how a chapter looks means editing its component.
+- `lib/hooks.ts` - `useSectionInView(sectionName, threshold)` combines
+  `react-intersection-observer` with `ActiveSectionContext` to report which
+  chapter is in view.
+- `context/active-section-context.tsx` - tracks the active chapter and the
+  time of the last manual nav click; both `ChapterRail` and `ActBackground`
+  read from it.
 
-### Key Directories
+## Act system
 
-- `app/` - Next.js App Router pages, layouts, and SEO files (sitemap.ts, robots.ts, opengraph-image.tsx)
-- `components/` - React components organized by section (home, experiences, projects, skills, about, education, contact, footer, header)
-- `components/ui/` - Reusable UI primitives with animations (BlurFade, MagicCard, ShimmerButton, Dock, CosmicBackground, etc.)
-- `context/` - React Context providers for theme and active section tracking
-- `lib/` - Utilities, hooks, types, and portfolio data
-- `public/logos/` - Company and technology logo assets
+Two backgrounds ("acts") switched by one `data-act` attribute on `<html>`,
+painted by a single fixed `.act-layer`, not per-chapter background divs.
+Foreground/muted-text color and grain opacity key off `[data-act="slate"]`
+via CSS variables (`--act-fg`, `--act-muted`), so no component branches on act
+by hand. `ActBackground` sets `data-act` from `ACT_BY_CHAPTER[activeSection]`,
+and also reads `location.hash` once on mount so a deep link into a slate
+chapter doesn't flash cream first.
 
-### Component Pattern
+## Motion, fonts, styling
 
-Each section component follows a barrel export pattern:
-```
-components/home/
-  ├── index.ts           # Re-exports default from main component
-  ├── home.tsx           # Main component using useSectionInView hook
-  └── [subcomponents]/   # avatar/, intro-text/, connect-section/
-```
+- **motion/react (Framer Motion v12) only**: import from `"motion/react"`,
+  not `"framer-motion"`.
+- Fonts are self-hosted via `next/font/local` in `app/fonts.ts`: **Cabinet
+  Grotesk** (display, chapter titles/headlines) and **General Sans** (body).
+  No Google Fonts, no CDN font loading.
+- **Tailwind CSS v4** with `@theme` tokens in `app/globals.css` (no
+  `tailwind.config.js` theme block). Single accent color: terracotta
+  (`--color-terracotta: #b85a32`). No shadcn/ui setup in this repo.
+- No-JS fallback: `app/layout.tsx` stamps a `js` class onto `<html>` via a
+  blocking inline script before hydration; `globals.css` has `html:not(.js)`
+  rules that force-show motion-hidden content and undrawn thread paths if
+  hydration never completes. Keep both in sync when touching either.
 
-**Client Components:** Most components use `'use client'` directive for animations and interactivity. Common pattern:
-```tsx
-"use client";
-export default function SectionName() {
-  const { ref } = useSectionInView("SectionName", threshold);
-  return (
-    <section ref={ref} id="section-id">
-      <BlurFade delay={0.1} inView>
-        <SectionHeading>Title</SectionHeading>
-      </BlurFade>
-      {/* Content */}
-    </section>
-  );
-}
-```
+## Hard copy rules
 
-### State Management
+- **No em dashes or en dashes anywhere**, in copy, code comments, or docs.
+  Use a period, comma, or "to" instead.
+- No scroll cues ("scroll to explore", down-arrows, etc.).
+- Every metric, date, employer, or biographical claim must trace back to the
+  canonical facts in `docs/superpowers/specs/2026-07-24-portfolio-redesign-design.md`
+  §4. Never invent or embellish. See `PRODUCT.md`'s fact-check rule.
+- The only conversion action on the whole site is the epilogue's two plain
+  underlined links: LinkedIn and GitHub. No forms, no email, no cal.com link.
+  Don't add a contact CTA elsewhere.
 
-Two React Contexts wrap the app (in `layout.tsx`):
-- **ThemeContextProvider** - Light/dark theme with localStorage persistence, respects system preferences
-- **ActiveSectionContextProvider** - Tracks which section is in viewport for nav highlighting, stores time of last manual click
+## Where to look next
 
-### Active Section Detection
-
-Sections use `useSectionInView(sectionName, threshold)` hook from `lib/hooks.ts` which combines `react-intersection-observer` with the active section context. Only updates if section is in view AND more than 1 second since last manual nav click.
-
-### Animation Libraries
-
-- **framer-motion / motion** - Page transitions, scroll animations, hover effects
-- **BlurFade** - Scroll-triggered blur + fade animation component
-- **MagicCard** - Mouse-following gradient card effect
-- **ShimmerButton** - Animated shimmer button effect
-- **CosmicBackground** - Particle system background
-- **Dock** - macOS Dock-style navigation with magnification effect
-
-### Styling
-
-**Tailwind CSS v4** with `@theme` syntax in `globals.css`:
-- Editorial color palette: terracotta (`#b85a32`), burgundy (`#822e3a`), gold (`#d4a84b`), cream/stone/charcoal neutrals
-- CSS variables for semantic colors and shadows
-- Class-based dark mode via `@custom-variant dark (&:is(.dark *))`
-- Typography: Poppins (headlines), Lora (body), SF Mono/Fira Code (code)
-- Custom keyframe animations: `shine`, `gradient`, `float`, `fadeIn`, `slideUp`, `textReveal`
-- `cn()` utility from `lib/utils.ts` for conditional class merging (clsx + tailwind-merge)
-
-### Data
-
-All portfolio content is centralized in `lib/data.ts`:
-- `links` - Navigation items (7 sections)
-- `experiencesData` - Work experience with `gridClass` for responsive CSS Grid positioning
-- `educationData` - Education timeline with optional descriptions
-- `skillCategories` - Skills organized by category with devicon slugs
-- `projectsData` - Projects with images, tags, and demo URLs
-
-### External Resources
-
-- **Devicons via jsDelivr CDN** - Skill icons loaded from `cdn.jsdelivr.net/gh/devicons/devicon`
-- **Company logos** - Stored locally in `public/logos/`
-
-### SEO
-
-- Metadata API configuration in `layout.tsx`
-- JSON-LD structured data
-- Dynamic `sitemap.ts` and `robots.ts`
-- OpenGraph image generation via `opengraph-image.tsx`
-
-### Key Dependencies
-
-- Next.js 16.1.0, React 19.2.3, TypeScript 5.9.3
-- Tailwind CSS 4.1.18 (@tailwindcss/postcss)
-- framer-motion 12.x, class-variance-authority, tailwind-merge
-- @radix-ui primitives, lucide-react, react-icons
-- react-intersection-observer, react-vertical-timeline-component
-- @vercel/analytics
+- `PRODUCT.md` - what this site is, who it's for, the identity/audience/
+  conversion framing, and the fact-check rule in full.
+- `DESIGN.md` - the implemented design system (thread mechanics, act system,
+  type, motion) with any divergence from the original spec called out.
+- `docs/superpowers/specs/2026-07-24-portfolio-redesign-design.md` - the
+  original design spec and canonical content facts (§4).
+- `docs/superpowers/plans/2026-07-24-the-thread-redesign.md` - the
+  implementation plan this codebase was built from.
