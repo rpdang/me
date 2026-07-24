@@ -83,7 +83,7 @@ export default function ThreadSegment({
             d={d}
             fill="none"
             stroke="var(--color-terracotta)"
-            strokeWidth={2}
+            strokeWidth={3}
             strokeLinecap="round"
             style={{
               pathLength: reduce ? 1 : pathLength,
