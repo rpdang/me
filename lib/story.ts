@@ -110,7 +110,7 @@ export const STORY = {
       story:
         "Production engineering sits between SRE and software engineering. The roadmap is Uber's hardest, most critical incidents: understand them deeply, then build the systems that make them impossible to repeat.",
     },
-    pinnedQuote: "Do not just fix the incident. Eliminate the category, forever.",
+    pinnedQuote: "Anyone can fix an incident. The job is making it the last one.",
     stat: { value: 100, suffix: "%", label: "of account managers on the tool my team built" },
   },
 
