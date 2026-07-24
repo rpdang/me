@@ -58,7 +58,7 @@ export const STORY = {
     paragraphs: [
       "My parents left Vietnam after the war and rebuilt their lives in Sweden. Neither of them finished high school.",
       "I was born there, between two cultures. Vietnamese at home, Swedish everywhere else. The classic second generation story.",
-      "Growing up like that teaches you one thing early.",
+      "Growing up like that taught me one thing early.",
     ],
     pullQuote: ["Nothing arrives", "finished."],
     closing:
