@@ -44,7 +44,6 @@ export interface Venture {
   story: string;
   status: "live" | "sunset";
   stack?: string[];
-  href?: string;
 }
 
 export const STORY = {
@@ -125,7 +124,6 @@ export const STORY = {
           "Joined Leya AI (YC W24) as a founding engineer and helped ship v0 of an agentic RAG product for legal work. Still proud of that first version.",
         status: "live",
         stack: ["TypeScript", "RAG", "LLM agents"],
-        href: "https://legora.com",
       },
       {
         name: "Lokasa",
@@ -150,7 +148,6 @@ export const STORY = {
           "Consulting on AI projects, the same request kept coming from unrelated clients: help us survive RFQs in engineering procurement. So I co-founded Loonar to productize the answer. Early days: bootstrapped, pilot customers, and a small engineering team I lead as the technical co-founder.",
         status: "live",
         stack: ["Python", "FastAPI", "React", "GCP"],
-        href: "https://loonar-ai.com",
       },
     ] satisfies Venture[],
   },

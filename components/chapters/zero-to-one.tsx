@@ -31,16 +31,6 @@ function VentureBlock({ venture, index }: { venture: Venture; index: number }) {
           {venture.stack.join(" / ")}
         </p>
       )}
-      {venture.href && (
-        <a
-          href={venture.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 inline-block font-mono text-sm text-terracotta underline underline-offset-4 transition-transform duration-150 active:scale-[0.97]"
-        >
-          Visit {venture.name}
-        </a>
-      )}
     </motion.article>
   );
 }
