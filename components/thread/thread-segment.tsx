@@ -15,10 +15,8 @@ const PATHS = {
 
 export default function ThreadSegment({
   curve = "right",
-  thicken = false,
 }: {
   curve?: "left" | "right";
-  thicken?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -36,7 +34,7 @@ export default function ThreadSegment({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const strokeWidth = thicken ? 5 : 2;
+  const strokeWidth = 2;
 
   return (
     <div ref={ref} className="pointer-events-none absolute inset-0" aria-hidden>
