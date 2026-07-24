@@ -146,7 +146,7 @@ function ArtisticShapes() {
 
 export default function Contact() {
   const isMobile = useIsMobile();
-  const { ref } = useSectionInView("Contact", isMobile ? 0.3 : 0.5);
+  const { ref } = useSectionInView("Contact" as never, isMobile ? 0.3 : 0.5);
 
   return (
     <section

@@ -83,7 +83,7 @@ function SkillBentoCard({
 
 export default function Skills() {
   const isMobile = useIsMobile();
-  const { ref } = useSectionInView("Skills", isMobile ? 0.3 : 0.5);
+  const { ref } = useSectionInView("Skills" as never, isMobile ? 0.3 : 0.5);
 
   return (
     <section

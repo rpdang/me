@@ -1,23 +1,27 @@
-import About from '@/components/about';
-import Contact from '@/components/contact';
-import Education from '@/components/education';
-import Experience from '@/components/experiences';
-import Home from '@/components/home';
-import Projects from '@/components/projects';
-import SectionDivider from '@/components/section-divider';
-import Skills from '@/components/skills';
+import Prologue from "@/components/chapters/prologue";
+import TwoCultures from "@/components/chapters/two-cultures";
+import Craft from "@/components/chapters/craft";
+import Scale from "@/components/chapters/scale";
+import ZeroToOne from "@/components/chapters/zero-to-one";
+import Company from "@/components/chapters/company";
+import Offline from "@/components/chapters/offline";
+import Epilogue from "@/components/chapters/epilogue";
+import ActBackground from "@/components/narrative/act-background";
+import ChapterRail from "@/components/thread/chapter-rail";
 
-export default function Page() {
+export default function Home() {
   return (
-    <main className="flex flex-col items-center px-4">
-      <Home />
-      <SectionDivider />
-      <Experience />
-      <Projects />
-      <Skills />
-      <About />
-      <Education />
-      <Contact />
+    <main className="text-[var(--act-fg)]">
+      <ActBackground />
+      <ChapterRail />
+      <Prologue />
+      <TwoCultures />
+      <Craft />
+      <Scale />
+      <ZeroToOne />
+      <Company />
+      <Offline />
+      <Epilogue />
     </main>
   );
 }

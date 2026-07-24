@@ -8,7 +8,7 @@ import { STORY } from "@/lib/story";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function Craft() {
-  const { ref } = useSectionInView("craft" as never, 0.2);
+  const { ref } = useSectionInView("craft", 0.2);
   const { intro, milestones } = STORY.craft;
 
   return (

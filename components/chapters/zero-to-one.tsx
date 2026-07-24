@@ -46,7 +46,7 @@ function VentureBlock({ venture, index }: { venture: Venture; index: number }) {
 }
 
 export default function ZeroToOne() {
-  const { ref } = useSectionInView("zero-to-one" as never, 0.15);
+  const { ref } = useSectionInView("zero-to-one", 0.15);
   const { intro, ventures } = STORY.zeroToOne;
 
   return (

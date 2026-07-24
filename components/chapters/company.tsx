@@ -9,7 +9,7 @@ import { STORY } from "@/lib/story";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function Company() {
-  const { ref } = useSectionInView("company" as never, 0.1);
+  const { ref } = useSectionInView("company", 0.1);
   const { origin, facts, capabilities, closing, href, screenshots } =
     STORY.company;
 

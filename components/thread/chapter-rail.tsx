@@ -14,7 +14,7 @@ export default function ChapterRail() {
       className="fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 flex-col items-center gap-4 lg:flex"
     >
       {CHAPTERS.map((chapter) => {
-        const active = (activeSection as string) === chapter.id;
+        const active = activeSection === chapter.id;
         return (
           <a
             key={chapter.id}
@@ -22,7 +22,7 @@ export default function ChapterRail() {
             aria-label={chapter.title}
             aria-current={active ? "true" : undefined}
             onClick={() => {
-              setActiveSection(chapter.id as never);
+              setActiveSection(chapter.id);
               setTimeOfLastClick(Date.now());
             }}
             className="group relative flex items-center p-1 transition-transform duration-150 active:scale-[0.97]"

@@ -7,7 +7,7 @@ import SectionHeading from "../section-heading/section-heading";
 import EducationElement from "./education-element";
 
 export default function Education() {
-  const { ref } = useSectionInView("Education", 0.2);
+  const { ref } = useSectionInView("Education" as never, 0.2);
 
   return (
     <section

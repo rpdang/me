@@ -6,7 +6,7 @@ import { STORY } from "@/lib/story";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function Epilogue() {
-  const { ref } = useSectionInView("epilogue" as never, 0.6);
+  const { ref } = useSectionInView("epilogue", 0.6);
   const { line, links } = STORY.epilogue;
 
   return (

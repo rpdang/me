@@ -7,7 +7,7 @@ import { STORY } from "@/lib/story";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function Offline() {
-  const { ref } = useSectionInView("offline" as never, 0.4);
+  const { ref } = useSectionInView("offline", 0.4);
 
   return (
     <section

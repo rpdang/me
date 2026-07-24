@@ -8,7 +8,7 @@ import ProjectElement from "./project-element";
 
 export default function Projects() {
   const isMobile = useIsMobile();
-  const { ref } = useSectionInView("Projects", isMobile ? 0.3 : 0.5);
+  const { ref } = useSectionInView("Projects" as never, isMobile ? 0.3 : 0.5);
 
   return (
     <section

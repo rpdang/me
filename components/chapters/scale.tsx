@@ -38,7 +38,7 @@ function Role({
 }
 
 export default function Scale() {
-  const { ref } = useSectionInView("scale" as never, 0.1);
+  const { ref } = useSectionInView("scale", 0.1);
   const { booking, uber, pinnedQuote, stat } = STORY.scale;
 
   return (

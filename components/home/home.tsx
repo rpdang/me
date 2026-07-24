@@ -7,7 +7,7 @@ import IntroText from './intro-text';
 
 export default function Home() {
   const isMobile = useIsMobile();
-  const { ref } = useSectionInView('Home', isMobile ? 0.4 : 0.75);
+  const { ref } = useSectionInView('Home' as never, isMobile ? 0.4 : 0.75);
 
   return (
     <section

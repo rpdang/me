@@ -2,13 +2,13 @@
 
 import { useEffect } from "react";
 import { useActiveSectionContext } from "@/context/active-section-context";
-import { ACT_BY_CHAPTER, type ChapterId } from "@/lib/story";
+import { ACT_BY_CHAPTER } from "@/lib/story";
 
 export default function ActBackground() {
   const { activeSection } = useActiveSectionContext();
 
   useEffect(() => {
-    const act = ACT_BY_CHAPTER[activeSection as ChapterId] ?? "cream";
+    const act = ACT_BY_CHAPTER[activeSection] ?? "cream";
     document.documentElement.setAttribute("data-act", act);
   }, [activeSection]);
 

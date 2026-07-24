@@ -1,21 +1,26 @@
 import { useActiveSectionContext } from '@/context/active-section-context';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useSyncExternalStore } from 'react';
 import { useInView } from 'react-intersection-observer';
 import type { SectionName } from './types';
 
 export function useIsMobile(breakpoint = 640) {
-  const [isMobile, setIsMobile] = useState(false);
+  const subscribe = useCallback(
+    (onStoreChange: () => void) => {
+      const query = window.matchMedia(`(max-width: ${breakpoint}px)`);
+      query.addEventListener('change', onStoreChange);
+      return () => query.removeEventListener('change', onStoreChange);
+    },
+    [breakpoint]
+  );
 
-  useEffect(() => {
-    const query = window.matchMedia(`(max-width: ${breakpoint}px)`);
-    setIsMobile(query.matches);
+  const getSnapshot = useCallback(
+    () => window.matchMedia(`(max-width: ${breakpoint}px)`).matches,
+    [breakpoint]
+  );
 
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    query.addEventListener('change', handler);
-    return () => query.removeEventListener('change', handler);
-  }, [breakpoint]);
+  const getServerSnapshot = useCallback(() => false, []);
 
-  return isMobile;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
 export function useSectionInView(sectionName: SectionName, threshold = 0.5) {

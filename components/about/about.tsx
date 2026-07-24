@@ -9,7 +9,7 @@ import SectionHeading from "../section-heading";
 
 export default function About() {
   const isMobile = useIsMobile();
-  const { ref } = useSectionInView("About", isMobile ? 0.4 : 0.75);
+  const { ref } = useSectionInView("About" as never, isMobile ? 0.4 : 0.75);
 
   return (
     <section id="about" ref={ref} className="mb-28 max-w-200 scroll-mt-28 px-4">

@@ -7,7 +7,7 @@ import { STORY } from "@/lib/story";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function Prologue() {
-  const { ref } = useSectionInView("prologue" as never, 0.5);
+  const { ref } = useSectionInView("prologue", 0.5);
   const reduce = useReducedMotion();
   const { headlineLines, sub, credentials } = STORY.prologue;
 

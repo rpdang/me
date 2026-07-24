@@ -52,16 +52,16 @@ export default function Header() {
               <Link
                 className={cn(
                   'flex w-full items-center justify-center px-3 py-3 hover:text-foreground transition-colors',
-                  activeSection === name && 'text-primary'
+                  (activeSection as string) === name && 'text-primary'
                 )}
                 href={hash}
                 onClick={() => {
-                  setActiveSection(name);
+                  setActiveSection(name as never);
                   setTimeOfLastClick(Date.now());
                 }}
               >
                 {name}
-                {activeSection === name && (
+                {(activeSection as string) === name && (
                   <motion.span
                     className="bg-primary/10 rounded-full absolute inset-0 -z-10"
                     layoutId="activeSectionMobile"
@@ -89,8 +89,8 @@ export default function Header() {
         >
           {links.map(({ name, hash }) => {
             const Icon = iconMap[name];
-            const isActive = activeSection === name;
-            
+            const isActive = (activeSection as string) === name;
+
             return (
               <DockIcon
                 key={hash}
@@ -102,7 +102,7 @@ export default function Header() {
                 <Link
                   href={hash}
                   onClick={() => {
-                    setActiveSection(name);
+                    setActiveSection(name as never);
                     setTimeOfLastClick(Date.now());
                   }}
                   className={cn(

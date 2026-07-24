@@ -7,7 +7,7 @@ import SectionHeading from "../section-heading/section-heading";
 import ExperienceElement from "./experience-element";
 
 export default function Experiences() {
-  const { ref } = useSectionInView("Experience", 0.2);
+  const { ref } = useSectionInView("Experience" as never, 0.2);
 
   return (
     <section

@@ -1,3 +1,3 @@
-import { links } from './data';
+import type { ChapterId } from './story';
 
-export type SectionName = (typeof links)[number]['name'];
+export type SectionName = ChapterId;

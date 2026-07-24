@@ -7,7 +7,7 @@ import { STORY } from "@/lib/story";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function TwoCultures() {
-  const { ref } = useSectionInView("two-cultures" as never, 0.3);
+  const { ref } = useSectionInView("two-cultures", 0.3);
   const { paragraphs, coordinates } = STORY.twoCultures;
 
   return (
