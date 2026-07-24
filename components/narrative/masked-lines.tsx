@@ -42,21 +42,23 @@ export default function MaskedLines({
         };
 
   return (
-    <motion.span
-      role="text"
-      aria-label={lines.join(" ")}
-      className={className}
-      variants={container}
-      initial="hidden"
-      {...trigger}
-    >
-      {lines.map((text, i) => (
-        <span key={i} aria-hidden className="block overflow-hidden pb-[0.08em]">
-          <motion.span className="block" variants={line}>
-            {text}
-          </motion.span>
-        </span>
-      ))}
-    </motion.span>
+    <>
+      <span className="sr-only">{lines.join(" ")}</span>
+      <motion.span
+        aria-hidden
+        className={className}
+        variants={container}
+        initial="hidden"
+        {...trigger}
+      >
+        {lines.map((text, i) => (
+          <span key={i} aria-hidden className="block overflow-hidden pb-[0.08em]">
+            <motion.span className="block" variants={line}>
+              {text}
+            </motion.span>
+          </span>
+        ))}
+      </motion.span>
+    </>
   );
 }

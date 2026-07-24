@@ -20,8 +20,8 @@ engineer" first.
 
 ## Audience
 
-Mixed / personal brand. Anyone landing on the site — recruiter, engineer,
-founder, collaborator, curious stranger — should walk away with a memorable,
+Mixed / personal brand. Anyone landing on the site (recruiter, engineer,
+founder, collaborator, curious stranger) should walk away with a memorable,
 credible impression of who Robin is and what he has built, without needing prior
 context.
 
@@ -66,7 +66,7 @@ what §4 states. In particular:
   from what is currently deployed on `loonar-ai.com`.
 - Any thesis links, dates, or role titles must be verifiable, not approximated.
 
-Per spec §11 ("Out of scope / open items"), full narrative prose — especially
-the Ch. 1 family story and any employer-related phrasing for Uber/Booking — must
+Per spec §11 ("Out of scope / open items"), full narrative prose, especially
+the Ch. 1 family story and any employer-related phrasing for Uber/Booking, must
 be approved by Robin before the site is deployed. This is a hard gate, not a
 formality.

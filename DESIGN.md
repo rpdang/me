@@ -32,9 +32,9 @@ unbroken thread, end to end.
 Two backgrounds ("acts"), switched by a single `data-act` attribute on `<html>`,
 painted by one fixed layer:
 
-- **Cream** (`--color-act-cream: #f5f0e6`) — prologue, Two Cultures, The Craft,
+- **Cream** (`--color-act-cream: #f5f0e6`): prologue, Two Cultures, The Craft,
   Offline, Epilogue.
-- **Slate** (`--color-act-slate: #232830`) — Scale, Zero to One.
+- **Slate** (`--color-act-slate: #232830`): Scale, Zero to One.
 
 Implementation is a single `.act-layer` (`position: fixed; inset: 0; z-index: -10`)
 whose `background-color` transitions over 800ms
@@ -51,19 +51,19 @@ renders the act background as `#ece5d8`.
 
 ## Type
 
-- **Display — Cabinet Grotesk** (`app/fonts/CabinetGrotesk-Variable.woff2`, self
+- **Display: Cabinet Grotesk** (`app/fonts/CabinetGrotesk-Variable.woff2`, self
   hosted via `next/font/local`, weight range 100-900). Used for chapter titles
   and the prologue/epilogue headline, at `clamp()` sizes so headlines never
   wrap past 2 lines on desktop.
-- **Body — General Sans** (`app/fonts/GeneralSans-Variable.woff2` + italic,
+- **Body: General Sans** (`app/fonts/GeneralSans-Variable.woff2` + italic,
   self-hosted, weight range 200-700). Used for all prose paragraphs, capped at
   `max-w-[52ch]`-`[58ch]` for readable measure.
-- **Mono — system stack** (`'SF Mono', 'Fira Code', 'Consolas', monospace`, not
-  self-hosted — it is an annotation voice, not a brand typeface). Reserved
+- **Mono: system stack** (`'SF Mono', 'Fira Code', 'Consolas', monospace`, not
+  self-hosted: it is an annotation voice, not a brand typeface). Reserved
   exclusively for: chapter numbers (`01`, `02`, ...), dates/periods
   (`2022 to 2024`), the Ch.1 coordinates line (`Hanoi 21.0278 N / Stockholm
   59.3293 N`), venture tech-stack tags, and link labels. Chapter numbers are the
-  only eyebrow-style mono labels on the page — there is no second, competing
+  only eyebrow-style mono labels on the page: there is no second, competing
   eyebrow pattern anywhere.
 
 ## Color
@@ -71,7 +71,7 @@ renders the act background as `#ece5d8`.
 Single accent: **terracotta `#b85a32`** (`--color-terracotta`). Used for the
 thread itself, milestone dots, the chapter-rail active dot, all link text, role
 labels, and stat figures. No second or third accent color exists anywhere on
-the page — no gold, no burgundy, no gradients. This is a hard constraint, not a
+the page: no gold, no burgundy, no gradients. This is a hard constraint, not a
 style preference: any new UI element reaches for terracotta or for the
 ink/bone-derived muted tones, never a new hue.
 
@@ -80,22 +80,22 @@ ink/bone-derived muted tones, never a new hue.
 Two strictly separated speed registers, enforced by the components that exist
 today:
 
-1. **Narrative reveals** — chapter titles (`MaskedLines`), paragraph fades,
+1. **Narrative reveals**: chapter titles (`MaskedLines`), paragraph fades,
    milestone list items: **600-900ms**, eased with
    `cubic-bezier(0.23, 1, 0.32, 1)` (a strong ease-out), staggered 30-80ms per
    item (e.g. `delay: i * 0.06` in `craft.tsx` / `zero-to-one.tsx`).
-2. **UI interactions** — links, the chapter rail dots: **≤200ms**
+2. **UI interactions**: links, the chapter rail dots: **≤200ms**
    (`transition-transform duration-150`, `active:scale-[0.97]` on every link;
    rail dot scale-up on active is `duration: 0.18`). Nothing enters from
    `scale(0)`; hover-only affordances (rail tooltip labels) are opacity-based
    and inert until hover/focus.
 
-**Deliberate exception — `CountUp` (`components/narrative/count-up.tsx`):**
+**Deliberate exception: `CountUp` (`components/narrative/count-up.tsx`):**
 animates its number over **1.4s with `ease: "easeOut"`**, which falls outside
 both registers above. This was flagged during implementation
 (`.superpowers/sdd/progress.md`, Task 4: "CountUp 1.4s/easeOut is plan-mandated
 but outside 600-900ms reveal constraint") and intentionally shipped as-is
-pending owner adjudication — it is the one place on the page where a duration
+pending owner adjudication: it is the one place on the page where a duration
 was chosen for how a counting number *reads* (long enough to register as
 counting, not just flickering) rather than to fit the narrative-reveal
 register. It respects reduced motion (jumps straight to the final value when
@@ -106,13 +106,13 @@ register. It respects reduced motion (jumps straight to the final value when
 
 The original spec rationed pinning to exactly two moments (the Ch.3 Uber quote,
 and a Ch.5 "Loonar arrival" sequence). The story-rebalance amendment removed
-"The Company" chapter entirely — Loonar was demoted to a venture entry inside
+"The Company" chapter entirely. Loonar was demoted to a venture entry inside
 Zero to One, and the page no longer resolves into a Loonar destination.
 **That removed the second pin along with the chapter it lived in.** The site
 now ships with exactly **one** pinned moment:
 
-- **Scale (Ch.3):** the Uber quote — "Do not just fix the incident. Eliminate
-  the category, forever." — pins full-screen via `position: sticky` inside a
+- **Scale (Ch.3):** the Uber quote: "Do not just fix the incident. Eliminate
+  the category, forever." pins full-screen via `position: sticky` inside a
   `220vh` wrapper (`components/narrative/pinned-quote.tsx`), with each word's
   opacity driven by scroll progress (`useTransform` over per-word ranges). With
   reduced motion, all words render at full opacity immediately; there is no
@@ -126,15 +126,15 @@ pattern no longer has a chapter to live in.
 
 The original spec's two-radius rule was "rounded-full CTA + rounded-lg images."
 The story rebalance removed the page's only button-styled CTA ("Visit Loonar")
-along with the company chapter — every link on the page today, including
+along with the company chapter: every link on the page today, including
 venture links and the epilogue's LinkedIn/GitHub links, is a plain underlined
 text link, not a rounded-pill button. That leaves:
 
-- **`rounded-full`** — reserved for small UI markers only: the thread's
+- **`rounded-full`**: reserved for small UI markers only: the thread's
   milestone dots (`milestone-dot.tsx`) and the desktop chapter-rail dots
   (`chapter-rail.tsx`). These are not CTAs; they are wayfinding, so they are
   exempt from the "one CTA shape" framing entirely.
-- **`rounded-lg`** — the only radius reserved for imagery, if and when the page
+- **`rounded-lg`**: the only radius reserved for imagery, if and when the page
   carries images again (it currently carries none; Ch.1/Ch.6 imagery was
   explicitly deferred as "nice-to-have" per spec §11, and product screenshots
   went away with the removed company chapter).
@@ -146,8 +146,9 @@ without re-opening this document, since that radius is now semantically
 
 ## Copy rules
 
-- **No em-dashes or en-dashes** anywhere in visible copy — hyphens only.
-  Enforced mechanically: `grep -rn "—\|–" components/chapters components/narrative components/thread lib/story.ts`
+- **No em-dashes or en-dashes** anywhere in visible copy: hyphens only.
+  Enforced mechanically: running grep for em-dashes and en-dashes across
+  components/chapters, components/narrative, components/thread, and lib/story.ts
   must return nothing.
 - **No scroll cues** ("scroll to explore," chevrons, etc.) and no decorative
   status dots or filler subtitles.
@@ -158,11 +159,11 @@ without re-opening this document, since that radius is now semantically
   `100%` stat, dates, years) must trace to the canonical content facts in the
   design spec; no invented precision.
 - **Link-label uniqueness.** No two links on the page should share literal
-  link text pointing at different destinations — screen-reader users tabbing
+  link text pointing at different destinations: screen-reader users tabbing
   through links hear label text out of visual context, so two links both
   reading "Read the thesis" are indistinguishable by ear even though they are
   contextually clear by eye. Venture links already follow this ("Visit
-  Legora," "Visit Loonar" — each names its destination); Craft's two thesis
+  Legora," "Visit Loonar" - each names its destination); Craft's two thesis
   links are labeled "Read the B.Sc. thesis" / "Read the M.Sc. thesis" for the
   same reason. The epilogue's two links are exactly "LinkedIn" and "GitHub,"
   which are already unique.
