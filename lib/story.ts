@@ -49,8 +49,8 @@ export interface Venture {
 
 export const STORY = {
   prologue: {
-    headlineLines: ["I build things", "end to end."],
-    sub: "Robin Dang. Software engineer. I keep Uber's hardest systems standing by day and build Loonar on the side.",
+    headlineLines: ["Always", "building."],
+    sub: "Robin Dang. Software engineer between two cultures, always making something, always looking for the next thing worth building.",
     credentials: ["Uber", "Booking.com", "Legora (YC W24)", "Loonar"],
   },
 
