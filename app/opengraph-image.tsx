@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Robin Dang - Co-Founder & CTO @ Loonar";
+export const alt = "Robin Dang - Software Engineer";
 export const size = {
   width: 1200,
   height: 630,
@@ -18,22 +18,10 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #b85a32 0%, #822e3a 100%)",
+          background: "#f5f0e6",
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        {/* Subtle pattern overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            opacity: 0.1,
-            backgroundImage:
-              "radial-gradient(circle at 25% 25%, white 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
-
         {/* Content */}
         <div
           style={{
@@ -49,21 +37,20 @@ export default async function Image() {
             style={{
               fontSize: 72,
               fontWeight: 700,
-              color: "#f5f0e6",
+              color: "#26221f",
               letterSpacing: "-0.02em",
-              marginBottom: 16,
+              marginBottom: 24,
             }}
           >
             Robin Dang
           </div>
 
-          {/* Divider */}
+          {/* Thread - Terracotta Horizontal Line */}
           <div
             style={{
               width: 120,
               height: 3,
-              background: "#f5f0e6",
-              opacity: 0.6,
+              background: "#b85a32",
               marginBottom: 24,
               borderRadius: 2,
             }}
@@ -72,43 +59,14 @@ export default async function Image() {
           {/* Title */}
           <div
             style={{
-              fontSize: 32,
+              fontSize: 36,
               fontWeight: 500,
-              color: "#f5f0e6",
-              opacity: 0.9,
-              letterSpacing: "0.05em",
-              textTransform: "uppercase",
+              color: "#26221f",
+              letterSpacing: "0.02em",
             }}
           >
-            Co-Founder & CTO
+            Software Engineer
           </div>
-
-          {/* Tagline */}
-          <div
-            style={{
-              fontSize: 20,
-              color: "#f5f0e6",
-              opacity: 0.7,
-              marginTop: 16,
-            }}
-          >
-            Loonar • Uber • Booking.com
-          </div>
-        </div>
-
-        {/* Domain in corner */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 40,
-            right: 50,
-            fontSize: 18,
-            color: "#f5f0e6",
-            opacity: 0.6,
-            fontWeight: 500,
-          }}
-        >
-          robindang.me
         </div>
       </div>
     ),
