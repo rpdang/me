@@ -73,7 +73,7 @@ export const STORY = {
           "Thesis: machine learning for breast cancer classification.",
         period: "2017 to 2020",
         href: "https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1464600",
-        linkLabel: "Read the thesis",
+        linkLabel: "Read the B.Sc. thesis",
       },
       {
         title: "Software Engineer, Nasdaq",
@@ -87,7 +87,7 @@ export const STORY = {
           "Thesis at Nasdaq: distributed ledger technology in central securities depositories.",
         period: "2020 to 2022",
         href: "https://www.diva-portal.org/smash/record.jsf?dswid=4748&pid=diva2%3A1695524",
-        linkLabel: "Read the thesis",
+        linkLabel: "Read the M.Sc. thesis",
       },
     ] satisfies Milestone[],
   },

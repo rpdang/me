@@ -24,7 +24,7 @@
   --act-cream-resolved: var(--color-act-cream);
   --act-bg: var(--act-cream-resolved);
   --act-fg: var(--color-ink);
-  --act-muted: color-mix(in srgb, var(--color-ink) 62%, transparent);
+  --act-muted: color-mix(in srgb, var(--color-ink) 68%, transparent);
 }
 @media (prefers-color-scheme: dark) {
   :root {

@@ -43,6 +43,7 @@ export default function MaskedLines({
 
   return (
     <motion.span
+      role="text"
       aria-label={lines.join(" ")}
       className={className}
       variants={container}

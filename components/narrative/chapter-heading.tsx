@@ -16,10 +16,12 @@ export default function ChapterHeading({
           {String(number).padStart(2, "0")}
         </span>
       )}
-      <MaskedLines
-        lines={[title]}
-        className="font-display text-[clamp(2.5rem,7vw,6rem)] font-extrabold leading-[0.95] tracking-tight"
-      />
+      <h2>
+        <MaskedLines
+          lines={[title]}
+          className="font-display text-[clamp(2.5rem,7vw,6rem)] font-extrabold leading-[0.95] tracking-tight"
+        />
+      </h2>
     </div>
   );
 }
