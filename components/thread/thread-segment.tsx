@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import {
   motion,
   useReducedMotion,
@@ -26,10 +26,15 @@ export default function ThreadSegment({
     target: ref,
     offset: ["start 0.85", "end 0.4"],
   });
-  const pathLength = useSpring(scrollYProgress as any, {
+  const pathLength = useSpring(scrollYProgress, {
     stiffness: 90,
     damping: 26,
   });
+
+  useEffect(() => {
+    pathLength.jump(scrollYProgress.get());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const strokeWidth = thicken ? 5 : 2;
 

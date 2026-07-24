@@ -14,7 +14,7 @@ export default function ChapterRail() {
       className="fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 flex-col items-center gap-4 lg:flex"
     >
       {CHAPTERS.map((chapter) => {
-        const active = activeSection === (chapter.id as any);
+        const active = (activeSection as string) === chapter.id;
         return (
           <a
             key={chapter.id}
