@@ -16,19 +16,29 @@ function anchorX(side: Side, w: number) {
   return side === "left" ? inset : w - inset;
 }
 
-// The thread dwells in the chapter's empty margin and crosses the content
-// column at most once, low in the chapter where the section's bottom padding
-// is empty, on its way to the next chapter's side. Every segment starts and
-// ends with a vertical tangent so consecutive segments join smoothly.
+// One smooth transition between two x positions with vertical tangents at
+// both ends, so any chain of these segments joins without kinks.
+function seg(x0: number, x1: number, y0: number, y1: number) {
+  const dy = y1 - y0;
+  return `C ${x0} ${y0 + dy * 0.45}, ${x1} ${y0 + dy * 0.55}, ${x1} ${y1}`;
+}
+
+// The thread dwells in the chapter's empty margin as a gentle meander (drift
+// inward, breathe back past home, settle) rather than a dead-straight line,
+// and crosses the content column at most once, in the final fifth of the
+// chapter where only the section's bottom padding lives.
 function sidePath(enter: Side, home: Side, exit: Side, w: number, h: number) {
   const xe = anchorX(enter, w);
   const xh = anchorX(home, w);
   const xx = anchorX(exit, w);
+  const inward = (home === "right" ? -1 : 1) * Math.min(w * 0.035, 48);
   return [
     `M ${xe} 0`,
-    `C ${xe} ${h * 0.1}, ${xh} ${h * 0.12}, ${xh} ${h * 0.26}`,
-    `L ${xh} ${h * 0.68}`,
-    `C ${xh} ${h * 0.86}, ${xx} ${h * 0.88}, ${xx} ${h}`,
+    seg(xe, xh, 0, h * 0.18),
+    seg(xh, xh + inward, h * 0.18, h * 0.42),
+    seg(xh + inward, xh - inward * 0.5, h * 0.42, h * 0.66),
+    seg(xh - inward * 0.5, xh, h * 0.66, h * 0.8),
+    seg(xh, xx, h * 0.8, h),
   ].join(" ");
 }
 
