@@ -87,3 +87,18 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+/* No-JS fallback: if hydration never happens, show everything. */
+html:not(.js) main *,
+html:not(.js) main [style] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+html:not(.js) .thread-path {
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+}
+html:not(.js) .count-js {
+  display: none;
+}

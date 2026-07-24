@@ -13,12 +13,18 @@ export default function Home() {
     <main className="text-[var(--act-fg)]">
       <ActBackground />
       <ChapterRail />
+      <span id="home" aria-hidden className="block h-0 w-0 overflow-hidden" />
       <Prologue />
+      <span id="about" aria-hidden className="block h-0 w-0 overflow-hidden" />
       <TwoCultures />
+      <span id="education" aria-hidden className="block h-0 w-0 overflow-hidden" />
       <Craft />
+      <span id="experience" aria-hidden className="block h-0 w-0 overflow-hidden" />
       <Scale />
+      <span id="projects" aria-hidden className="block h-0 w-0 overflow-hidden" />
       <ZeroToOne />
       <Offline />
+      <span id="contact" aria-hidden className="block h-0 w-0 overflow-hidden" />
       <Epilogue />
     </main>
   );

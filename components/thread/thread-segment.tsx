@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import {
   motion,
   useReducedMotion,
@@ -31,7 +31,7 @@ export default function ThreadSegment({
     damping: 26,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     pathLength.jump(scrollYProgress.get());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -47,6 +47,7 @@ export default function ThreadSegment({
         preserveAspectRatio="none"
       >
         <motion.path
+          className="thread-path"
           d={PATHS[curve]}
           fill="none"
           stroke="var(--color-terracotta)"
@@ -62,6 +63,7 @@ export default function ThreadSegment({
         preserveAspectRatio="none"
       >
         <motion.path
+          className="thread-path"
           d="M 50 0 L 50 100"
           fill="none"
           stroke="var(--color-terracotta)"

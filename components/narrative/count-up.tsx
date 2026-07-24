@@ -37,7 +37,10 @@ export default function CountUp({
 
   return (
     <span ref={ref} className={className}>
-      <motion.span>{rounded}</motion.span>
+      <span className="count-js">
+        <motion.span>{rounded}</motion.span>
+      </span>
+      <noscript>{`${value.toLocaleString()}${suffix}`}</noscript>
     </span>
   );
 }

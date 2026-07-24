@@ -83,6 +83,13 @@ export default function RootLayout({
       data-act="cream"
       className={`${displayFont.variable} ${bodyFont.variable} scroll-smooth`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
       <body className="font-body antialiased">
         {/* JSON-LD Structured Data */}
         <script

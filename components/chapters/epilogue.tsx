@@ -16,10 +16,12 @@ export default function Epilogue() {
       className="relative flex min-h-[70dvh] flex-col justify-center px-6 py-32 md:px-16"
     >
       <div className="mx-auto w-full max-w-5xl">
-        <MaskedLines
-          lines={[line]}
-          className="font-display text-[clamp(2rem,5vw,4rem)] font-extrabold leading-tight tracking-tight"
-        />
+        <h2>
+          <MaskedLines
+            lines={[line]}
+            className="font-display text-[clamp(2rem,5vw,4rem)] font-extrabold leading-tight tracking-tight"
+          />
+        </h2>
         <div className="mt-14 flex gap-10">
           {links.map((link) => (
             <a
