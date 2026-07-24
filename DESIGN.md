@@ -111,25 +111,21 @@ register. It respects reduced motion (jumps straight to the final value when
 `useReducedMotion()` is true) and triggers once, on scroll into view
 (`useInView(..., { once: true })`), so it never restarts or loops.
 
-## Pin budget: one pinned moment
+## Pin budget: two pinned moments
 
-The original spec rationed pinning to exactly two moments (the Ch.3 Uber quote,
-and a Ch.5 "Loonar arrival" sequence). The story-rebalance amendment removed
-"The Company" chapter entirely. Loonar was demoted to a venture entry inside
-Zero to One, and the page no longer resolves into a Loonar destination.
-**That removed the second pin along with the chapter it lived in.** The site
-now ships with exactly **one** pinned moment:
+The spec rations pinning to exactly two moments, both rendered by
+`components/narrative/pinned-quote.tsx` (full-screen `position: sticky` inside
+a `220vh` wrapper, each word's opacity driven by scroll progress via
+`useTransform` over per-word ranges; with reduced motion all words render at
+full opacity immediately, so the quote is never stuck half-legible):
 
-- **Scale (Ch.3):** the Uber quote: "Do not just fix the incident. Eliminate
-  the category, forever." pins full-screen via `position: sticky` inside a
-  `220vh` wrapper (`components/narrative/pinned-quote.tsx`), with each word's
-  opacity driven by scroll progress (`useTransform` over per-word ranges). With
-  reduced motion, all words render at full opacity immediately; there is no
-  version of the page where the quote is stuck half-legible.
+- **Scale (Ch.3), the employee's creed:** "Anyone can fix an incident. The job
+  is making it the last one."
+- **Zero to One (Ch.4), the venture builder's answer:** "Nobody assigned me a
+  venture. I gave myself the job."
 
-If a second pinned moment is ever reintroduced, it should be budgeted
-deliberately, not incidentally reused from the old Ch.5 pattern, since that
-pattern no longer has a chapter to live in.
+The two pins deliberately rhyme on the word "job": employed craft in Ch.3,
+self-assigned ventures in Ch.4. Do not add a third pin.
 
 ## Radius rule
 

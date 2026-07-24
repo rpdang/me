@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import ChapterHeading from "@/components/narrative/chapter-heading";
+import PinnedQuote from "@/components/narrative/pinned-quote";
 import ThreadSegment from "@/components/thread/thread-segment";
 import { STORY, type Venture } from "@/lib/story";
 import { useSectionInView } from "@/lib/hooks";
@@ -37,7 +38,7 @@ function VentureBlock({ venture, index }: { venture: Venture; index: number }) {
 
 export default function ZeroToOne() {
   const { ref } = useSectionInView("zero-to-one", 0.15);
-  const { intro, ventures } = STORY.zeroToOne;
+  const { intro, ventures, pinnedQuote } = STORY.zeroToOne;
 
   return (
     <section
@@ -57,6 +58,7 @@ export default function ZeroToOne() {
           ))}
         </div>
       </div>
+      <PinnedQuote quote={pinnedQuote} />
     </section>
   );
 }

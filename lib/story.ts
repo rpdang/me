@@ -116,6 +116,7 @@ export const STORY = {
   zeroToOne: {
     intro:
       "Millions of users taught me rigor. Zero users taught me everything else.",
+    pinnedQuote: "Nobody assigned me a venture. I gave myself the job.",
     ventures: [
       {
         name: "Legora",
