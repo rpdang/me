@@ -50,7 +50,7 @@ export const STORY = {
   prologue: {
     headlineLines: ["Always", "building."],
     sub: "Robin Dang. Software engineer between two cultures, always making something, always looking for the next thing worth building.",
-    credentials: ["Uber", "Booking.com", "Legora (YC W24)", "Loonar"],
+    credentials: ["Uber", "Booking.com", "Legora (YC W24)", "Nasdaq"],
   },
 
   twoCultures: {
