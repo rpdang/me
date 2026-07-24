@@ -164,6 +164,7 @@ export const STORY = {
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/robin-dang" },
       { label: "GitHub", href: "https://github.com/rpdang" },
+      { label: "CV", href: "/robin-dang-cv.pdf" },
     ],
   },
 } as const;
