@@ -15,7 +15,7 @@ export default function Offline() {
       id="offline"
       className="relative scroll-mt-8 px-6 py-32 md:px-16 md:py-40"
     >
-      <ThreadSegment enter="right" home="right" exit="left" />
+      <ThreadSegment enter="left" home="left" exit="left" />
       <div className="relative mx-auto max-w-5xl">
         <ChapterHeading number={5} title="Offline" />
         <div className="max-w-[52ch] space-y-6">

@@ -17,7 +17,7 @@ export default function Craft() {
       id="craft"
       className="relative scroll-mt-8 px-6 py-32 md:px-16 md:py-48"
     >
-      <ThreadSegment enter="right" home="right" exit="right" />
+      <ThreadSegment enter="right" home="right" exit="left" />
       <div className="relative mx-auto max-w-5xl">
         <ChapterHeading number={2} title="The Craft" />
         <p className="mb-16 max-w-[52ch] font-body text-xl leading-relaxed md:text-2xl">

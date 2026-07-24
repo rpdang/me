@@ -11,8 +11,16 @@ import {
 
 type Side = "left" | "right";
 
+// The content column is max-w-5xl (1024px) centered inside the section's
+// horizontal padding; the thread anchors sit centered in whatever margin
+// that leaves at the current viewport, so they never graze the text column.
+function pageMargin(w: number) {
+  const pad = w >= 768 ? 64 : 24;
+  return Math.max(pad, (w - 1024) / 2);
+}
+
 function anchorX(side: Side, w: number) {
-  const inset = Math.max(20, Math.min(w * 0.08, 110));
+  const inset = Math.max(10, pageMargin(w) * 0.5);
   return side === "left" ? inset : w - inset;
 }
 
@@ -31,7 +39,9 @@ function sidePath(enter: Side, home: Side, exit: Side, w: number, h: number) {
   const xe = anchorX(enter, w);
   const xh = anchorX(home, w);
   const xx = anchorX(exit, w);
-  const inward = (home === "right" ? -1 : 1) * Math.min(w * 0.035, 48);
+  const inward =
+    (home === "right" ? -1 : 1) *
+    Math.min(w * 0.035, 48, pageMargin(w) * 0.4);
   return [
     `M ${xe} 0`,
     seg(xe, xh, 0, h * 0.18),

@@ -43,7 +43,7 @@ export default function Scale() {
 
   return (
     <section ref={ref} id="scale" className="relative scroll-mt-8">
-      <ThreadSegment enter="right" home="right" exit="right" />
+      <ThreadSegment enter="left" home="left" exit="right" />
       <div className="relative px-6 pt-32 md:px-16 md:pt-48">
         <div className="mx-auto max-w-5xl">
           <ChapterHeading number={3} title="Scale" />

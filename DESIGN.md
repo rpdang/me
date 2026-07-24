@@ -15,9 +15,11 @@ unbroken thread, end to end.
 - `components/thread/thread-segment.tsx`: one SVG path segment per chapter,
   generated in real pixel coordinates from the section's measured size
   (ResizeObserver). Each segment takes `enter`/`home`/`exit` side props: it
-  dwells vertically in the chapter's empty margin (left in Two Cultures,
-  right elsewhere) and crosses the content column at most once, low in the
-  chapter's bottom padding, on its way to the next chapter's side. All
+  dwells in the page margin with a gentle meander and zigzags across the
+  page between chapters (left, right, left, right, left), crossing the
+  content column exactly once per chapter in the final fifth of the section
+  where only bottom padding lives. Anchors sit centered in the real page
+  margin at every viewport so the line never grazes the text column. All
   segments meet with vertical tangents so the line stays continuous. The
   stroke is 3px terracotta at 45 percent opacity so content always wins;
   the same geometry runs on every viewport, mobile included.
