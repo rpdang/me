@@ -27,9 +27,12 @@ export default function ThreadSegment({
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const [size, setSize] = useState<{ w: number; h: number } | null>(null);
+  // Both offsets share one viewport anchor so the drawing tip stays pinned
+  // to the same screen line across segments: each segment finishes exactly
+  // where the next begins, keeping the thread continuous at boundaries.
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.85", "end 0.4"],
+    offset: ["start 0.75", "end 0.75"],
   });
   const pathLength = useSpring(scrollYProgress, {
     stiffness: 90,
