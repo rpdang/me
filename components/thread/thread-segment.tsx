@@ -6,16 +6,21 @@ import {
   useReducedMotion,
   useScroll,
   useSpring,
+  useTransform,
 } from "motion/react";
 
+// Every segment starts and ends at the horizontal center with a vertical
+// tangent, so consecutive segments join into one smooth continuous line.
 function weavePath(curve: "left" | "right", w: number, h: number) {
   const cx = w / 2;
   const amp = w * 0.32;
   const side = curve === "right" ? amp : -amp;
   return [
     `M ${cx} 0`,
-    `C ${cx + side} ${h * 0.2}, ${cx + side} ${h * 0.38}, ${cx} ${h * 0.52}`,
-    `C ${cx - side} ${h * 0.64}, ${cx - side} ${h * 0.82}, ${cx} ${h}`,
+    `C ${cx} ${h * 0.09}, ${cx + side} ${h * 0.11}, ${cx + side} ${h * 0.25}`,
+    `C ${cx + side} ${h * 0.39}, ${cx} ${h * 0.41}, ${cx} ${h * 0.52}`,
+    `C ${cx} ${h * 0.64}, ${cx - side} ${h * 0.66}, ${cx - side} ${h * 0.77}`,
+    `C ${cx - side} ${h * 0.89}, ${cx} ${h * 0.91}, ${cx} ${h}`,
   ].join(" ");
 }
 
@@ -38,6 +43,13 @@ export default function ThreadSegment({
     stiffness: 90,
     damping: 26,
   });
+  // The line renders at reduced strength so it never competes with content
+  // it crosses; milestone dots keep full terracotta as the thread's anchors.
+  // Zero-progress segments are fully hidden because round linecaps would
+  // otherwise render a stray dot even at zero dash length.
+  const strokeOpacity = useTransform(pathLength, (v) =>
+    v > 0.005 ? 0.45 : 0
+  );
 
   useLayoutEffect(() => {
     pathLength.jump(scrollYProgress.get());
@@ -57,11 +69,7 @@ export default function ThreadSegment({
   // Stretching a fixed viewBox with preserveAspectRatio="none" would force
   // vector-effect: non-scaling-stroke, which moves dash patterns into
   // screen space and shatters the scroll-drawn line into fragments.
-  const d = size
-    ? size.w >= 768
-      ? weavePath(curve, size.w, size.h)
-      : `M 10 0 L 10 ${size.h}`
-    : null;
+  const d = size ? weavePath(curve, size.w, size.h) : null;
 
   return (
     <div ref={ref} className="pointer-events-none absolute inset-0" aria-hidden>
@@ -77,7 +85,10 @@ export default function ThreadSegment({
             stroke="var(--color-terracotta)"
             strokeWidth={2}
             strokeLinecap="round"
-            style={{ pathLength: reduce ? 1 : pathLength }}
+            style={{
+              pathLength: reduce ? 1 : pathLength,
+              opacity: reduce ? 0.45 : strokeOpacity,
+            }}
           />
         </svg>
       )}
