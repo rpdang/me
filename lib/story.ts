@@ -62,7 +62,7 @@ export const STORY = {
     ],
     pullQuote: ["Nothing arrives", "finished."],
     closing:
-      "You build the life you want from whatever you have. I have been building ever since.",
+      "I built what I wanted from whatever I had. I have been building ever since.",
     coordinates: "Hanoi 21.0278 N / Stockholm 59.3293 N",
   },
 
