@@ -82,6 +82,7 @@ export default function RootLayout({
       lang="en"
       data-act="cream"
       className={`${displayFont.variable} ${bodyFont.variable} scroll-smooth`}
+      suppressHydrationWarning
     >
       <head>
         <script
