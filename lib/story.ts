@@ -63,7 +63,7 @@ export const STORY = {
     pullQuote: ["Nothing arrives", "finished."],
     closing:
       "I built what I wanted from whatever I had. I have been building ever since.",
-    coordinates: "Hanoi 21.0278 N / Stockholm 59.3293 N",
+    coordinates: "Stockholm 59.3293 N / Paris 48.8566 N / Amsterdam 52.3676 N",
   },
 
   craft: {
