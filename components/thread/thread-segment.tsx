@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import {
   motion,
   useReducedMotion,
@@ -8,10 +8,16 @@ import {
   useSpring,
 } from "motion/react";
 
-const PATHS = {
-  right: "M 50 0 C 82 20, 82 38, 50 52 C 22 64, 22 82, 50 100",
-  left: "M 50 0 C 18 20, 18 38, 50 52 C 78 64, 78 82, 50 100",
-};
+function weavePath(curve: "left" | "right", w: number, h: number) {
+  const cx = w / 2;
+  const amp = w * 0.32;
+  const side = curve === "right" ? amp : -amp;
+  return [
+    `M ${cx} 0`,
+    `C ${cx + side} ${h * 0.2}, ${cx + side} ${h * 0.38}, ${cx} ${h * 0.52}`,
+    `C ${cx - side} ${h * 0.64}, ${cx - side} ${h * 0.82}, ${cx} ${h}`,
+  ].join(" ");
+}
 
 export default function ThreadSegment({
   curve = "right",
@@ -20,6 +26,7 @@ export default function ThreadSegment({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const [size, setSize] = useState<{ w: number; h: number } | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 0.85", "end 0.4"],
@@ -31,45 +38,46 @@ export default function ThreadSegment({
 
   useLayoutEffect(() => {
     pathLength.jump(scrollYProgress.get());
+    const el = ref.current;
+    if (!el) return;
+    const measure = () =>
+      setSize({ w: el.clientWidth, h: el.clientHeight });
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const strokeWidth = 2;
+  // The path is generated in real pixel coordinates so the 2px stroke and
+  // motion's pathLength dash normalization both stay correct at every size.
+  // Stretching a fixed viewBox with preserveAspectRatio="none" would force
+  // vector-effect: non-scaling-stroke, which moves dash patterns into
+  // screen space and shatters the scroll-drawn line into fragments.
+  const d = size
+    ? size.w >= 768
+      ? weavePath(curve, size.w, size.h)
+      : `M 10 0 L 10 ${size.h}`
+    : null;
 
   return (
     <div ref={ref} className="pointer-events-none absolute inset-0" aria-hidden>
-      {/* Weaving path, tablet and up */}
-      <svg
-        className="hidden h-full w-full md:block"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-        <motion.path
-          className="thread-path"
-          d={PATHS[curve]}
-          fill="none"
-          stroke="var(--color-terracotta)"
-          strokeWidth={strokeWidth}
-          vectorEffect="non-scaling-stroke"
-          style={{ pathLength: reduce ? 1 : pathLength }}
-        />
-      </svg>
-      {/* Straight left rail, mobile */}
-      <svg
-        className="h-full w-4 md:hidden"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-        <motion.path
-          className="thread-path"
-          d="M 50 0 L 50 100"
-          fill="none"
-          stroke="var(--color-terracotta)"
-          strokeWidth={strokeWidth}
-          vectorEffect="non-scaling-stroke"
-          style={{ pathLength: reduce ? 1 : pathLength }}
-        />
-      </svg>
+      {size && d && (
+        <svg
+          className="h-full w-full"
+          viewBox={`0 0 ${size.w} ${size.h}`}
+        >
+          <motion.path
+            className="thread-path"
+            d={d}
+            fill="none"
+            stroke="var(--color-terracotta)"
+            strokeWidth={2}
+            strokeLinecap="round"
+            style={{ pathLength: reduce ? 1 : pathLength }}
+          />
+        </svg>
+      )}
     </div>
   );
 }

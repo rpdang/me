@@ -95,10 +95,7 @@ html:not(.js) main [style] {
   transform: none !important;
   clip-path: none !important;
 }
-html:not(.js) .thread-path {
-  stroke-dasharray: none !important;
-  stroke-dashoffset: 0 !important;
-}
+/* The thread svg itself is client-measured and never SSRs; decorative only. */
 html:not(.js) .count-js {
   display: none;
 }
